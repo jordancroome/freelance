@@ -1,0 +1,11 @@
+{
+  "title": "Data Dashboard & Reporting Suite",
+  "client": "Metriq",
+  "category": "product",
+  "category_label": "Product · Analytics",
+  "image": "/images/uploads/metriq.jpg",
+  "order": 4,
+  "featured": true,
+  "url": "",
+  "description": "Analytics dashboard design for a SaaS reporting platform."
+}

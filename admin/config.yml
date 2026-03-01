@@ -1,0 +1,137 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+
+  # ─── SITE SETTINGS ────────────────────────────────────────
+  - name: "settings"
+    label: "Site Settings"
+    files:
+
+      - name: "hero"
+        label: "Hero Section"
+        file: "content/hero.json"
+        fields:
+          - { label: "Eyebrow text", name: "eyebrow", widget: "string", default: "Product Designer · Melbourne & Cairns" }
+          - { label: "Headline line 1", name: "headline1", widget: "string", default: "Design that" }
+          - { label: "Headline line 2 (accent/italic)", name: "headline2", widget: "string", default: "converts" }
+          - { label: "Headline line 3", name: "headline3", widget: "string", default: "and competes." }
+          - { label: "Subheading", name: "sub", widget: "text", default: "Senior-level product design for founders, sole traders, and small-to-medium businesses who want clarity, craft, and results." }
+          - { label: "Primary CTA label", name: "cta_primary", widget: "string", default: "Start a project" }
+          - { label: "Secondary CTA label", name: "cta_secondary", widget: "string", default: "View work" }
+
+      - name: "statement"
+        label: "Statement Section"
+        file: "content/statement.json"
+        fields:
+          - { label: "Section label", name: "label", widget: "string", default: "Who I work with" }
+          - { label: "Heading", name: "heading", widget: "string", default: "Design that earns its place." }
+          - { label: "Paragraph 1", name: "para1", widget: "text" }
+          - { label: "Paragraph 2", name: "para2", widget: "text" }
+          - { label: "Paragraph 3", name: "para3", widget: "text" }
+
+      - name: "about"
+        label: "About Section"
+        file: "content/about.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Paragraph 1", name: "para1", widget: "text" }
+          - { label: "Paragraph 2", name: "para2", widget: "text" }
+          - { label: "Paragraph 3", name: "para3", widget: "text" }
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "num", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+          - label: "Skills / Tags"
+            name: "tags"
+            widget: "list"
+            field: { label: "Tag", name: "tag", widget: "string" }
+
+      - name: "cta"
+        label: "Contact / CTA Section"
+        file: "content/cta.json"
+        fields:
+          - { label: "Heading line 1", name: "heading1", widget: "string" }
+          - { label: "Heading line 2 (italic/accent)", name: "heading2", widget: "string" }
+          - { label: "Body text", name: "body", widget: "text" }
+          - { label: "Email address", name: "email", widget: "string" }
+          - { label: "Calendly / booking URL", name: "booking_url", widget: "string" }
+          - { label: "Footer note", name: "footer_note", widget: "string" }
+
+      - name: "footer"
+        label: "Footer"
+        file: "content/footer.json"
+        fields:
+          - { label: "Tagline", name: "tagline", widget: "text" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - { label: "Dribbble URL", name: "dribbble", widget: "string" }
+          - { label: "Twitter / X URL", name: "twitter", widget: "string" }
+          - { label: "Copyright line", name: "copyright", widget: "string" }
+
+  # ─── WORK / PROJECTS ──────────────────────────────────────
+  - name: "projects"
+    label: "Work / Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Client name", name: "client", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["product", "brand", "ux"] }
+      - { label: "Category label (display)", name: "category_label", widget: "string", hint: "e.g. Product · SaaS" }
+      - { label: "Cover image", name: "image", widget: "image" }
+      - { label: "Sort order (lower = first)", name: "order", widget: "number", default: 99 }
+      - { label: "Featured (shows in grid)", name: "featured", widget: "boolean", default: true }
+      - { label: "Link URL (optional)", name: "url", widget: "string", required: false }
+      - { label: "Short description", name: "description", widget: "text", required: false }
+
+  # ─── SERVICES ─────────────────────────────────────────────
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Number (e.g. 01)", name: "number", widget: "string" }
+      - { label: "Sort order", name: "order", widget: "number", default: 99 }
+      - { label: "Body text", name: "body", widget: "text" }
+
+  # ─── TESTIMONIALS ─────────────────────────────────────────
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "author_name"
+    fields:
+      - { label: "Quote", name: "quote", widget: "text" }
+      - { label: "Author name", name: "author_name", widget: "string" }
+      - { label: "Author role & company", name: "author_role", widget: "string" }
+      - { label: "Author initial (for avatar)", name: "initial", widget: "string", hint: "Single letter shown in avatar circle" }
+      - { label: "Sort order", name: "order", widget: "number", default: 99 }
+
+  # ─── WRITING / ARTICLES ───────────────────────────────────
+  - name: "articles"
+    label: "Writing / Articles"
+    folder: "content/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "string", hint: "e.g. Strategy, Product, Brand" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Read time (e.g. 5 min read)", name: "read_time", widget: "string" }
+      - { label: "Publish date", name: "date", widget: "datetime" }
+      - { label: "URL / link", name: "url", widget: "string", required: false }
+      - { label: "Body (optional full article)", name: "body", widget: "markdown", required: false }
