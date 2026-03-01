@@ -224,6 +224,9 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
 - **“Error: OAUTH_CLIENT_ID and OAUTH_CLIENT_SECRET must be set”**  
   - Add both in Vercel → Settings → Environment Variables and redeploy.
 
+- **New projects from the CMS don’t appear on the homepage**  
+  - In Vercel, add the env var **GITHUB_REPO** (e.g. `jordancroome/freelance`) so the site can list project files from your repo. Redeploy after adding it.
+
 - **Edits don’t appear on the site**  
   - Check that you clicked **Publish** in the CMS.
   - In Vercel, check **Deployments** for the latest deploy and that it succeeded.

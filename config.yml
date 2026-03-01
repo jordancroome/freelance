@@ -98,6 +98,15 @@ collections:
       - { label: "Featured (shows in grid)", name: "featured", widget: "boolean", default: true }
       - { label: "Link URL (optional)", name: "url", widget: "string", required: false }
       - { label: "Short description", name: "description", widget: "text", required: false }
+      - { label: "Intro (one line for case study hero)", name: "intro", widget: "text", required: false }
+      - { label: "The Challenge", name: "challenge", widget: "text", required: false }
+      - { label: "Our Approach", name: "approach", widget: "text", required: false }
+      - { label: "The Impact", name: "impact", widget: "text", required: false }
+      - label: "Our Roles (list of roles/services)"
+        name: "roles"
+        widget: "list"
+        required: false
+        field: { label: "Role", name: "role", widget: "string" }
 
   # ─── SERVICES ─────────────────────────────────────────────
   - name: "services"

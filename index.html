@@ -570,10 +570,9 @@ async function loadJSON(path) {
   } catch { return null; }
 }
 
-// List all project/service/testimonial/article files
-// In a real build pipeline you'd generate this list automatically.
-// These paths match what the CMS writes to the repo.
-const PROJECTS = [
+// Project list: fetched from /api/projects-list (GitHub repo) so new CMS projects appear automatically.
+// Fallback if API is unavailable or GITHUB_REPO is not set.
+const FALLBACK_PROJECTS = [
   'content/projects/operata.json',
   'content/projects/northbay-studio.json',
   'content/projects/tropic-escapes.json',
@@ -678,9 +677,15 @@ async function populateContent() {
   }
 
   // ── PROJECTS ───────────────────────────────────
-  const projectData = await Promise.all(PROJECTS.map(loadJSON));
+  let projectPaths = FALLBACK_PROJECTS;
+  try {
+    const listRes = await fetch('/api/projects-list');
+    const list = await listRes.json();
+    if (list.paths && list.paths.length) projectPaths = list.paths;
+  } catch (_) {}
+  const projectData = await Promise.all(projectPaths.map(loadJSON));
   const projects = projectData.filter(Boolean).map((p, i) => {
-    const path = PROJECTS[i];
+    const path = projectPaths[i];
     p.slug = path.replace('content/projects/', '').replace('.json', '');
     return p;
   }).sort((a,b) => (a.order||99)-(b.order||99));

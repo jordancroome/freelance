@@ -23,7 +23,7 @@
     img { display: block; width: 100%; }
     ::selection { background: var(--accent); color: #000; }
 
-    /* NAV */
+    /* NAV — Instrument-style minimal */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; background: rgba(14,14,14,.92); backdrop-filter: blur(12px); }
     .nav-logo { font-family: var(--serif); font-size: 18px; letter-spacing: -.02em; }
     .nav-logo span { color: var(--accent); }
@@ -44,26 +44,49 @@
     .btn-ghost { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; opacity: .7; transition: opacity .2s, gap .25s var(--ease); }
     .btn-ghost:hover { opacity: 1; gap: 14px; }
 
-    /* PROJECT HERO */
-    .project-hero { position: relative; min-height: 75vh; display: flex; align-items: flex-end; padding: 0 40px 80px; margin-top: 72px; overflow: hidden; }
-    .project-hero-bg { position: absolute; inset: 0; }
-    .project-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
-    .project-hero-placeholder { position: absolute; inset: 0; background: linear-gradient(160deg, #1a2a3a, #0d151e 50%, #1a0d1a); }
-    .project-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,14,14,.92) 0%, transparent 50%); }
-    .project-hero-content { position: relative; z-index: 2; max-width: 800px; }
-    .project-category { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-    .project-title { font-family: var(--serif); font-size: clamp(40px,6vw,72px); line-height: 1.05; letter-spacing: -.03em; margin-bottom: 12px; }
-    .project-client { font-size: 18px; color: rgba(240,237,232,.6); }
-    .project-back { position: absolute; top: 24px; left: 40px; z-index: 3; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: rgba(240,237,232,.7); transition: color .2s, gap .25s var(--ease); }
-    .project-back:hover { color: var(--accent); gap: 12px; }
+    /* ─── CASE STUDY HERO (Instrument Oura style) ─── */
+    .case-hero { padding: 140px 40px 80px; max-width: 900px; margin: 0 auto; }
+    .case-hero-back { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: rgba(240,237,232,.6); margin-bottom: 48px; transition: color .2s, gap .25s var(--ease); }
+    .case-hero-back:hover { color: var(--accent); gap: 12px; }
+    .case-hero-tag { font-size: 13px; color: var(--mid); margin-bottom: 24px; }
+    .case-hero-tag span { color: var(--accent); }
+    .case-hero-title { font-family: var(--serif); font-size: clamp(48px,10vw,96px); line-height: 1; letter-spacing: -.04em; margin-bottom: 32px; }
+    .case-hero-title strong { font-weight: 400; color: var(--accent); }
+    .case-hero-intro { font-size: clamp(17px,1.8vw,20px); line-height: 1.6; color: rgba(240,237,232,.75); max-width: 680px; }
 
-    /* PROJECT BODY */
-    .project-body { padding: 100px 40px 120px; max-width: 720px; margin: 0 auto; }
-    .project-body .section-label { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
-    .project-body .section-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--mid); }
-    .project-description { font-size: clamp(16px,1.5vw,18px); line-height: 1.8; color: rgba(240,237,232,.8); }
-    .project-description p + p { margin-top: 20px; }
-    .project-cta { margin-top: 48px; }
+    /* ─── HERO IMAGE (full-bleed below intro) ─── */
+    .case-hero-image { margin: 80px -40px 0; width: calc(100% + 80px); max-width: none; }
+    .case-hero-image img { width: 100%; height: auto; max-height: 85vh; object-fit: cover; }
+    .case-hero-image .placeholder { width: 100%; height: 60vh; min-height: 400px; background: linear-gradient(160deg, #1a2a3a, #0d151e 50%, #1a0d1a); }
+
+    /* ─── SECTIONS (Instrument-style) ─── */
+    .case-section { max-width: 720px; margin: 0 auto; padding: 100px 40px 0; }
+    .case-section:first-of-type { padding-top: 100px; }
+    .case-section-num { font-family: var(--serif); font-size: 48px; color: rgba(240,237,232,.12); line-height: 1; margin-bottom: 40px; }
+    .case-section h2 { font-family: var(--serif); font-size: clamp(28px,4vw,42px); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 28px; }
+    .case-section p { font-size: clamp(16px,1.5vw,18px); line-height: 1.8; color: rgba(240,237,232,.8); }
+    .case-section p + p { margin-top: 24px; }
+
+    /* Our Roles */
+    .case-roles { display: grid; grid-template-columns: 1fr; gap: 48px; margin-top: 32px; }
+    .case-roles ul { list-style: none; }
+    .case-roles li { font-size: 15px; color: rgba(240,237,232,.7); padding: 8px 0; border-bottom: 1px solid rgba(240,237,232,.06); }
+    .case-roles li:last-child { border-bottom: none; }
+
+    /* Related case studies */
+    .case-related { padding: 120px 40px 100px; border-top: 1px solid rgba(240,237,232,.08); }
+    .case-related h2 { font-family: var(--serif); font-size: clamp(32px,5vw,48px); margin-bottom: 56px; text-align: center; }
+    .case-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
+    .case-related-card { display: block; background: #141414; border-radius: 8px; overflow: hidden; transition: transform .3s var(--ease), box-shadow .3s; }
+    .case-related-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px rgba(0,0,0,.4); }
+    .case-related-card img { aspect-ratio: 16/10; object-fit: cover; }
+    .case-related-card .placeholder { aspect-ratio: 16/10; background: linear-gradient(135deg, #1a2a3a, #0d151e); }
+    .case-related-card .info { padding: 24px; }
+    .case-related-card .cat { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .case-related-card .title { font-family: var(--serif); font-size: 20px; line-height: 1.25; }
+
+    /* Project CTA */
+    .case-cta { margin-top: 64px; }
 
     /* FOOTER */
     footer { border-top: 1px solid rgba(240,237,232,.12); padding: 64px 40px 48px; }
@@ -81,7 +104,7 @@
     .footer-socials a:hover { color: var(--accent); }
 
     /* ERROR STATE */
-    .project-error { padding: 120px 40px; text-align: center; }
+    .project-error { padding: 140px 40px; text-align: center; max-width: 480px; margin: 0 auto; }
     .project-error h1 { font-family: var(--serif); font-size: 32px; margin-bottom: 16px; }
     .project-error p { color: var(--mid); margin-bottom: 24px; }
 
@@ -89,9 +112,11 @@
       nav { padding: 18px 20px; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
-      .project-hero { padding: 0 20px 56px; margin-top: 60px; min-height: 60vh; }
-      .project-back { left: 20px; }
-      .project-body { padding: 64px 20px 80px; }
+      .case-hero { padding: 100px 20px 56px; }
+      .case-hero-image { margin: 48px -20px 0; width: calc(100% + 40px); }
+      .case-section { padding: 64px 20px 0; }
+      .case-related { padding: 80px 20px 64px; }
+      .case-related-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; }
     }
   </style>
@@ -119,9 +144,7 @@
   <a href="/#contact">Contact</a>
 </div>
 
-<div id="project-root">
-  <!-- Filled by JS: hero + body or error -->
-</div>
+<div id="project-root"></div>
 
 <footer id="footer" style="display: none;">
   <div class="footer-top">
@@ -170,92 +193,137 @@
 (function() {
   const root = document.getElementById('project-root');
   const pathParts = location.pathname.split('/').filter(Boolean);
-  const slug = pathParts[1] || pathParts[0]; // /work/operata -> operata
+  const slug = pathParts[1] || pathParts[0];
 
   if (!slug || slug === 'work') {
-    root.innerHTML = `
-      <div class="project-error">
-        <h1>Project not found</h1>
-        <p>This project may have been moved or doesn't exist.</p>
-        <a href="/#work" class="btn-primary">View all work</a>
-      </div>`;
+    root.innerHTML = '<div class="project-error"><h1>Project not found</h1><p>This project may have been moved or doesn\'t exist.</p><a href="/#work" class="btn-primary">View all work</a></div>';
     document.getElementById('footer').style.display = 'block';
     return;
   }
 
-  async function loadJSON(path) {
-    try {
-      const r = await fetch(path);
-      if (!r.ok) return null;
-      return await r.json();
-    } catch { return null; }
+  function loadJSON(path) {
+    return fetch(path).then(r => r.ok ? r.json() : null).catch(() => null);
+  }
+
+  function escape(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function paragraphs(text) {
+    if (!text) return '';
+    return text.split(/\n\n|\n/).filter(Boolean).map(p => '<p>' + escape(p) + '</p>').join('');
+  }
+
+  function titleWithAccent(title) {
+    if (!title) return 'Project';
+    var parts = title.trim().split(/\s+/);
+    if (parts.length <= 1) return '<strong>' + escape(title) + '</strong>';
+    var last = parts.pop();
+    return escape(parts.join(' ')) + ' <strong>' + escape(last) + '</strong>';
   }
 
   fetch('/content/projects/' + slug + '.json')
     .then(r => r.ok ? r.json() : null)
     .then(function(project) {
       if (!project) {
-        root.innerHTML = `
-          <div class="project-error">
-            <h1>Project not found</h1>
-            <p>We couldn't find a project with that URL.</p>
-            <a href="/#work" class="btn-primary">View all work</a>
-          </div>`;
+        root.innerHTML = '<div class="project-error"><h1>Project not found</h1><p>We couldn\'t find a project with that URL.</p><a href="/#work" class="btn-primary">View all work</a></div>';
         document.getElementById('footer').style.display = 'block';
         return;
       }
 
-      document.title = (project.title || project.client) + ' — Jordan Croome';
+      document.title = (project.title || project.client || 'Project') + ' — Jordan Croome';
 
-      const heroImg = project.image
-        ? '<img src="' + project.image + '" alt="' + (project.client || project.title) + '" />'
-        : '<div class="project-hero-placeholder"></div>';
+      var intro = project.intro || (project.description ? project.description.split(/\n/)[0] : '') || '';
+      var tag = project.category ? '#' + project.category : (project.category_label || '');
 
-      root.innerHTML = `
-        <a href="/#work" class="project-back">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M7 1L1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          All work
-        </a>
-        <div class="project-hero">
-          <div class="project-hero-bg">${heroImg}</div>
-          <div class="project-hero-overlay"></div>
-          <div class="project-hero-content">
-            <div class="project-category">${project.category_label || project.category || ''}</div>
-            <h1 class="project-title">${project.title || 'Project'}</h1>
-            <p class="project-client">${project.client || ''}</p>
-          </div>
-        </div>
-        <div class="project-body">
-          <div class="section-label">Overview</div>
-          <div class="project-description">
-            ${(project.description || '').split('\n').filter(Boolean).map(p => '<p>' + p + '</p>').join('') || '<p>No description available.</p>'}
-          </div>
-          ${project.url ? '<div class="project-cta"><a href="' + project.url + '" target="_blank" rel="noopener" class="btn-primary">View project <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>' : ''}
-        </div>`;
+      var heroImage = '';
+      if (project.image) {
+        heroImage = '<div class="case-hero-image"><img src="' + escape(project.image) + '" alt="" loading="eager" /></div>';
+      } else {
+        heroImage = '<div class="case-hero-image"><div class="placeholder"></div></div>';
+      }
+
+      var sections = [];
+      if (project.challenge) {
+        sections.push('<div class="case-section"><div class="case-section-num">0</div><h2>The Challenge</h2>' + paragraphs(project.challenge) + '</div>');
+      }
+      if (project.approach) {
+        sections.push('<div class="case-section"><div class="case-section-num">0</div><h2>Our Approach</h2>' + paragraphs(project.approach) + '</div>');
+      }
+      if (project.impact) {
+        sections.push('<div class="case-section"><div class="case-section-num">0</div><h2>The Impact</h2>' + paragraphs(project.impact) + '</div>');
+      }
+      if (project.roles && project.roles.length) {
+        var rolesList = project.roles.map(function(r) { return '<li>' + escape(r.role || r) + '</li>'; }).join('');
+        sections.push('<div class="case-section"><h2>Our Roles</h2><div class="case-roles"><ul>' + rolesList + '</ul></div></div>');
+      }
+      if (!project.challenge && !project.approach && !project.impact && (!project.roles || !project.roles.length) && project.description) {
+        sections.push('<div class="case-section"><h2>Overview</h2><div class="project-description">' + paragraphs(project.description) + '</div></div>');
+      } else if (project.description && (project.challenge || project.approach || project.impact)) {
+        sections.push('<div class="case-section"><h2>Overview</h2><div class="project-description">' + paragraphs(project.description) + '</div></div>');
+      }
+
+      var ctaBlock = project.url ? '<div class="case-cta"><a href="' + escape(project.url) + '" target="_blank" rel="noopener" class="btn-primary">View project <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>' : '';
+
+      root.innerHTML =
+        '<a href="/#work" class="case-hero-back"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M7 1L1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Work</a>' +
+        '<div class="case-hero">' +
+          (tag ? '<div class="case-hero-tag">This is tagged with: <span>' + escape(tag) + '</span></div>' : '') +
+          '<h1 class="case-hero-title">' + (project.client ? escape(project.client) + ' ' : '') + titleWithAccent(project.title) + '</h1>' +
+          (intro ? '<p class="case-hero-intro">' + escape(intro) + '</p>' : '') +
+        '</div>' +
+        heroImage +
+        sections.join('') +
+        ctaBlock +
+        '<div class="case-related" id="case-related"><h2>Related Case Studies</h2><div class="case-related-grid" id="case-related-grid">Loading…</div></div>';
 
       document.getElementById('footer').style.display = 'block';
 
-      // Load footer content from CMS if desired (optional)
+      // Related projects
+      fetch('/api/projects-list').then(r => r.json()).then(function(list) {
+        var paths = (list.paths || []).filter(function(p) {
+          var s = p.replace('content/projects/', '').replace('.json', '');
+          return s && s !== slug;
+        });
+        if (paths.length === 0) {
+          document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);">No other projects yet.</p>';
+          return;
+        }
+        var toLoad = paths.slice(0, 6);
+        Promise.all(toLoad.map(function(p) { return loadJSON('/' + p); })).then(function(projects) {
+          var cards = [];
+          projects.forEach(function(p, i) {
+            if (!p) return;
+            var s = toLoad[i].replace('content/projects/', '').replace('.json', '');
+            var img = p.image ? '<img src="' + escape(p.image) + '" alt="" loading="lazy" />' : '<div class="placeholder"></div>';
+            cards.push('<a href="/work/' + escape(s) + '" class="case-related-card"><div>' + img + '</div><div class="info"><div class="cat">' + escape(p.category_label || p.category || '') + '</div><div class="title">' + escape(p.client) + ' — ' + escape(p.title) + '</div></div></a>');
+          });
+          document.getElementById('case-related-grid').innerHTML = cards.length ? cards.join('') : '<p style="text-align:center;color:var(--mid);">No other projects yet.</p>';
+        }).catch(function() {
+          document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);">Could not load related projects.</p>';
+        });
+      }).catch(function() {
+        document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);">No other projects yet.</p>';
+      });
+
       loadJSON('/content/footer.json').then(function(footer) {
         if (footer && footer.tagline) document.getElementById('footer-tagline').textContent = footer.tagline;
         if (footer && footer.copyright) document.getElementById('footer-copyright').textContent = footer.copyright;
-        if (footer && footer.linkedin) {
-          document.querySelectorAll('a[href*="linkedin"]').forEach(function(a) { a.href = footer.linkedin; });
-        }
-        if (footer && footer.dribbble) {
-          document.querySelectorAll('a[href*="dribbble"]').forEach(function(a) { a.href = footer.dribbble; });
-        }
+        if (footer && footer.linkedin) document.querySelectorAll('a[href*="linkedin"]').forEach(function(a) { a.href = footer.linkedin; });
+        if (footer && footer.dribbble) document.querySelectorAll('a[href*="dribbble"]').forEach(function(a) { a.href = footer.dribbble; });
       });
     });
 })();
 
-// Mobile menu
 var hamburger = document.getElementById('hamburger');
 var mobileMenu = document.getElementById('mobile-menu');
 if (hamburger && mobileMenu) {
-  hamburger.addEventListener('click', function() {
-    mobileMenu.classList.toggle('open');
-  });
+  hamburger.addEventListener('click', function() { mobileMenu.classList.toggle('open'); });
   mobileMenu.querySelectorAll('a').forEach(function(a) {
     a.addEventListener('click', function() { mobileMenu.classList.remove('open'); });
   });
