@@ -679,7 +679,11 @@ async function populateContent() {
 
   // ── PROJECTS ───────────────────────────────────
   const projectData = await Promise.all(PROJECTS.map(loadJSON));
-  const projects = projectData.filter(Boolean).sort((a,b) => (a.order||99)-(b.order||99));
+  const projects = projectData.filter(Boolean).map((p, i) => {
+    const path = PROJECTS[i];
+    p.slug = path.replace('content/projects/', '').replace('.json', '');
+    return p;
+  }).sort((a,b) => (a.order||99)-(b.order||99));
   const workGrid = document.getElementById('work-grid');
   workGrid.innerHTML = '';
   const layouts = [7,5,5,7,6,6]; // column spans matching Instrument grid
@@ -691,7 +695,7 @@ async function populateContent() {
       ? `<img class="work-card-img" src="${p.image}" alt="${p.client}" loading="lazy" />`
       : `<div class="work-card-placeholder ${grad}" style="position:absolute;inset:0;transition:transform .8s var(--ease)"></div>`;
     workGrid.innerHTML += `
-      <div class="work-card reveal" data-category="${p.category}" style="grid-column:span ${span}">
+      <a href="/work/${p.slug}" class="work-card reveal" data-category="${p.category}" style="grid-column:span ${span}">
         <div class="work-card-inner">
           ${imgHtml}
           <div class="work-card-overlay"></div>
@@ -703,7 +707,7 @@ async function populateContent() {
             <div class="work-card-title">${p.client} — ${p.title}</div>
           </div>
         </div>
-      </div>`;
+      </a>`;
   });
 
   // ── SERVICES ───────────────────────────────────
