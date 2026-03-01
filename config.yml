@@ -1,5 +1,3 @@
-# Copy of config — the CMS loads from the ROOT config.yml (/config.yml) to avoid 404 on Vercel.
-# Edit the file at the project root: config.yml (not this file).
 # GitHub backend for use with Vercel (OAuth via /api/auth and /api/callback).
 # Set base_url to your production URL (e.g. https://yoursite.vercel.app).
 # Create a GitHub OAuth App and set OAUTH_CLIENT_ID and OAUTH_CLIENT_SECRET in Vercel.

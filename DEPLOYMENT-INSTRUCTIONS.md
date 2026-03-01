@@ -288,20 +288,20 @@ Environment variables are only applied on **new** deploys.
 
 # Part 5 — Point the CMS at your repo and your site URL
 
-The CMS config file `admin/config.yml` must know: (1) which GitHub repo to edit, and (2) the exact URL of your live site (for the login flow).
+The CMS loads its config from **config.yml at the project root** (so it’s served as `/config.yml` and doesn’t 404 on Vercel). That file must have: (1) your GitHub repo, and (2) your live site URL.
 
-## 5.1 Open admin/config.yml
+## 5.1 Open config.yml (project root)
 
 **Option A — Edit on GitHub (easiest):**
 
 1. Go to your repo on GitHub: **https://github.com/YOUR_USERNAME/YOUR_REPO_NAME**
-2. Open the **admin** folder, then click **config.yml**.
+2. In the **root** of the repo (not inside any folder), click **config.yml**.
 3. Click the **pencil icon** (Edit this file).
 
 **Option B — Edit on your computer:**
 
 1. Open the project in Cursor/VS Code (or any editor).
-2. Open the file **admin/config.yml**.
+2. Open the file **config.yml** (in the project root, same level as `index.html`).
 
 ---
 
@@ -365,7 +365,7 @@ Do **not** change `name`, `branch`, or `auth_endpoint`.
 
 4. Wait for Vercel to deploy the new commit (Deployments tab; usually under a minute).
 
-**Part 5 is done** when `admin/config.yml` has the correct `repo` and `base_url` and that commit is pushed and deployed.
+**Part 5 is done** when **config.yml** (project root) has the correct `repo` and `base_url` and that commit is pushed and deployed.
 
 ---
 
@@ -400,9 +400,10 @@ If that’s what you see, **you’re done with deployment.** You can now edit co
   - Check that the **Authorization callback URL** in the GitHub OAuth App is **exactly** `https://YOUR_VERCEL_URL/api/callback` (no typo, same domain as the site).
   - Check that you **redeployed** after adding `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` in Vercel.
 
-- **“Failed to load config”**  
-  - Check **base_url** in `admin/config.yml` — must match the URL in the browser (e.g. `https://your-project.vercel.app`).
-  - Make sure the latest commit (with the correct config) is deployed on Vercel.
+- **“Failed to load config” or “config.yml (404)”**  
+  - The CMS loads config from **/config.yml** (the file **config.yml** in the project root). Ensure that file exists and is committed.
+  - Check **base_url** in **config.yml** — must match the URL in the browser (e.g. `https://your-project.vercel.app`).
+  - Make sure the latest commit is deployed on Vercel.
 
 - **“OAUTH_CLIENT_ID and OAUTH_CLIENT_SECRET must be set”**  
   - In Vercel → Project → Settings → Environment Variables, confirm both names are exactly `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET`, then redeploy.
@@ -417,7 +418,7 @@ If that’s what you see, **you’re done with deployment.** You can now edit co
 | 2 | Deploy project on Vercel; note live URL | ☐ |
 | 3 | Create GitHub OAuth App; set callback to `https://YOUR_URL/api/callback`; copy Client ID and secret | ☐ |
 | 4 | In Vercel, add `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET`; redeploy | ☐ |
-| 5 | In `admin/config.yml`, set `repo` and `base_url`; commit and push | ☐ |
+| 5 | In **config.yml** (project root), set `repo` and `base_url`; commit and push | ☐ |
 | 6 | Open `https://YOUR_URL/admin`, click Login with GitHub, authorize | ☐ |
 
 ---
@@ -426,4 +427,4 @@ If that’s what you see, **you’re done with deployment.** You can now edit co
 
 - **Edit content:** Use the left sidebar in the CMS (Site Settings, Work / Projects, etc.). Change fields and click **Publish**. The site will update after the next Vercel deploy.
 - **Full CMS reference:** See **SETUP.md** in this repo for detailed sections on every collection (projects, services, testimonials, articles, images, troubleshooting).
-- **Custom domain:** In Vercel → Settings → Domains, add your domain and follow the DNS steps. Then update the GitHub OAuth App callback URL and `base_url` in `admin/config.yml` to use that domain (e.g. `https://jordancroome.com.au` and `https://jordancroome.com.au/api/callback`).
+- **Custom domain:** In Vercel → Settings → Domains, add your domain and follow the DNS steps. Then update the GitHub OAuth App callback URL and `base_url` in **config.yml** (project root) to use that domain (e.g. `https://jordancroome.com.au` and `https://jordancroome.com.au/api/callback`).

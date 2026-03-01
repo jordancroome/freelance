@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager · Jordan Croome</title>
+  <!-- Load config from site root so it’s always served (avoids /admin/config.yml 404 on Vercel) -->
+  <link href="/config.yml" type="text/yaml" rel="cms-config-url" />
   <style>
     /* Override CMS loading screen to match site brand */
     #nc-root .css-loading {

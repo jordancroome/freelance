@@ -21,7 +21,8 @@ jordancroome/
 ├── package.json            ← Dependencies for CMS OAuth (simple-oauth2)
 ├── admin/
 │   ├── index.html          ← CMS admin panel (visit /admin)
-│   └── config.yml          ← CMS collections and fields (edit repo/base_url)
+│   └── config.yml          ← Copy; CMS loads from root config.yml (see below)
+├── config.yml              ← CMS config (edit repo + base_url here)
 ├── api/                    ← Vercel serverless functions for GitHub OAuth
 │   ├── auth.js             ← Starts GitHub login
 │   ├── callback.js         ← Handles callback and returns token to CMS
@@ -102,7 +103,7 @@ The CMS logs in via GitHub. You need a GitHub OAuth App and its credentials in V
 
 ## Step 5 — Point the CMS at your repo and site
 
-1. In your repo, open **admin/config.yml**.
+1. In your repo, open **config.yml** (at the project root, not inside `admin/`).
 2. Replace the placeholders:
    - **repo:** `YOUR_GITHUB_USERNAME/YOUR_REPO_NAME`  
      e.g. `jordancroome/freelance`.
@@ -210,9 +211,10 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
 
 ### Troubleshooting the CMS
 
-- **“Failed to load config”**  
-  - Check that **base_url** in `admin/config.yml` matches your live URL (HTTPS, no typo).
-  - Ensure the latest commit (with correct `config.yml`) is deployed on Vercel.
+- **“Failed to load config” or “config.yml (404)”**  
+  - The CMS loads **config.yml** from the site root (`/config.yml`). Ensure that file exists and is committed.
+  - Check that **base_url** in **config.yml** (project root) matches your live URL (HTTPS, no typo).
+  - Ensure the latest commit is deployed on Vercel.
 
 - **“Login with GitHub” does nothing or errors**  
   - Confirm **Authorization callback URL** in the GitHub OAuth App is exactly `https://YOUR_DOMAIN/api/callback`.
@@ -242,7 +244,7 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
 Then:
 
 - Update **Authorization callback URL** in the GitHub OAuth App to `https://yourdomain.com/api/callback`.
-- Update **base_url** in `admin/config.yml` to `https://yourdomain.com`.
+- Update **base_url** in **config.yml** (project root) to `https://yourdomain.com`.
 - Use `https://yourdomain.com/admin` to access the CMS.
 
 ---
