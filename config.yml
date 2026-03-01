@@ -5,7 +5,7 @@ backend:
   name: github
   repo: jordancroome/freelance   # e.g. jordancroome/freelance
   branch: main
-  base_url: https://jordan-croome-freelance.vercel.app   # Your live site URL (HTTPS)
+  base_url: https://jordan-croome-freelance.vercel.app
   auth_endpoint: api/auth
 
 media_folder: "images/uploads"

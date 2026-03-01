@@ -216,10 +216,10 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
   - Check that **base_url** in **config.yml** (project root) matches your live URL (HTTPS, no typo).
   - Ensure the latest commit is deployed on Vercel.
 
-- **“Login with GitHub” does nothing or errors**  
-  - Confirm **Authorization callback URL** in the GitHub OAuth App is exactly `https://YOUR_DOMAIN/api/callback`.
-  - Confirm `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` are set in Vercel for the same environment (Production/Preview) you’re using.
-  - Redeploy after changing env vars.
+- **“Login with GitHub” does nothing or “Invalid Redirect URI” / “redirect_uri is not associated with this application”**  
+  - In GitHub go to **Settings → Developer settings → OAuth Apps** and open your CMS OAuth App.
+  - Set **Authorization callback URL** to exactly: `https://YOUR_DOMAIN/api/callback` (e.g. `https://jordan-croome-freelance.vercel.app/api/callback`). Use **https**, no trailing slash, no path except `/api/callback`.
+  - Confirm `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` in Vercel match that app, then redeploy if you changed env vars.
 
 - **“Error: OAUTH_CLIENT_ID and OAUTH_CLIENT_SECRET must be set”**  
   - Add both in Vercel → Settings → Environment Variables and redeploy.
