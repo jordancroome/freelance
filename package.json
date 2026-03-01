@@ -1,0 +1,7 @@
+{
+  "name": "jordancroome",
+  "private": true,
+  "dependencies": {
+    "simple-oauth2": "^5.0.0"
+  }
+}

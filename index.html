@@ -560,7 +560,7 @@
 /* ═══════════════════════════════════════════════════
    CONTENT LOADER
    Fetches JSON files from /content/ and populates DOM.
-   In production these are managed by Netlify CMS.
+   In production these are managed by Decap CMS (via GitHub).
 ═══════════════════════════════════════════════════ */
 async function loadJSON(path) {
   try {
@@ -572,7 +572,7 @@ async function loadJSON(path) {
 
 // List all project/service/testimonial/article files
 // In a real build pipeline you'd generate this list automatically.
-// For Netlify, these paths match what CMS writes.
+// These paths match what the CMS writes to the repo.
 const PROJECTS = [
   'content/projects/operata.json',
   'content/projects/northbay-studio.json',
