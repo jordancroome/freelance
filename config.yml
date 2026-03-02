@@ -88,6 +88,8 @@ collections:
     create: true
     slug: "{{slug}}"
     identifier_field: "title"
+    format: "json"
+    extension: "json"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Client name", name: "client", widget: "string" }
