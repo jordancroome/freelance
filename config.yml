@@ -130,6 +130,8 @@ collections:
     create: true
     slug: "{{slug}}"
     identifier_field: "author_name"
+    format: "json"
+    extension: "json"
     fields:
       - { label: "Quote", name: "quote", widget: "text" }
       - { label: "Author name", name: "author_name", widget: "string" }
@@ -144,6 +146,8 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     identifier_field: "title"
+    format: "json"
+    extension: "json"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Category", name: "category", widget: "string", hint: "e.g. Strategy, Product, Brand" }
