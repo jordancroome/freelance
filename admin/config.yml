@@ -116,6 +116,20 @@ collections:
       - { label: "Sort order", name: "order", widget: "number", default: 99 }
       - { label: "Body text", name: "body", widget: "text" }
 
+  # ─── CLIENT LOGOS (Trusted by… marquee) ───────────────────
+  - name: "clients"
+    label: "Client Logos"
+    folder: "content/clients"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    format: "json"
+    extension: "json"
+    fields:
+      - { label: "Business name", name: "name", widget: "string", hint: "For alt text and reference" }
+      - { label: "Logo", name: "logo", widget: "image", hint: "SVG or PNG. Shown in the Trusted by… scrolling bar." }
+      - { label: "Sort order", name: "order", widget: "number", default: 99 }
+
   # ─── TESTIMONIALS ─────────────────────────────────────────
   - name: "testimonials"
     label: "Testimonials"

@@ -13,7 +13,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #f0ede8; --fg: #0e0e0e; --mid: #555;
-      --accent: #c8ff00;
+      --accent: #ff6b00;
       --serif: 'Instrument Serif', serif;
       --sans: 'DM Sans', sans-serif;
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -73,7 +73,7 @@
 
     /* BUTTONS */
     .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #000; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 14px 28px; border-radius: 100px; font-weight: 500; transition: transform .25s var(--ease), box-shadow .25s; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,255,0,.25); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,107,0,.25); }
     .btn-ghost { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; opacity: .7; transition: opacity .2s, gap .25s var(--ease); }
     .btn-ghost:hover { opacity: 1; gap: 14px; }
     .btn-outline { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 14px 28px; border-radius: 100px; border: 1px solid rgba(14,14,14,.25); color: var(--fg); transition: border-color .25s, background .25s; }
@@ -162,7 +162,7 @@
     .about-image { position: relative; aspect-ratio: 4/5; overflow: hidden; border-radius: 4px; }
     .about-image-bg { width: 100%; height: 100%; background: linear-gradient(160deg,#1a2a3a,#0d151e 50%,#1a0d1a); display: flex; align-items: center; justify-content: center; }
     .about-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .about-avatar { width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg,#c8ff00,#88bb00); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 56px; color: #000; }
+    .about-avatar { width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg,#ff6b00,#e55a00); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 56px; color: #000; }
     .about-badge { position: absolute; bottom: 24px; left: 24px; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); border: 1px solid rgba(14,14,14,.12); padding: 14px 18px; border-radius: 12px; z-index: 2; }
     .about-badge-title { font-size: 13px; font-weight: 500; color: var(--fg); }
     .about-badge-sub { font-size: 11px; color: var(--mid); margin-top: 3px; }
@@ -181,8 +181,10 @@
     .clients-track-wrap { overflow: hidden; margin-bottom: 20px; }
     .clients-track { display: flex; gap: 64px; align-items: center; animation: marquee 22s linear infinite; white-space: nowrap; }
     .clients-track.reverse { animation-direction: reverse; }
-    .client-logo { font-family: var(--serif); font-size: 22px; color: rgba(14,14,14,.25); flex-shrink: 0; transition: color .25s; }
+    .client-logo { font-family: var(--serif); font-size: 22px; color: rgba(14,14,14,.25); flex-shrink: 0; transition: color .25s; display: flex; align-items: center; justify-content: center; }
     .client-logo:hover { color: var(--fg); }
+    .client-logo img { max-height: 36px; width: auto; max-width: 140px; object-fit: contain; filter: opacity(0.5); transition: filter .25s; }
+    .client-logo:hover img { filter: opacity(0.9); }
 
     /* TESTIMONIALS */
     #testimonials { border-top: 1px solid rgba(14,14,14,.08); background: rgba(14,14,14,.04); }
@@ -192,7 +194,7 @@
     .testimonial-quote { font-family: var(--serif); font-size: clamp(18px,2.5vw,24px); line-height: 1.45; margin-bottom: 32px; color: var(--fg); }
     .testimonial-quote::before { content: '\201C'; color: var(--accent); font-size: 1.5em; line-height: 0; vertical-align: -.2em; margin-right: 4px; }
     .testimonial-author { display: flex; align-items: center; gap: 14px; }
-    .author-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg,#c8ff00,#88bb00); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 16px; color: #000; flex-shrink: 0; }
+    .author-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg,#ff6b00,#e55a00); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 16px; color: #000; flex-shrink: 0; }
     .author-name { font-size: 14px; font-weight: 500; }
     .author-role { font-size: 12px; color: var(--mid); margin-top: 2px; }
 
@@ -771,12 +773,29 @@ async function populateContent() {
       </div>`;
   });
 
-  // ── CLIENTS MARQUEE ────────────────────────────
-  const clientNames = projects.map(p => p.client).filter(Boolean);
-  if (clientNames.length) {
-    const track = document.getElementById('clients-track-1');
-    const doubled = [...clientNames, ...clientNames];
-    track.innerHTML = doubled.map(n => `<span class="client-logo">${n}</span>`).join('');
+  // ── CLIENTS MARQUEE (logos from CMS, or fallback to project names) ──
+  let clientPaths = [];
+  try {
+    const listRes = await fetch('/api/clients-list');
+    const list = await listRes.json();
+    if (list.paths && list.paths.length) clientPaths = list.paths;
+  } catch (_) {}
+  const clientData = await Promise.all(clientPaths.map(loadJSON));
+  const clients = clientData.filter(Boolean).sort((a, b) => (a.order || 99) - (b.order || 99));
+  const track = document.getElementById('clients-track-1');
+  if (clients.length) {
+    const doubled = [...clients, ...clients];
+    track.innerHTML = doubled.map(c => {
+      const name = c.name || 'Client';
+      if (c.logo) return `<span class="client-logo"><img src="${c.logo}" alt="${name.replace(/"/g, '&quot;')}" loading="lazy" /></span>`;
+      return `<span class="client-logo">${name}</span>`;
+    }).join('');
+  } else {
+    const clientNames = projects.map(p => p.client).filter(Boolean);
+    if (clientNames.length) {
+      const doubled = [...clientNames, ...clientNames];
+      track.innerHTML = doubled.map(n => `<span class="client-logo">${n}</span>`).join('');
+    }
   }
 
   // Re-run reveal observer after content injection
@@ -879,7 +898,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     constructor() { this.reset(); }
     reset() { this.x = Math.random()*W; this.y = Math.random()*H; this.vx = (Math.random()-.5)*.4; this.vy = (Math.random()-.5)*.4; this.size = Math.random()*2+.5; this.alpha = Math.random()*.4+.05; this.accent = Math.random() > .88; }
     update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset(); }
-    draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fillStyle = this.accent ? `rgba(200,255,0,${this.alpha})` : `rgba(240,237,232,${this.alpha})`; ctx.fill(); }
+    draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fillStyle = this.accent ? `rgba(255,107,0,${this.alpha})` : `rgba(240,237,232,${this.alpha})`; ctx.fill(); }
   }
   function init() { particles = []; for(let i=0;i<120;i++) particles.push(new Particle()); }
   init();
@@ -904,7 +923,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 document.getElementById('newsletter-form').addEventListener('submit', e => {
   e.preventDefault();
   const btn = document.getElementById('newsletter-btn');
-  btn.textContent = "You're in ✦"; btn.style.background = '#88bb00';
+  btn.textContent = "You're in ✦"; btn.style.background = '#e55a00';
   e.target.querySelector('.email-input').value = '';
   setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = 'var(--accent)'; }, 3000);
 });

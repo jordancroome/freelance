@@ -159,6 +159,10 @@ Single-file settings that affect the whole site:
 
 To edit: open **Site Settings** in the CMS, then the section you want. Change fields and click **Publish** (or **Save**). The change is committed to GitHub and the site redeploys.
 
+### Client Logos (Trusted by… bar)
+- **Location:** `content/clients/` — one JSON file per client.
+- **To add:** **Client Logos** → **New Client Logos**. Enter business name, upload **Logo** (SVG or PNG), set sort order. Logos appear in the scrolling “Trusted by…” marquee. Uploaded logos are stored in `images/uploads/`.
+
 ### Work / Projects
 
 - **Location:** `content/projects/` — one JSON file per project.
