@@ -42,8 +42,8 @@ jordancroome/
 │   ├── hero.json           ← Hero section text
 │   ├── statement.json      ← “Who I work with” section
 │   ├── about.json          ← About section + stats + tags
-│   ├── cta.json            ← Contact band on home + /contact (headline, body, email, booking)
-│   ├── contact-form.json   ← /contact enquiry form (headings, Formspree URL or mailto fallback)
+│   ├── cta.json            ← Home contact band (email, Calendly) + /contact headline, body, note
+│   ├── contact-form.json   ← /contact enquiry form (intro, labels, Formspree URL or mailto fallback)
 │   ├── footer.json         ← Footer tagline, CTA strip, Instagram, email, location, copyright
 │   ├── projects/           ← One .json file per project
 │   ├── services/           ← One .json file per service
@@ -167,8 +167,8 @@ Single-file settings that affect the whole site:
 | **Hero Section** | `content/hero.json` | Eyebrow, headline lines, subheading, CTA button labels |
 | **Statement Section** | `content/statement.json` | “Who I work with” label, heading, paragraphs |
 | **About Section** | `content/about.json` | Heading, photo, bio paragraphs, stats numbers/labels, skill tags |
-| **Contact / CTA** | `content/cta.json` | Top band on `/contact` + home: heading, body, email, Calendly, footer note |
-| **Contact form** | `content/contact-form.json` | **`/contact` page** — two-column layout (intro + email/booking, then enquiry form). Default **`form_action`** is **`/api/contact`** (sends you an email via Resend; see below). Or set a [Formspree](https://formspree.io) URL (`https://formspree.io/f/…`). Use **`mailto`** to open the visitor’s mail app instead. |
+| **Contact / CTA** | `content/cta.json` | **Home:** email, Calendly, band copy. **`/contact`:** headline, body, note (left column). **`email`** still sets where form error messages point. |
+| **Contact form** | `content/contact-form.json` | **`/contact`** — form sits beside the headline; **`form_intro`** appears above the fields. Default **`form_action`** is **`/api/contact`**. Or Formspree URL / **`mailto`**. |
 | **Footer** | `content/footer.json` | Tagline, CTA headline/button/link, Instagram, email, location line, copyright |
 
 To edit: open **Site Settings** in the CMS, then the section you want. Change fields and click **Publish** (or **Save**). The change is committed to GitHub and the site redeploys.
@@ -255,8 +255,8 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
 
 The **standalone contact page** lives at **`/contact`** (`contact/index.html`). Layout:
 
-1. **Top band** — headline, short paragraph, **email** + **book a call** (from `content/cta.json`).
-2. **Enquiry band** — **Name**, **Email**, **Message** → submits to your inbox.
+1. **Two columns** — left: headline + paragraph + response-time note (`content/cta.json`). Right: enquiry form + optional intro (`content/contact-form.json` → **`form_intro`**).
+2. **Form** — **Name**, **Email**, **Message** → submits to your inbox (no separate email/Calendly row on this page; those stay on the **home** contact band).
 
 **To receive submissions by email (recommended):**
 
