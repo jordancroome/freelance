@@ -1,0 +1,12 @@
+{
+  "form_heading1": "Send a",
+  "form_heading2": "message",
+  "form_intro": "Tell me what you're working on — timeline, budget ballpark, and what success looks like. I'll get back within a couple of days.",
+  "form_action": "",
+  "form_subject": "Website enquiry",
+  "name_label": "Name",
+  "email_label": "Email",
+  "message_label": "Message",
+  "submit_label": "Send message",
+  "success_message": "Thanks — your message is on its way. I'll reply soon."
+}

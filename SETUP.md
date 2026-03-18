@@ -12,6 +12,12 @@ This file (SETUP.md) is the reference for file structure, config, and managing t
 
 ---
 
+## Cursor: UI/UX Pro Max skill
+
+The **ui-ux-pro-max** pack is installed under **`.cursor/skills/ui-ux-pro-max/`**. The main file is **`SKILL.md`** (design/a11y/motion/forms checklist). A project rule **`.cursor/rules/ui-ux-pro-max.mdc`** applies when editing HTML/CSS/JS. Full site review: **`docs/UI-UX-AUDIT.md`**.
+
+---
+
 ## File structure
 
 ```
@@ -36,7 +42,8 @@ jordancroome/
 │   ├── hero.json           ← Hero section text
 │   ├── statement.json      ← “Who I work with” section
 │   ├── about.json          ← About section + stats + tags
-│   ├── cta.json            ← Contact block on home + /contact page (headline, body, email, booking)
+│   ├── cta.json            ← Contact band on home + /contact (headline, body, email, booking)
+│   ├── contact-form.json   ← /contact enquiry form (headings, Formspree URL or mailto fallback)
 │   ├── footer.json         ← Footer tagline, CTA strip, Instagram, email, location, copyright
 │   ├── projects/           ← One .json file per project
 │   ├── services/           ← One .json file per service
@@ -157,7 +164,8 @@ Single-file settings that affect the whole site:
 | **Hero Section** | `content/hero.json` | Eyebrow, headline lines, subheading, CTA button labels |
 | **Statement Section** | `content/statement.json` | “Who I work with” label, heading, paragraphs |
 | **About Section** | `content/about.json` | Heading, photo, bio paragraphs, stats numbers/labels, skill tags |
-| **Contact / CTA** | `content/cta.json` | Heading, body text, email, Calendly/booking URL, footer note |
+| **Contact / CTA** | `content/cta.json` | Top band on `/contact` + home: heading, body, email, Calendly, footer note |
+| **Contact form** | `content/contact-form.json` | Second band on `/contact`: Name / Email / Message. Set **form_action** to a [Formspree](https://formspree.io) endpoint (`https://formspree.io/f/…`) to submit in-browser; leave empty to open the visitor’s mail app with a pre-filled message to your **cta.json** email. |
 | **Footer** | `content/footer.json` | Tagline, CTA headline/button/link, Instagram, email, location line, copyright |
 
 To edit: open **Site Settings** in the CMS, then the section you want. Change fields and click **Publish** (or **Save**). The change is committed to GitHub and the site redeploys.

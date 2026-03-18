@@ -1,0 +1,15 @@
+---
+description: Apply UI/UX Pro Max standards for this static portfolio (HTML/CSS/JS).
+globs: "**/*.{html,css,js,json}"
+alwaysApply: false
+---
+
+# UI/UX Pro Max (this project)
+
+When editing site UI, layout, forms, nav, typography, motion, or accessibility:
+
+1. **Read** `.cursor/skills/ui-ux-pro-max/SKILL.md` for priority-ordered checks (a11y → touch → performance → layout → typography → motion → forms → navigation).
+2. **Portfolio context**: Multi-page static site (`index.html`, `work/`, `services/`, `about/`, `contact/`). Instrument Serif + Space Mono, orange accent, CMS-driven JSON.
+3. **Non-goals**: Do not assume React/shadcn unless migrating stack; prefer incremental HTML/CSS fixes aligned with existing tokens (`--bg`, `--fg`, `--accent`, etc.).
+
+Reference audit: `docs/UI-UX-AUDIT.md`.

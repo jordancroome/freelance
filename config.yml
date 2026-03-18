@@ -71,6 +71,21 @@ collections:
           - { label: "Calendly / booking URL", name: "booking_url", widget: "string" }
           - { label: "Footer note", name: "footer_note", widget: "string" }
 
+      - name: "contact_form"
+        label: "Contact page — enquiry form"
+        file: "content/contact-form.json"
+        fields:
+          - { label: "Form heading line 1", name: "form_heading1", widget: "string" }
+          - { label: "Form heading line 2 (italic)", name: "form_heading2", widget: "string" }
+          - { label: "Intro under heading", name: "form_intro", widget: "text" }
+          - { label: "Form endpoint URL", name: "form_action", widget: "string", required: false, hint: "Formspree/Getform URL (e.g. https://formspree.io/f/xxx). Leave empty to open the visitor's email app instead." }
+          - { label: "Email subject (for Formspree)", name: "form_subject", widget: "string", default: "Website enquiry" }
+          - { label: "Name field label", name: "name_label", widget: "string", default: "Name" }
+          - { label: "Email field label", name: "email_label", widget: "string", default: "Email" }
+          - { label: "Message field label", name: "message_label", widget: "string", default: "Message" }
+          - { label: "Submit button label", name: "submit_label", widget: "string", default: "Send message" }
+          - { label: "Success message (after send)", name: "success_message", widget: "string" }
+
       - name: "footer"
         label: "Footer"
         file: "content/footer.json"
