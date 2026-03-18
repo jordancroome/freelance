@@ -96,7 +96,8 @@ collections:
       - { label: "Category", name: "category", widget: "select", options: ["product", "brand", "ux"] }
       - { label: "Category label (display)", name: "category_label", widget: "string", hint: "e.g. Product · SaaS" }
       - { label: "Cover image", name: "image", widget: "image" }
-      - { label: "Showcase image (full width below text)", name: "showcase_image", widget: "image", required: false, hint: "Large composite or hero for case study page" }
+      - { label: "Collage image (below case study text)", name: "collage_image", widget: "image", required: false, hint: "Optional. If empty, uses images/projects/{slug}/collage.png (or *-collage.png — see site map)" }
+      - { label: "Showcase fallback (if collage missing)", name: "showcase_image", widget: "image", required: false, hint: "Used only if the collage file fails to load" }
       - { label: "Sort order (lower = first)", name: "order", widget: "number", default: 99 }
       - { label: "Featured (shows in grid)", name: "featured", widget: "boolean", default: true }
       - { label: "Link URL (optional)", name: "url", widget: "string", required: false }

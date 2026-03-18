@@ -83,7 +83,8 @@
     @media (min-width: 768px) { .case-hero-block { padding-top: 2.5rem; } }
     .case-back-link { display: inline-block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); margin-bottom: 2rem; transition: color .2s; }
     .case-back-link:hover { color: var(--accent); }
-    .case-h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.75rem, 9vw, 5rem); line-height: 1.02; letter-spacing: -.03em; color: #b84f00; }
+    /* Match homepage .hero-headline (inherits body font-weight: 300) */
+    .case-h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.75rem, 9vw, 5rem); line-height: 1.02; letter-spacing: -.03em; color: #b84f00; }
     .case-h1-word { display: inline-block; margin-right: .28em; }
     .case-h1-word > span { display: inline-block; }
     .case-tagline-row { margin-top: .75rem; font-size: clamp(20px, 2.8vw, 28px); line-height: 1.3; font-weight: 400; font-style: italic; font-family: var(--serif); }
@@ -272,6 +273,21 @@
     if (!s) return '';
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
+  /** Bottom-of-page collage: images/projects/{slug}/collage.png, or *-collage.png when named differently */
+  var COLLAGE_FILENAME_BY_SLUG = {
+    marshproperty: 'marsh-property-collage.png',
+    benchmark: 'benchmark-collage.png',
+    recover: 'recover-collage.png',
+    foa: 'foa-collage.png',
+    sothe: 'sothe-collage.png',
+    livebetter: 'livebetter-collage.png',
+    origin: 'origin-collage.png'
+  };
+  function projectCollageSrc(slug) {
+    if (!slug) return '';
+    var file = COLLAGE_FILENAME_BY_SLUG[slug] || 'collage.png';
+    return '/images/projects/' + slug + '/' + file;
+  }
   function paragraphs(text) {
     if (!text) return '';
     return text.split(/\n\n|\n/).filter(Boolean).map(p => '<p>' + escape(p) + '</p>').join('');
@@ -444,11 +460,18 @@
           '<div class="case-col"><div class="case-col-body">' + colParas(project.description) + '</div></div>' +
           '</div></section>';
       }
-      var showcaseSrc = project.showcase_image || project.image || '';
-      var showcaseAlt = escape(client ? client + ' — project showcase' : 'Project showcase');
+      var collageSrc = project.collage_image || projectCollageSrc(slug);
+      var showcaseFallback = project.showcase_image || project.image || '';
+      var showcaseAlt = escape(client ? client + ' — project collage' : 'Project collage');
       var showcaseHtml = '<div class="case-showcase-wrap"><div class="case-showcase-inner">';
-      if (showcaseSrc) {
-        showcaseHtml += '<img src="' + escape(showcaseSrc) + '" alt="' + showcaseAlt + '" loading="lazy" />';
+      if (collageSrc) {
+        if (showcaseFallback) {
+          showcaseHtml += '<img src="' + escape(collageSrc) + '" alt="' + showcaseAlt + '" loading="lazy" data-collage-fallback="' + escape(showcaseFallback) + '" onerror="this.onerror=null;if(this.dataset.collageFallback)this.src=this.dataset.collageFallback;" />';
+        } else {
+          showcaseHtml += '<img src="' + escape(collageSrc) + '" alt="' + showcaseAlt + '" loading="lazy" />';
+        }
+      } else if (showcaseFallback) {
+        showcaseHtml += '<img src="' + escape(showcaseFallback) + '" alt="' + showcaseAlt + '" loading="lazy" />';
       } else {
         showcaseHtml += '<div class="case-showcase-placeholder" aria-hidden="true"></div>';
       }
