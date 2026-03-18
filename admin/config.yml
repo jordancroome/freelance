@@ -78,9 +78,12 @@ collections:
         file: "content/footer.json"
         fields:
           - { label: "Tagline", name: "tagline", widget: "text" }
-          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
-          - { label: "Dribbble URL", name: "dribbble", widget: "string" }
-          - { label: "Twitter / X URL", name: "twitter", widget: "string" }
+          - { label: "Footer CTA headline", name: "cta_line", widget: "string" }
+          - { label: "Footer CTA button", name: "cta_action", widget: "string", default: "Start a project" }
+          - { label: "Footer CTA link", name: "cta_href", widget: "string", default: "/contact" }
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - { label: "Contact email", name: "email", widget: "string" }
+          - { label: "Location line", name: "location_line", widget: "string" }
           - { label: "Copyright line", name: "copyright", widget: "string" }
 
   # ─── WORK / PROJECTS ──────────────────────────────────────

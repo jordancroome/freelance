@@ -16,7 +16,7 @@ This file (SETUP.md) is the reference for file structure, config, and managing t
 
 ```
 jordancroome/
-├── index.html              ← Home (hero, statement, featured work, clients, testimonials)
+├── index.html              ← Home (hero, statement, work, clients, testimonials, contact band, newsletter)
 ├── work/index.html         ← /work (project index) + /work/:slug (case studies via rewrite)
 ├── services/index.html     ← /services
 ├── about/index.html        ← /about
@@ -36,8 +36,8 @@ jordancroome/
 │   ├── hero.json           ← Hero section text
 │   ├── statement.json      ← “Who I work with” section
 │   ├── about.json          ← About section + stats + tags
-│   ├── cta.json            ← Contact section + email/booking
-│   ├── footer.json         ← Footer tagline + social links
+│   ├── cta.json            ← Contact block on home + /contact page (headline, body, email, booking)
+│   ├── footer.json         ← Footer tagline, CTA strip, Instagram, email, location, copyright
 │   ├── projects/           ← One .json file per project
 │   ├── services/           ← One .json file per service
 │   └── testimonials/       ← One .json file per testimonial
@@ -158,7 +158,7 @@ Single-file settings that affect the whole site:
 | **Statement Section** | `content/statement.json` | “Who I work with” label, heading, paragraphs |
 | **About Section** | `content/about.json` | Heading, photo, bio paragraphs, stats numbers/labels, skill tags |
 | **Contact / CTA** | `content/cta.json` | Heading, body text, email, Calendly/booking URL, footer note |
-| **Footer** | `content/footer.json` | Tagline, LinkedIn/Dribbble/Twitter URLs, copyright line |
+| **Footer** | `content/footer.json` | Tagline, CTA headline/button/link, Instagram, email, location line, copyright |
 
 To edit: open **Site Settings** in the CMS, then the section you want. Change fields and click **Publish** (or **Save**). The change is committed to GitHub and the site redeploys.
 
