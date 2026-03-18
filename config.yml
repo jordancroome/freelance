@@ -96,12 +96,14 @@ collections:
       - { label: "Category", name: "category", widget: "select", options: ["product", "brand", "ux"] }
       - { label: "Category label (display)", name: "category_label", widget: "string", hint: "e.g. Product · SaaS" }
       - { label: "Cover image", name: "image", widget: "image" }
+      - { label: "Showcase image (full width below text)", name: "showcase_image", widget: "image", required: false, hint: "Large composite or hero for case study page" }
       - { label: "Sort order (lower = first)", name: "order", widget: "number", default: 99 }
       - { label: "Featured (shows in grid)", name: "featured", widget: "boolean", default: true }
       - { label: "Link URL (optional)", name: "url", widget: "string", required: false }
       - { label: "Short description", name: "description", widget: "text", required: false }
       - { label: "Intro (one line for case study hero)", name: "intro", widget: "text", required: false }
-      - { label: "The Challenge", name: "challenge", widget: "text", required: false }
+      - { label: "The Challenge (left column)", name: "challenge", widget: "text", required: false }
+      - { label: "The Solution (right column)", name: "solution", widget: "text", required: false, hint: "If empty, “Our approach” is used in the right column" }
       - { label: "Our Approach", name: "approach", widget: "text", required: false }
       - { label: "The Impact", name: "impact", widget: "text", required: false }
       - label: "Our Roles (list of roles/services)"
@@ -119,22 +121,6 @@ collections:
         required: false
         field: { label: "Tag", name: "tag", widget: "string" }
       - { label: "SEO description", name: "meta_description", widget: "text", required: false }
-      - { label: "Parallax scroll height (vh)", name: "parallax_height_vh", widget: "number", default: 260, required: false }
-      - { label: "Parallax corner label (bottom right)", name: "parallax_br_label", widget: "string", required: false, default: "Design system" }
-      - label: "Parallax gallery images"
-        name: "parallax_assets"
-        widget: "list"
-        required: false
-        fields:
-          - { label: "Image", name: "src", widget: "image" }
-          - { label: "Alt / caption", name: "alt", widget: "string" }
-          - { label: "Start X %", name: "initialX", widget: "number", value_type: "float" }
-          - { label: "Start Y %", name: "initialY", widget: "number", value_type: "float" }
-          - { label: "End X %", name: "finalX", widget: "number", value_type: "float" }
-          - { label: "End Y %", name: "finalY", widget: "number", value_type: "float" }
-          - { label: "Width %", name: "width", widget: "number", value_type: "float" }
-          - { label: "Start rotation (deg)", name: "initialRotation", widget: "number", value_type: "float", required: false }
-          - { label: "Z-index", name: "zIndex", widget: "number", required: false }
       - label: "Next project card (optional)"
         name: "next_project"
         widget: "object"
