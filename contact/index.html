@@ -25,8 +25,9 @@
     #mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:90;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .4s}
     #mobile-menu.open{opacity:1;pointer-events:all}#mobile-menu a{font-family:var(--serif);font-size:clamp(32px,8vw,56px)}
     main{padding-top:100px}
-    /* Match /services: page-head scale */
-    .page-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:20px}
+    /* Page hero typography aligned with /about */
+    .section-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:48px;display:flex;align-items:center;gap:12px}
+    .section-label::before{content:'';width:28px;height:1px;background:var(--mid);flex-shrink:0}
     /* Same as /about .section-title */
     .page-title{font-family:var(--serif);font-size:clamp(36px,5vw,56px);line-height:1.05;letter-spacing:-.03em}
     .page-title em{font-style:italic;color:var(--accent)}
@@ -74,7 +75,7 @@
 <main>
 <section id="contact-hero" aria-label="Contact">
   <div class="contact-hero-left">
-    <p class="page-label">Contact</p>
+    <div class="section-label">Contact</div>
     <h1 class="page-title" id="cta-h">Ready to build something <em>worth showing?</em></h1>
     <p class="contact-intro" id="cta-body">I take on a limited number of projects at a time so every client gets proper focus.</p>
     <p class="contact-note" id="cta-note">Based between Melbourne &amp; Cairns · Usually responds within 24h</p>

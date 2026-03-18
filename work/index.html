@@ -51,10 +51,10 @@
     /* ─── WORK INDEX (full-bleed stack, Instrument-style) ─── */
     body.mode-list { background: var(--bg); }
     .work-list-page { padding-top: 96px; }
-    /* Match /about: section-label, section-title, about-text */
+    /* Match /about: section-label + headline block */
     .work-list-header { padding: 48px 40px 56px; max-width: 1280px; margin: 0 auto; }
-    .work-list-label { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 48px; display: flex; align-items: center; gap: 12px; }
-    .work-list-label::before { content: ''; width: 28px; height: 1px; background: var(--mid); }
+    .section-label { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 48px; display: flex; align-items: center; gap: 12px; }
+    .section-label::before { content: ''; width: 28px; height: 1px; background: var(--mid); flex-shrink: 0; }
     /* Same as /about .section-title */
     .work-list-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -.03em; margin-bottom: 32px; }
     .work-list-title em { font-style: italic; color: var(--accent); }
@@ -82,7 +82,7 @@
     body.mode-case .work-list-page { display: none !important; }
     #project-root:not(:empty) { display: block; }
     .case-main { font-family: var(--sans); font-weight: 300; background: var(--bg); color: var(--fg); min-height: 100vh; padding-top: 88px; }
-    .case-plabel { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--mid); }
+    .case-plabel { font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); }
     .case-plabel-ink { color: var(--fg); letter-spacing: .12em; }
     .case-plabel-faint { color: rgba(14,14,14,.35); }
     .case-hero-block { max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem 0; padding-top: clamp(1.5rem, 4vw, 2.5rem); }
@@ -185,7 +185,7 @@
 
 <div id="work-list-page" class="work-list-page" hidden>
   <header class="work-list-header">
-    <p class="work-list-label">Portfolio</p>
+    <div class="section-label">Portfolio</div>
     <h1 class="work-list-title">Selected <em>work</em></h1>
     <p class="work-list-intro" id="work-list-intro">Product design, brand systems, and digital experiences for founders and growing teams.</p>
     <div class="work-list-filters" id="work-list-filters">

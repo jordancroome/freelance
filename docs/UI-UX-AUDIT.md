@@ -45,8 +45,21 @@ This document maps the installed **UI/UX Pro Max** priority table to **jordan-cr
 
 | Finding | Suggestion |
 |--------|------------|
-| **Duplicated CSS** | Same nav/footer tokens repeated per page—long-term: one `site.css` or build step to avoid drift (Services vs Contact already aligned once). |
+| **Duplicated CSS** | Same nav/footer tokens repeated per page—long-term: one `site.css` or build step to avoid drift. |
 | **Dual contact journeys** | Home `#contact` + `/contact` + footer CTA—clear but redundant; consider one primary CTA copy everywhere. |
+
+### Eyebrow labels (section labels) — **fixed Mar 2026**
+
+All marketing pages now use the **same pattern as `/about`**: 28px rule + uppercase label (`.section-label`), `48px` gap before headline.
+
+| Page | Before | After |
+|------|--------|--------|
+| Services | No rule, `20px` margin | Rule + `48px` |
+| Contact | No rule, `20px` margin | Rule + `48px` |
+| Work | Had rule (`work-list-label`) | Renamed to `.section-label` for one component name |
+| Home, About | Already matched | — |
+
+**Still optional:** Services hero `max-width: 900px` vs About/Work `1280px`—narrower column; widen for parity if desired. Case study meta (`.case-plabel`) stays **without** a leading rule (dense hero); letter-spacing aligned to `.16em`.
 
 ---
 
@@ -84,7 +97,7 @@ This document maps the installed **UI/UX Pro Max** priority table to **jordan-cr
 | Finding | Suggestion |
 |--------|------------|
 | **Contact form** | Labels are visible—good. Add **inline validation** messages on blur for email format. |
-| **Newsletter** | Client-only “success” state—document that it’s placeholder until Mailchimp/ConvertKit/etc. |
+| **Newsletter** | _Removed from site (Mar 2026)._ |
 | **Form errors** | Formspree errors show generic message—optional: map common API errors to friendlier copy. |
 
 ---
@@ -93,7 +106,7 @@ This document maps the installed **UI/UX Pro Max** priority table to **jordan-cr
 
 | Finding | Suggestion |
 |--------|------------|
-| **Active state** | Only some pages mark `active` nav item—apply consistently (e.g. Contact page highlight “Contact” if in nav). |
+| **Active state** | Nav link `active` is consistent; **Contact** also fills the header CTA orange when you’re on `/contact`—other pages don’t; intentional “you’re here” cue or unify to outline-only. |
 | **Deep links** | Home `#contact` works with `scroll-padding-top`—good. Document in footer for CMS editors. |
 | **Case study back** | “Back to work” behavior—ensure keyboard and SR order is logical. |
 
@@ -114,6 +127,19 @@ _Not applicable_ (no dashboards).
 5. **Project image `alt`** from CMS title + client.  
 6. **Homepage cursor**: disable custom cursor when `prefers-reduced-motion: reduce` or remove globally.  
 7. **Extract shared CSS** when you next touch multiple pages.
+
+---
+
+## 11. Cross-page rhythm (quick matrix)
+
+| Element | Home | About | Work | Services | Contact |
+|---------|------|-------|------|----------|---------|
+| Nav bar | Transparent → solid | Solid + border | Transparent → solid | Solid | Solid |
+| Eyebrow | Rule + label | Rule + label | Rule + label | Rule + label | Rule + label |
+| Display title clamp | Larger (hero) | `36–56px` | `36–56px` | `36–56px` | `36–56px` |
+| Main max-width | Section-based | 1280px | 1280px (list) | 900px (hero) | 1100px |
+
+Use this table when adding a new template so new pages don’t reintroduce one-off label styles.
 
 ---
 

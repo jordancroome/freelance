@@ -30,7 +30,9 @@
     #mobile-menu a{font-family:var(--serif);font-size:clamp(32px,8vw,56px)}
     main{padding-top:100px}
     .page-head{padding:48px 40px 32px;max-width:900px;margin:0 auto}
-    .page-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:20px}
+    /* Eyebrow labels: match /about .section-label (rule + 48px rhythm) */
+    .section-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:48px;display:flex;align-items:center;gap:12px}
+    .section-label::before{content:'';width:28px;height:1px;background:var(--mid);flex-shrink:0}
     /* Same as /about .section-title */
     .page-title{font-family:var(--serif);font-size:clamp(36px,5vw,56px);line-height:1.05;letter-spacing:-.03em}
     .page-title em{font-style:italic;color:var(--accent)}
@@ -47,7 +49,6 @@
     .service-link:hover{gap:14px}
     .service-item:hover .service-link{border-bottom-color:rgba(240,237,232,.4);color:var(--bg)}
     #process{padding:100px 40px;border-top:1px solid rgba(14,14,14,.08);max-width:1100px;margin:0 auto}
-    #process .page-label{margin-bottom:48px}
     #process .page-title{margin-bottom:64px}
     .process-step{display:grid;grid-template-columns:80px 1fr 1fr;gap:32px;padding:40px 0;border-bottom:1px solid rgba(14,14,14,.08);opacity:.7;transition:opacity .4s;counter-increment:steps}
     .process-step:hover{opacity:1}
@@ -83,14 +84,14 @@
 </div>
 <main>
   <header class="page-head">
-    <p class="page-label">What I do</p>
+    <div class="section-label">What I do</div>
     <h1 class="page-title" id="svc-heading">Strategy, design, and systems <em>— all in one.</em></h1>
   </header>
   <section id="services">
     <div class="services-grid" id="services-grid"></div>
   </section>
   <section id="process">
-    <p class="page-label">How I work</p>
+    <div class="section-label">How I work</div>
     <h2 class="page-title">A direct, <em>considered</em> process.</h2>
     <div class="process-steps">
       <div class="process-step"><div class="process-step-num"></div><div class="process-step-title">Discovery &amp; alignment</div><div class="process-step-body">We start with a focused conversation about your goals, constraints, and users. The output is a shared understanding of what success looks like.</div></div>
