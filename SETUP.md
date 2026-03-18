@@ -20,7 +20,6 @@ jordancroome/
 ├── work/index.html         ← /work (project index) + /work/:slug (case studies via rewrite)
 ├── services/index.html     ← /services
 ├── about/index.html        ← /about
-├── writing/index.html      ← /writing
 ├── contact/index.html      ← /contact
 ├── vercel.json             ← Vercel configuration (headers, rewrites)
 ├── package.json            ← Dependencies for CMS OAuth (simple-oauth2)
@@ -41,8 +40,7 @@ jordancroome/
 │   ├── footer.json         ← Footer tagline + social links
 │   ├── projects/           ← One .json file per project
 │   ├── services/           ← One .json file per service
-│   ├── testimonials/       ← One .json file per testimonial
-│   └── articles/           ← One .json file per article
+│   └── testimonials/       ← One .json file per testimonial
 └── images/
     └── uploads/            ← CMS uploads images here
 ```
@@ -199,12 +197,6 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
 
 - **Location:** `content/testimonials/` — one JSON file per testimonial.
 - **Fields:** Quote, Author name, Author role & company, Author initial (single letter for avatar), Sort order.
-
-### Writing / Articles
-
-- **Location:** `content/articles/` — one JSON file per article.
-- **Naming:** Filenames use the slug pattern defined in `config.yml` (e.g. `2025-01-15-ux-principle.json`).
-- **Fields:** Title, Category, Excerpt, Read time, Publish date, URL/link (optional), Body (optional markdown).
 
 ### Images and uploads
 

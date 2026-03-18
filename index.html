@@ -7,7 +7,7 @@
   <meta name="description" content="Senior product design for founders, sole traders, and small-to-medium businesses. Based between Melbourne and Cairns." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -75,8 +75,9 @@
     /* Nudge copy down so it sits nearer vertical centre with portrait (background unchanged) */
     .hero-content { position: relative; z-index: 2; max-width: 900px; margin-top: clamp(32px, 6vh, 100px); }
     .hero-eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #c45a00; margin-bottom: 20px; font-weight: 500; opacity: 0; transform: translateY(20px); animation: fadeUp .8s .4s var(--ease) forwards; }
-    .hero-headline { font-family: var(--serif); font-size: clamp(48px,8vw,96px); line-height: 1; letter-spacing: -.03em; color: #060606; text-shadow: 0 0 40px rgba(240,237,232,.85), 0 2px 12px rgba(240,237,232,.5); opacity: 0; transform: translateY(30px); animation: fadeUp .9s .55s var(--ease) forwards; }
-    .hero-headline em { font-style: italic; color: #b84f00; text-shadow: 0 0 28px rgba(240,237,232,.9), 0 1px 8px rgba(240,237,232,.6); }
+    /* Same weight as project case H1: Instrument Serif regular (400), no faux-bold from inherited 300 */
+    .hero-headline { font-family: var(--serif); font-weight: 400; font-style: normal; font-synthesis: none; font-size: clamp(48px,8vw,96px); line-height: 1; letter-spacing: -.03em; color: #060606; text-shadow: 0 0 40px rgba(240,237,232,.85), 0 2px 12px rgba(240,237,232,.5); opacity: 0; transform: translateY(30px); animation: fadeUp .9s .55s var(--ease) forwards; }
+    .hero-headline em { font-style: italic; font-weight: 400; font-synthesis: none; color: #b84f00; text-shadow: 0 0 28px rgba(240,237,232,.9), 0 1px 8px rgba(240,237,232,.6); }
     .hero-sub { margin-top: 24px; max-width: 440px; font-size: 16px; color: rgba(6,6,6,.88); line-height: 1.65; text-shadow: 0 0 20px rgba(240,237,232,.75); opacity: 0; transform: translateY(20px); animation: fadeUp .8s .75s var(--ease) forwards; }
     .hero-actions { margin-top: 36px; display: flex; align-items: center; gap: 28px; opacity: 0; transform: translateY(20px); animation: fadeUp .8s .9s var(--ease) forwards; }
     #hero .btn-ghost { color: rgba(6,6,6,.82); text-shadow: 0 0 16px rgba(240,237,232,.8); }
@@ -193,10 +194,11 @@
     .clients-track-wrap { overflow: hidden; margin-bottom: 20px; }
     .clients-track { display: flex; gap: 64px; align-items: center; animation: marquee 22s linear infinite; white-space: nowrap; }
     .clients-track.reverse { animation-direction: reverse; }
-    .client-logo { font-family: var(--serif); font-size: 22px; color: rgba(14,14,14,.25); flex-shrink: 0; transition: color .25s; display: flex; align-items: center; justify-content: center; }
+    .client-logo { font-family: var(--serif); font-size: 22px; color: rgba(14,14,14,.25); flex-shrink: 0; transition: color .25s, transform .25s; display: flex; align-items: center; justify-content: center; }
     .client-logo:hover { color: var(--fg); }
-    .client-logo img { max-height: 36px; width: auto; max-width: 140px; object-fit: contain; filter: opacity(0.5); transition: filter .25s; }
-    .client-logo:hover img { filter: opacity(0.9); }
+    /* Full-colour logos (SVGs use transparent artboards; no wash-out filter) */
+    .client-logo img { max-height: 36px; width: auto; max-width: 140px; height: auto; object-fit: contain; opacity: 1; transition: opacity .25s, transform .25s; }
+    .client-logo:hover img { opacity: 1; transform: scale(1.04); }
 
     /* TESTIMONIALS */
     #testimonials { border-top: 1px solid rgba(14,14,14,.08); background: rgba(14,14,14,.04); }
@@ -218,17 +220,6 @@
     .cta-note { font-size: 12px; color: var(--mid); }
 
     /* LATEST */
-    #latest { border-top: 1px solid rgba(14,14,14,.08); }
-    .latest-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-    .latest-card { background: var(--bg); border: 1px solid rgba(14,14,14,.08); padding: 32px; transition: background .3s, border-color .3s, box-shadow .3s; }
-    .latest-card:hover { background: #fff; border-color: rgba(14,14,14,.12); box-shadow: 0 4px 24px rgba(14,14,14,.06); }
-    .latest-cat { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-    .latest-title { font-family: var(--serif); font-size: 22px; line-height: 1.25; margin-bottom: 12px; }
-    .latest-excerpt { font-size: 14px; color: var(--mid); line-height: 1.6; }
-    .latest-meta { font-size: 12px; color: var(--mid); margin-top: 20px; }
-    .latest-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-top: 20px; color: var(--mid); transition: color .2s, gap .25s var(--ease); }
-    .latest-link:hover { color: var(--accent); gap: 12px; }
-
     /* NEWSLETTER */
     #newsletter { border-top: 1px solid rgba(14,14,14,.08); text-align: center; padding: 80px 40px; }
     #newsletter h2 { font-family: var(--serif); font-size: clamp(28px,4vw,48px); margin-bottom: 12px; }
@@ -279,7 +270,7 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       #statement, #about, #cta-band { grid-template-columns: 1fr; }
-      .latest-grid, .work-grid { grid-template-columns: 1fr; }
+      .work-grid { grid-template-columns: 1fr; }
       .work-card:nth-child(n) { grid-column: span 1 !important; }
       .footer-top { grid-template-columns: 1fr; }
       .about-image { aspect-ratio: 1/1; }
@@ -310,7 +301,6 @@
     <li><a href="/work">Work</a></li>
     <li><a href="/services">Services</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="/writing">Writing</a></li>
   </ul>
   <a href="/contact" class="nav-cta" id="nav-cta-btn">Start a project</a>
   <div class="hamburger" id="hamburger">
@@ -323,7 +313,6 @@
   <a href="/work">Work</a>
   <a href="/services">Services</a>
   <a href="/about">About</a>
-  <a href="/writing">Writing</a>
   <a href="/contact">Contact</a>
 </div>
 
@@ -427,7 +416,7 @@
 <!-- NEWSLETTER -->
 <div id="newsletter">
   <h2>Stay in the loop.</h2>
-  <p>Occasional writing on design, product, and building better businesses. No noise.</p>
+  <p>Occasional updates on design, product, and building better businesses. No noise.</p>
   <form class="email-form" id="newsletter-form">
     <input class="email-input" type="email" placeholder="Your email address" required />
     <button class="email-submit" type="submit" id="newsletter-btn">Subscribe</button>
@@ -447,7 +436,6 @@
         <li><a href="/work">Work</a></li>
         <li><a href="/services">Services</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/writing">Writing</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </div>

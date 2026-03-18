@@ -7,7 +7,7 @@
   <meta name="description" content="Selected product and brand design work by Jordan Croome." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -83,22 +83,22 @@
     @media (min-width: 768px) { .case-hero-block { padding-top: 2.5rem; } }
     .case-back-link { display: inline-block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); margin-bottom: 2rem; transition: color .2s; }
     .case-back-link:hover { color: var(--accent); }
-    /* Match homepage .hero-headline (inherits body font-weight: 300) */
-    .case-h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.75rem, 9vw, 5rem); line-height: 1.02; letter-spacing: -.03em; color: #b84f00; }
-    .case-h1-word { display: inline-block; margin-right: .28em; }
-    .case-h1-word > span { display: inline-block; }
+    /* Match homepage .hero-headline: Instrument Serif 400, no synthesis */
+    .case-h1 { font-family: var(--serif); font-weight: 400; font-style: normal; font-synthesis: none; font-size: clamp(2.75rem, 9vw, 5rem); line-height: 1.02; letter-spacing: -.03em; color: #b84f00; }
+    .case-h1-word { display: inline-block; margin-right: .28em; font-weight: inherit; }
+    .case-h1-word > span { display: inline-block; font-weight: inherit; }
     .case-tagline-row { margin-top: .75rem; font-size: clamp(20px, 2.8vw, 28px); line-height: 1.3; font-weight: 400; font-style: italic; font-family: var(--serif); }
     .case-tagline-word { display: inline-block; margin-right: .28em; }
     .case-tagline-gradient { background: linear-gradient(135deg, #b84f00 0%, #ff6b00 50%, #e55a00 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
     .case-hr { height: 1px; background: rgba(14,14,14,.1); margin: 2.5rem 0; }
     .case-meta-flex { display: flex; flex-direction: column; gap: 2rem; }
-    @media (min-width: 768px) { .case-meta-flex { flex-direction: row; justify-content: space-between; align-items: flex-start; } }
-    .case-dl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 2.5rem; }
-    @media (min-width: 640px) { .case-dl { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 768px) { .case-meta-flex { flex-direction: row; justify-content: space-between; align-items: flex-end; flex-wrap: nowrap; gap: 1.5rem; } }
+    .case-dl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 2.5rem; max-width: 22rem; }
     .case-dl-label { font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--mid); margin-bottom: .25rem; }
     .case-dl dd { font-size: 14px; color: var(--fg); font-weight: 400; }
-    .case-pills { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .case-pill { display: inline-flex; align-items: center; border-radius: 100px; padding: .4rem .75rem; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; background: rgba(255,107,0,.1); color: #c45a00; border: 1px solid rgba(255,107,0,.22); }
+    .case-pills { display: flex; flex-wrap: nowrap; gap: .5rem; align-items: center; }
+    @media (max-width: 767px) { .case-pills { overflow-x: auto; max-width: 100%; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; } }
+    .case-pill { flex-shrink: 0; display: inline-flex; align-items: center; border-radius: 100px; padding: .4rem .75rem; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; background: rgba(255,107,0,.1); color: #c45a00; border: 1px solid rgba(255,107,0,.22); }
     .case-two-col-wrap { max-width: 72rem; margin: 0 auto; padding: clamp(2.5rem, 6vw, 4rem) 1.5rem 0; }
     .case-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
     @media (max-width: 900px) { .case-two-col { grid-template-columns: 1fr; } }
@@ -110,9 +110,9 @@
     .case-impact-wrap .case-col-body { max-width: 42rem; }
     .case-impact-wrap .case-col-label { margin-bottom: 1rem; }
     .case-showcase-wrap { width: 100%; margin-top: clamp(2.5rem, 6vw, 4rem); background: #e8f4ef; padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 2.5rem); }
-    .case-showcase-inner { max-width: 88rem; margin: 0 auto; }
-    .case-showcase-inner img { width: 100%; height: auto; display: block; border-radius: 8px; box-shadow: 0 16px 48px rgba(15, 60, 45, .08); }
-    .case-showcase-placeholder { min-height: 320px; border-radius: 8px; background: linear-gradient(145deg, #d4ebe0, #c5e4d6); border: 1px dashed rgba(45,106,79,.25); }
+    .case-showcase-inner { max-width: min(52rem, 100%); margin: 0 auto; }
+    .case-showcase-inner img { width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 16px 48px rgba(15, 60, 45, .08); }
+    .case-showcase-placeholder { min-height: 280px; max-width: min(52rem, 100%); margin: 0 auto; border-radius: 8px; background: linear-gradient(145deg, #d4ebe0, #c5e4d6); border: 1px dashed rgba(45,106,79,.25); }
     .case-cta-row { max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem 0; }
     .case-next-section { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
     .case-next-label { font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 2rem; }
@@ -172,7 +172,6 @@
     <li><a href="/work" class="active">Work</a></li>
     <li><a href="/services">Services</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="/writing">Writing</a></li>
   </ul>
   <a href="/contact" class="nav-cta" id="nav-cta-btn">Start a project</a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -183,7 +182,6 @@
   <a href="/work">Work</a>
   <a href="/services">Services</a>
   <a href="/about">About</a>
-  <a href="/writing">Writing</a>
   <a href="/contact">Contact</a>
 </div>
 
@@ -220,7 +218,6 @@
         <li><a href="/work">Work</a></li>
         <li><a href="/services">Services</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/writing">Writing</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </div>
@@ -444,17 +441,14 @@
       var h1Words = h1Source.split(/\s+/).filter(Boolean);
       var tagline = project.tagline || '';
       var year = project.year || '';
-      var roleLine = project.role_line || '';
-      if (!roleLine && project.roles && project.roles.length) {
-        roleLine = project.roles.map(function(r) { return r.role || r; }).join(' · ');
-      }
-      if (!roleLine) roleLine = project.category_label || '';
-
       var tags = project.display_tags;
       if (tags && tags.length) {
         tags = tags.map(function(t) { return typeof t === 'string' ? t : (t && t.tag) || ''; }).filter(Boolean);
       } else {
         tags = (project.category_label || '').split(/·|,/).map(function(s) { return s.trim(); }).filter(Boolean);
+        if (!tags.length && project.role_line) {
+          tags = project.role_line.split(/·|,/).map(function(s) { return s.trim(); }).filter(Boolean);
+        }
         if (!tags.length && project.category) tags = [project.category];
       }
 
@@ -468,7 +462,6 @@
 
       var dl = '<div><dt class="case-dl-label">Client</dt><dd>' + escape(client) + '</dd></div>';
       dl += '<div><dt class="case-dl-label">Year</dt><dd>' + escape(year || '—') + '</dd></div>';
-      dl += '<div><dt class="case-dl-label">Role</dt><dd>' + escape(roleLine || '—') + '</dd></div>';
       var pills = (tags || []).map(function(t) { return '<span class="case-pill">' + escape(t) + '</span>'; }).join('');
 
       var leftText = project.challenge || '';
@@ -511,7 +504,7 @@
         '<div class="case-h1-wrap"><h1 class="case-h1">' + h1html + '</h1></div>' +
         (tagline ? '<p class="case-tagline-row">' + taglineHtml + '</p>' : '') +
         '<div class="case-hr"></div>' +
-        '<div class="case-meta-flex"><dl class="case-dl">' + dl + '</dl><div class="case-pills">' + pills + '</div></div>' +
+        '<div class="case-meta-flex"><dl class="case-dl">' + dl + '</dl>' + (pills ? '<div class="case-pills">' + pills + '</div>' : '') + '</div>' +
         '</section>' +
         bodyHtml +
         showcaseHtml +

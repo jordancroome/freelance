@@ -388,7 +388,7 @@ Do **not** change `name`, `branch`, or `auth_endpoint`.
    - **Only select repositories** → pick the repo that contains this site (e.g. `freelance`),  
    - or **All repositories** if you prefer.
 4. Click **Authorize** (or **Install** / **Save**).
-5. You should be sent back to your site at `/admin` and see the CMS dashboard: left sidebar with “Site Settings”, “Work / Projects”, “Services”, “Testimonials”, “Writing / Articles”.
+5. You should be sent back to your site at `/admin` and see the CMS dashboard: left sidebar with “Site Settings”, “Work / Projects”, “Services”, “Testimonials”.
 
 If that’s what you see, **you’re done with deployment.** You can now edit content.
 
@@ -426,5 +426,5 @@ If that’s what you see, **you’re done with deployment.** You can now edit co
 # What to do next
 
 - **Edit content:** Use the left sidebar in the CMS (Site Settings, Work / Projects, etc.). Change fields and click **Publish**. The site will update after the next Vercel deploy.
-- **Full CMS reference:** See **SETUP.md** in this repo for detailed sections on every collection (projects, services, testimonials, articles, images, troubleshooting).
+- **Full CMS reference:** See **SETUP.md** in this repo for detailed sections on every collection (projects, services, testimonials, images, troubleshooting).
 - **Custom domain:** In Vercel → Settings → Domains, add your domain and follow the DNS steps. Then update the GitHub OAuth App callback URL and `base_url` in **config.yml** (project root) to use that domain (e.g. `https://jordancroome.com.au` and `https://jordancroome.com.au/api/callback`).
