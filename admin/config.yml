@@ -80,7 +80,7 @@ collections:
           - { label: "Form heading line 1", name: "form_heading1", widget: "string" }
           - { label: "Form heading line 2 (italic)", name: "form_heading2", widget: "string" }
           - { label: "Intro under heading", name: "form_intro", widget: "text" }
-          - { label: "Form endpoint (Formspree etc.)", name: "form_action", widget: "string", required: false }
+          - { label: "Form endpoint URL", name: "form_action", widget: "string", required: false, default: "/api/contact", hint: "/api/contact + Resend env vars, or Formspree URL, or mailto" }
           - { label: "Email subject", name: "form_subject", widget: "string", default: "Website enquiry" }
           - { label: "Name label", name: "name_label", widget: "string", default: "Name" }
           - { label: "Email label", name: "email_label", widget: "string", default: "Email" }
@@ -93,9 +93,9 @@ collections:
         file: "content/footer.json"
         fields:
           - { label: "Tagline", name: "tagline", widget: "text" }
-          - { label: "Footer CTA headline", name: "cta_line", widget: "string" }
-          - { label: "Footer CTA button", name: "cta_action", widget: "string", default: "Start a project" }
-          - { label: "Footer CTA link", name: "cta_href", widget: "string", default: "/contact" }
+          - { label: "(Unused) Footer strip fields", name: "cta_line", widget: "string", required: false, hint: "Strip removed site-wide" }
+          - { label: "(Unused)", name: "cta_action", widget: "string", required: false }
+          - { label: "(Unused)", name: "cta_href", widget: "string", required: false }
           - { label: "Instagram URL", name: "instagram", widget: "string" }
           - { label: "Contact email", name: "email", widget: "string" }
           - { label: "Location line", name: "location_line", widget: "string" }

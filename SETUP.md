@@ -49,7 +49,8 @@ jordancroome/
 │   ├── services/           ← One .json file per service
 │   └── testimonials/       ← One .json file per testimonial
 ├── css/
-│   └── site-interactions.css  ← Shared footer, nav, button & form micro-interactions
+│   ├── site-interactions.css  ← Shared nav, button & form micro-interactions
+│   └── site-footer.css        ← Global footer layout + interactions (all pages)
 └── images/
     └── uploads/            ← CMS uploads images here
 ```
@@ -167,7 +168,7 @@ Single-file settings that affect the whole site:
 | **Statement Section** | `content/statement.json` | “Who I work with” label, heading, paragraphs |
 | **About Section** | `content/about.json` | Heading, photo, bio paragraphs, stats numbers/labels, skill tags |
 | **Contact / CTA** | `content/cta.json` | Top band on `/contact` + home: heading, body, email, Calendly, footer note |
-| **Contact form** | `content/contact-form.json` | Second band on `/contact`: Name / Email / Message. Set **form_action** to a [Formspree](https://formspree.io) endpoint (`https://formspree.io/f/…`) to submit in-browser; leave empty to open the visitor’s mail app with a pre-filled message to your **cta.json** email. |
+| **Contact form** | `content/contact-form.json` | **`/contact` page** — two-column layout (intro + email/booking, then enquiry form). Default **`form_action`** is **`/api/contact`** (sends you an email via Resend; see below). Or set a [Formspree](https://formspree.io) URL (`https://formspree.io/f/…`). Use **`mailto`** to open the visitor’s mail app instead. |
 | **Footer** | `content/footer.json` | Tagline, CTA headline/button/link, Instagram, email, location line, copyright |
 
 To edit: open **Site Settings** in the CMS, then the section you want. Change fields and click **Publish** (or **Save**). The change is committed to GitHub and the site redeploys.
@@ -250,11 +251,33 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
 
 ---
 
+## Contact page (`/contact`) — email from the form
+
+The **standalone contact page** lives at **`/contact`** (`contact/index.html`). Layout:
+
+1. **Top band** — headline, short paragraph, **email** + **book a call** (from `content/cta.json`).
+2. **Enquiry band** — **Name**, **Email**, **Message** → submits to your inbox.
+
+**To receive submissions by email (recommended):**
+
+1. Create a free account at [Resend](https://resend.com).
+2. In Resend: **API Keys** → create a key.
+3. In Vercel: your project → **Settings** → **Environment Variables** → add:
+   - **`RESEND_API_KEY`** — the Resend API key  
+   - **`CONTACT_EMAIL`** — the address where you want enquiries (e.g. `hello@jordancroome.com.au`)
+4. Redeploy. Submissions will email you with **Reply-To** set to the visitor’s address.
+
+**Using Resend’s test sender:** Until you verify your own domain in Resend, you can send **from** `onboarding@resend.dev` (default). Restrictions apply on the free tier — verify a domain and set optional env **`RESEND_FROM`** (e.g. `Notifications <noreply@yourdomain.com>`) for production.
+
+**Alternatives (no Resend):** In the CMS, edit **Contact page — enquiry form** → set **Form endpoint URL** to a [Formspree](https://formspree.io) endpoint, or **`mailto`** to use the visitor’s mail app.
+
+---
+
 ## Work page: Contact link & footer
 
 - **Contact must use a root URL:** Links like `href="contact"` (no leading `/`) resolve from `/work` to **`/work/contact`**, which Vercel treats as a project route — so you’d see the Work app instead of the real contact page. Always use **`/contact`** in HTML and in CMS fields (e.g. footer CTA href).
 - **`vercel.json`** redirects `/work/contact` → `/contact` (and similar for `services` / `about`) so old or mistaken links still work.
-- **Work listing footer:** The wide “Ready to build…” CTA strip is **not** shown on `/work`, since that page already has “Start a conversation” above the footer.
+- **Footer CTA strip** (“Ready to build… / Start a project”) has been **removed site-wide** (home, work, services, about, contact). Use **Contact** in the nav or footer links to `/contact`.
 
 ---
 
