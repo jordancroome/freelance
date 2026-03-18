@@ -27,7 +27,7 @@
 
     var main = document.querySelector('main');
     if (main) {
-      main.querySelectorAll(':scope > header, :scope > section, :scope > div.page-cta').forEach(function (el) {
+      main.querySelectorAll(':scope > header, :scope > section').forEach(function (el) {
         if (el.id === 'contact-hero') {
           el.querySelectorAll(':scope > .contact-hero-left, :scope > .contact-hero-right').forEach(add);
         } else {
@@ -58,7 +58,6 @@
     } else {
       document.querySelectorAll('.work-list-header').forEach(add);
       document.querySelectorAll('.work-list-item').forEach(add);
-      document.querySelectorAll('.work-list-end-cta').forEach(add);
     }
 
     document.querySelectorAll('.project-error').forEach(add);
@@ -77,7 +76,7 @@
   window.revealWorkListAfterInject = function () {
     if (reduce) return;
     var i = 0;
-    document.querySelectorAll('.work-list-header, .work-list-item, .work-list-end-cta, footer.site-footer').forEach(function (el) {
+    document.querySelectorAll('.work-list-header, .work-list-item, footer.site-footer').forEach(function (el) {
       el.classList.remove('pr-on-load');
       el.style.removeProperty('--pr-delay');
     });
@@ -86,9 +85,6 @@
       mark(el, i++);
     });
     document.querySelectorAll('.work-list-item').forEach(function (el) {
-      mark(el, i++);
-    });
-    document.querySelectorAll('.work-list-end-cta').forEach(function (el) {
       mark(el, i++);
     });
     document.querySelectorAll('footer.site-footer').forEach(function (el) {

@@ -3,6 +3,14 @@
   "outputDirectory": ".",
   "headers": [
     {
+      "source": "/admin",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/admin/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
       "source": "/content/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "*" },

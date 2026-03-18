@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/
+# Replace https://jordancroome.com.au with your canonical production URL if different.
+
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /admin/
+
+Sitemap: https://jordancroome.com.au/sitemap.xml

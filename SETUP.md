@@ -14,7 +14,8 @@ This file (SETUP.md) is the reference for file structure, config, and managing t
 
 ## Cursor: UI/UX Pro Max skill
 
-The **ui-ux-pro-max** pack is installed under **`.cursor/skills/ui-ux-pro-max/`**. The main file is **`SKILL.md`** (design/a11y/motion/forms checklist). A project rule **`.cursor/rules/ui-ux-pro-max.mdc`** applies when editing HTML/CSS/JS. Full site review: **`docs/UI-UX-AUDIT.md`**.
+The **ui-ux-pro-max** pack is installed under **`.cursor/skills/ui-ux-pro-max/`**. The main file is **`SKILL.md`** (design/a11y/motion/forms checklist). A project rule **`.cursor/rules/ui-ux-pro-max.mdc`** applies when editing HTML/CSS/JS. Full site review: **`docs/UI-UX-AUDIT.md`**.  
+**SEO:** checklist + practices in **`docs/SEO-AUDIT.md`**. Canonical URLs, OG/Twitter, sitemap, and `robots.txt` assume **`https://jordancroome.com.au`** — if your live domain differs (e.g. Vercel default), update those files and **`SITE_ORIGIN`** in `work/index.html`.
 
 ---
 
@@ -22,6 +23,8 @@ The **ui-ux-pro-max** pack is installed under **`.cursor/skills/ui-ux-pro-max/`*
 
 ```
 jordancroome/
+├── robots.txt              ← Crawl rules + sitemap URL
+├── sitemap.xml             ← Main URLs + /work/{slug} (edit when projects change)
 ├── index.html              ← Home (hero, statement, work, clients, testimonials, contact band)
 ├── work/index.html         ← /work (project index) + /work/:slug (case studies via rewrite)
 ├── services/index.html     ← /services

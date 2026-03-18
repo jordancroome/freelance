@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Work — Jordan Croome</title>
   <meta name="description" content="Selected product and brand design work by Jordan Croome." />
+  <link rel="canonical" href="https://jordancroome.com.au/work" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#f0ede8" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jordan Croome" />
+  <meta property="og:title" content="Work — Jordan Croome" />
+  <meta property="og:description" content="Selected product and brand design work by Jordan Croome." />
+  <meta property="og:url" content="https://jordancroome.com.au/work" />
+  <meta property="og:image" content="https://jordancroome.com.au/images/uploads/hero-1.webp" />
+  <meta property="og:locale" content="en_AU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Work — Jordan Croome" />
+  <meta name="twitter:description" content="Selected product and brand design work by Jordan Croome." />
+  <meta name="twitter:image" content="https://jordancroome.com.au/images/uploads/hero-1.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -75,9 +89,6 @@
     .work-list-item .work-list-name { font-family: var(--serif); font-weight: var(--serif-weight-project); font-synthesis: none; font-size: clamp(28px,5vw,52px); line-height: 1.1; letter-spacing: -.02em; max-width: 900px; }
     .work-list-item .work-list-arrow { position: absolute; top: clamp(24px,4vw,40px); right: clamp(24px,4vw,40px); width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; transition: border-color .25s, background .25s; }
     .work-list-item:hover .work-list-arrow { border-color: var(--accent); background: rgba(255,255,255,.08); }
-    .work-list-end-cta { text-align: center; padding: 100px 40px; border-top: 1px solid rgba(14,14,14,.08); }
-    .work-list-end-cta p { color: var(--mid); margin-bottom: 24px; font-size: 15px; }
-
     /* ─── CASE STUDY (same layout; homepage visual language) ─── */
     body.mode-case .work-list-page { display: none !important; }
     #project-root:not(:empty) { display: block; }
@@ -196,10 +207,6 @@
     </div>
   </header>
   <div class="work-list-stack" id="work-list-stack"></div>
-  <div class="work-list-end-cta">
-    <p>Have a project in mind?</p>
-    <a href="/contact" class="btn-primary">Start a conversation</a>
-  </div>
 </div>
 
 <div id="project-root"></div>
@@ -276,6 +283,62 @@
   const listPage = document.getElementById('work-list-page');
   const projectRoot = document.getElementById('project-root');
   const footerEl = document.getElementById('footer');
+  var SITE_ORIGIN = 'https://jordancroome.com.au';
+  var DEFAULT_OG_IMAGE = SITE_ORIGIN + '/images/uploads/hero-1.webp';
+
+  function setMetaProperty(prop, content) {
+    var el = document.querySelector('meta[property="' + prop + '"]');
+    if (el) el.setAttribute('content', content);
+  }
+  function setMetaName(name, content) {
+    var el = document.querySelector('meta[name="' + name + '"]');
+    if (el) el.setAttribute('content', content);
+  }
+  function setSeoNoindex() {
+    setMetaName('robots', 'noindex, follow');
+  }
+  function applyWorkIndexSeo() {
+    document.title = 'Work — Jordan Croome';
+    var link = document.querySelector('link[rel="canonical"]');
+    if (link) link.setAttribute('href', SITE_ORIGIN + '/work');
+    setMetaName('description', 'Selected product and brand design work by Jordan Croome.');
+    setMetaName('robots', 'index, follow');
+    setMetaProperty('og:title', 'Work — Jordan Croome');
+    setMetaProperty('og:description', 'Selected product and brand design work by Jordan Croome.');
+    setMetaProperty('og:url', SITE_ORIGIN + '/work');
+    setMetaName('twitter:title', 'Work — Jordan Croome');
+    setMetaName('twitter:description', 'Selected product and brand design work by Jordan Croome.');
+    setMetaProperty('og:image', DEFAULT_OG_IMAGE);
+    setMetaName('twitter:image', DEFAULT_OG_IMAGE);
+  }
+  function applyCaseStudySeo(project, slug) {
+    var url = SITE_ORIGIN + '/work/' + slug;
+    var pageTitle = (project.client || project.title || 'Project') + ' — Jordan Croome';
+    var desc = project.meta_description;
+    if (!desc) {
+      var raw = (project.tagline || project.description || '').replace(/\s+/g, ' ').trim();
+      desc = raw
+        ? raw.slice(0, 155) + (raw.length > 155 ? '…' : '')
+        : 'Case study by Jordan Croome — product design for ' + (project.client || 'leading teams') + '.';
+    }
+    document.title = pageTitle;
+    setMetaName('description', desc);
+    setMetaName('robots', 'index, follow');
+    var clink = document.querySelector('link[rel="canonical"]');
+    if (clink) clink.setAttribute('href', url);
+    setMetaProperty('og:title', pageTitle);
+    setMetaProperty('og:description', desc);
+    setMetaProperty('og:url', url);
+    setMetaName('twitter:title', pageTitle);
+    setMetaName('twitter:description', desc);
+    var img = project.image || project.collage_image;
+    var ogImg = DEFAULT_OG_IMAGE;
+    if (img) {
+      ogImg = img.indexOf('http') === 0 ? img : SITE_ORIGIN + (img.charAt(0) === '/' ? img : '/' + img);
+    }
+    setMetaProperty('og:image', ogImg);
+    setMetaName('twitter:image', ogImg);
+  }
 
   function loadJSON(path) {
     return fetch(path).then(r => r.ok ? r.json() : null).catch(() => null);
@@ -373,7 +436,7 @@
 
   if (onWorkIndex) {
     document.body.classList.add('mode-list');
-    document.title = 'Work — Jordan Croome';
+    applyWorkIndexSeo();
     listPage.hidden = false;
     projectRoot.style.display = 'none';
     showFooter();
@@ -402,8 +465,9 @@
       const stack = document.getElementById('work-list-stack');
       stack.innerHTML = projects.map(function(p, i) {
         const grad = GRADIENTS[i % GRADIENTS.length];
+        var imgAlt = [p.client, p.title].filter(Boolean).join(' — ') || 'Project';
         const media = p.image
-          ? '<img src="' + escape(p.image) + '" alt="" loading="lazy" />'
+          ? '<img src="' + escape(p.image) + '" alt="' + escape(imgAlt) + '" loading="lazy" />'
           : '<div class="work-list-ph ' + grad + '"></div>';
         return '<a href="/work/' + escape(p.slug) + '" class="work-list-item" data-category="' + escape(p.category || '') + '">' +
           '<div class="work-list-media">' + media + '</div>' +
@@ -435,6 +499,7 @@
   }
 
   if (!slug) {
+    setSeoNoindex();
     projectRoot.innerHTML = '<div class="project-error"><h1>Page not found</h1><p>Try the work index.</p><a href="/work" class="btn-primary">View work</a></div>';
     if (typeof window.applyPageReveal === 'function') window.applyPageReveal(projectRoot);
     showFooter();
@@ -457,17 +522,14 @@
     .then(r => r.ok ? r.json() : null)
     .then(function(project) {
       if (!project) {
+        setSeoNoindex();
         projectRoot.innerHTML = '<div class="project-error"><h1>Project not found</h1><p>We couldn\'t find that case study.</p><a href="/work" class="btn-primary">All work</a></div>';
         if (typeof window.applyPageReveal === 'function') window.applyPageReveal(projectRoot);
         showFooter();
         return;
       }
 
-      document.title = (project.client || project.title || 'Project') + ' — Jordan Croome';
-      if (project.meta_description) {
-        var m = document.querySelector('meta[name="description"]');
-        if (m) m.setAttribute('content', project.meta_description);
-      }
+      applyCaseStudySeo(project, slug);
 
       var client = project.client || '';
       var h1Source = project.case_h1 || client || project.title || 'Project';
