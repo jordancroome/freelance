@@ -1,11 +1,18 @@
 {
-  "title": "Brand Identity for Climate Tech Startup",
-  "client": "Cairos",
-  "category": "brand",
-  "category_label": "Brand · Startup",
-  "image": "/images/uploads/cairos.jpg",
-  "order": 5,
+  "challenge": "Stand apart from the generic aesthetics of Australian real estate without losing the trust signals that category buyers expect. Modern but grounded — a brand that could work on a For Sale board as convincingly as on a digital ad.",
+  "approach": "The M-arch motif — structural, architectural, immediately ownable — formed the foundation of the identity. A teal-green palette positioned Marsh as fresh and forward-thinking. Every touchpoint was designed to convert, with a free property appraisal CTA as the central mechanic across digital, print, and signage.",
+  "client": "Marsh Property",
+  "next_project": {
+    "slug": "marsh-property",
+    "title": "Marsh Property"
+  },
   "featured": true,
+  "order": -5,
   "url": "",
-  "description": "Brand identity for a Cairns-based climate technology startup."
+  "category_label": "Brand · Website · AI Workflows",
+  "title": "Branding Refresh and Website",
+  "image": "/images/uploads/hero-1.webp",
+  "description": "Brand identity for a Cairns-based climate technology startup.",
+  "year": "2026",
+  "category": "brand"
 }
