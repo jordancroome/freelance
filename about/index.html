@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Jordan Croome</title>
+  <meta name="description" content="Product designer based between Melbourne and Cairns. Senior agency experience without agency overhead." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f0ede8;--fg:#0e0e0e;--mid:#555;--accent:#ff6b00;--serif:'Instrument Serif',serif;--sans:'DM Sans',sans-serif;--ease:cubic-bezier(0.16,1,0.3,1)}
+    body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-weight:300;line-height:1.5}
+    a{color:inherit;text-decoration:none}
+    ::selection{background:var(--accent);color:#000}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:24px 40px;background:rgba(240,237,232,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(14,14,14,.08)}
+    .nav-logo{font-family:var(--serif);font-size:18px}.nav-logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:36px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;list-style:none}
+    .nav-links a{position:relative}.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s var(--ease)}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+    .nav-cta{font-size:13px;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(14,14,14,.25);padding:10px 22px;border-radius:100px}.nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#000}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}.hamburger span{display:block;width:24px;height:1px;background:var(--fg)}
+    #mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:90;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .4s}
+    #mobile-menu.open{opacity:1;pointer-events:all}#mobile-menu a{font-family:var(--serif);font-size:clamp(32px,8vw,56px)}
+    #about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:120px 40px 100px;max-width:1280px;margin:0 auto;border-top:1px solid rgba(14,14,14,.08)}
+    .about-image{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px}
+    .about-image-bg{width:100%;height:100%;background:linear-gradient(160deg,#1a2a3a,#0d151e 50%,#1a0d1a);display:flex;align-items:center;justify-content:center}
+    .about-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .about-avatar{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,#ff6b00,#e55a00);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:56px;color:#000}
+    .about-badge{position:absolute;bottom:24px;left:24px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border:1px solid rgba(14,14,14,.12);padding:14px 18px;border-radius:12px;z-index:2}
+    .about-badge-title{font-size:13px;font-weight:500}.about-badge-sub{font-size:11px;color:var(--mid);margin-top:3px}
+    .section-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:48px;display:flex;align-items:center;gap:12px}
+    .section-label::before{content:'';width:28px;height:1px;background:var(--mid)}
+    .section-title{font-family:var(--serif);font-size:clamp(36px,5vw,56px);line-height:1.05;letter-spacing:-.03em;margin-bottom:32px}
+    .section-title em{font-style:italic;color:var(--accent)}
+    .about-text{font-size:15px;color:var(--mid);line-height:1.8}.about-text p+p{margin-top:18px}
+    .about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+    .tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:100px;border:1px solid rgba(14,14,14,.2);color:var(--mid)}
+    .about-stats{display:flex;gap:40px;margin-top:40px;flex-wrap:wrap}
+    .stat-num{font-family:var(--serif);font-size:40px;color:var(--accent)}.stat-label{font-size:12px;color:var(--mid);margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#000;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:14px 28px;border-radius:100px;font-weight:500;margin-top:32px}
+    footer{border-top:1px solid rgba(14,14,14,.12);padding:64px 40px 48px}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:64px}
+    .footer-logo{font-family:var(--serif);font-size:22px}.footer-logo span{color:var(--accent)}
+    .footer-tagline{font-size:14px;color:var(--mid)}.footer-col h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:20px}
+    .footer-col ul{list-style:none;gap:12px;display:flex;flex-direction:column}.footer-col a{font-size:14px;color:var(--mid)}.footer-col a:hover{color:var(--accent)}
+    .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(14,14,14,.08);padding-top:24px;font-size:12px;color:var(--mid)}
+    @media(max-width:768px){nav{padding:18px 20px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}#about{grid-template-columns:1fr;padding:100px 20px 64px}.about-image{aspect-ratio:1/1}.footer-top{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Jordan Croome<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/work">Work</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/about" class="active">About</a></li>
+    <li><a href="/writing">Writing</a></li>
+  </ul>
+  <a href="/contact" class="nav-cta" id="nav-cta">Start a project</a>
+  <div class="hamburger" id="hb"><span></span><span></span><span></span></div>
+</nav>
+<div id="mobile-menu">
+  <a href="/">Home</a><a href="/work">Work</a><a href="/services">Services</a><a href="/about">About</a><a href="/writing">Writing</a><a href="/contact">Contact</a>
+</div>
+<section id="about">
+  <div class="about-image">
+    <div class="about-image-bg" id="about-img-wrap"><div class="about-avatar" id="about-avatar">J</div></div>
+    <div class="about-badge"><div class="about-badge-title">Jordan Croome</div><div class="about-badge-sub">Product Designer</div></div>
+  </div>
+  <div>
+    <div class="section-label">About</div>
+    <h1 class="section-title" id="about-heading">The designer <em>behind</em> the work.</h1>
+    <div class="about-text" id="about-text"><p>Loading…</p></div>
+    <div class="about-tags" id="about-tags"></div>
+    <div class="about-stats" id="about-stats"></div>
+    <a href="/contact" class="btn-primary">Get in touch</a>
+  </div>
+</section>
+<footer>
+  <div class="footer-top">
+    <div><a href="/" class="footer-logo" style="display:inline-block;color:inherit">Jordan Croome<span>.</span></a><div class="footer-tagline" id="ftag"></div></div>
+    <div class="footer-col"><h4>Navigate</h4><ul><li><a href="/work">Work</a></li><li><a href="/services">Services</a></li><li><a href="/about">About</a></li><li><a href="/writing">Writing</a></li><li><a href="/contact">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span id="fcopy">© 2025 Jordan Croome.</span></div>
+</footer>
+<script>
+async function load(p){try{const r=await fetch('/'+p);return r.ok?await r.json():null}catch{return null}}
+load('content/about.json').then(a=>{
+  if(!a)return;
+  document.getElementById('about-heading').innerHTML=a.heading.replace(/behind/,'<em>behind</em>');
+  document.getElementById('about-text').innerHTML=`<p>${a.para1}</p><p>${a.para2}</p><p>${a.para3}</p>`;
+  if(a.photo){document.getElementById('about-img-wrap').innerHTML=`<img src="${a.photo}" alt="Jordan Croome"/>`;}
+  (a.tags||[]).forEach(t=>{const s=document.createElement('span');s.className='tag';s.textContent=t;document.getElementById('about-tags').appendChild(s);});
+  const st=document.getElementById('about-stats');(a.stats||[]).forEach(s=>{st.innerHTML+=`<div><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`;});
+});
+load('content/footer.json').then(f=>{if(f){if(f.tagline)document.getElementById('ftag').textContent=f.tagline;if(f.copyright)document.getElementById('fcopy').textContent=f.copyright}});
+load('content/hero.json').then(h=>{if(h&&h.cta_primary)document.getElementById('nav-cta').textContent=h.cta_primary});
+document.getElementById('hb').onclick=()=>document.getElementById('mobile-menu').classList.toggle('open');
+</script>
+</body>
+</html>

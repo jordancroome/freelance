@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project — Jordan Croome</title>
-  <meta name="description" content="Selected project by Jordan Croome, product designer." />
+  <title>Work — Jordan Croome</title>
+  <meta name="description" content="Selected product and brand design work by Jordan Croome." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
@@ -23,12 +23,14 @@
     img { display: block; width: 100%; }
     ::selection { background: var(--accent); color: #000; }
 
-    /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; background: rgba(240,237,232,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14,14,14,.08); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; transition: background .4s, border-color .4s; }
+    nav.scrolled, body.mode-list nav { background: rgba(240,237,232,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14,14,14,.08); }
+    body.mode-case nav { background: rgba(240,237,232,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14,14,14,.08); }
     .nav-logo { font-family: var(--serif); font-size: 18px; letter-spacing: -.02em; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 36px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; list-style: none; }
     .nav-links a { position: relative; }
+    .nav-links a.active::after { width: 100%; }
     .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width .3s var(--ease); }
     .nav-links a:hover::after { width: 100%; }
     .nav-cta { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; border: 1px solid rgba(14,14,14,.25); padding: 10px 22px; border-radius: 100px; transition: background .25s, border-color .25s, color .25s; }
@@ -41,54 +43,72 @@
 
     .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #000; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 14px 28px; border-radius: 100px; font-weight: 500; transition: transform .25s var(--ease), box-shadow .25s; }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,107,0,.25); }
-    .btn-ghost { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; opacity: .7; transition: opacity .2s, gap .25s var(--ease); }
-    .btn-ghost:hover { opacity: 1; gap: 14px; }
 
-    /* ─── CASE STUDY HERO (Instrument Oura style) ─── */
-    .case-hero { padding: 140px 40px 80px; max-width: 900px; margin: 0 auto; }
-    .case-hero-back { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); margin-bottom: 48px; transition: color .2s, gap .25s var(--ease); }
+    /* ─── WORK INDEX (full-bleed stack, Instrument-style) ─── */
+    body.mode-list { background: var(--bg); }
+    .work-list-page { padding-top: 96px; }
+    .work-list-header { padding: 48px 40px 56px; max-width: 1200px; margin: 0 auto; }
+    .work-list-label { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 20px; }
+    .work-list-title { font-family: var(--serif); font-size: clamp(56px,12vw,120px); line-height: .95; letter-spacing: -.04em; margin-bottom: 28px; }
+    .work-list-title em { font-style: italic; color: var(--accent); }
+    .work-list-intro { font-size: clamp(16px,1.6vw,19px); color: var(--mid); max-width: 520px; line-height: 1.65; margin-bottom: 40px; }
+    .work-list-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-btn { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 10px 20px; border-radius: 100px; border: 1px solid rgba(14,14,14,.2); background: transparent; color: var(--mid); cursor: pointer; transition: all .2s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+    .work-list-stack { display: flex; flex-direction: column; gap: 0; }
+    .work-list-item { position: relative; display: block; min-height: 78vh; max-height: 92vh; overflow: hidden; color: #fff; }
+    .work-list-item .work-list-media { position: absolute; inset: 0; transition: transform 1s var(--ease); }
+    .work-list-item:hover .work-list-media { transform: scale(1.04); }
+    .work-list-item img { width: 100%; height: 100%; object-fit: cover; }
+    .work-list-item .work-list-ph { width: 100%; height: 100%; min-height: 78vh; }
+    .work-list-item .work-list-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 45%, transparent 70%); pointer-events: none; }
+    .work-list-item .work-list-meta { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(32px,6vw,72px) clamp(24px,5vw,56px); z-index: 2; }
+    .work-list-item .work-list-cat { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .work-list-item .work-list-name { font-family: var(--serif); font-size: clamp(28px,5vw,52px); line-height: 1.1; letter-spacing: -.02em; max-width: 900px; }
+    .work-list-item .work-list-arrow { position: absolute; top: clamp(24px,4vw,40px); right: clamp(24px,4vw,40px); width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; transition: border-color .25s, background .25s; }
+    .work-list-item:hover .work-list-arrow { border-color: var(--accent); background: rgba(255,255,255,.08); }
+    .work-list-end-cta { text-align: center; padding: 100px 40px; border-top: 1px solid rgba(14,14,14,.08); }
+    .work-list-end-cta p { color: var(--mid); margin-bottom: 24px; font-size: 15px; }
+
+    /* ─── CASE STUDY ─── */
+    body.mode-case .work-list-page { display: none !important; }
+    #project-root:not(:empty) { display: block; }
+    .case-wrap { max-width: 1200px; margin: 0 auto; }
+    .case-hero { padding: 120px 40px 48px; }
+    .case-hero-back { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); margin-bottom: 40px; transition: color .2s, gap .25s var(--ease); }
     .case-hero-back:hover { color: var(--accent); gap: 12px; }
-    .case-hero-tag { font-size: 13px; color: var(--mid); margin-bottom: 24px; }
+    .case-hero-tag { font-size: 13px; color: var(--mid); margin-bottom: 20px; }
     .case-hero-tag span { color: var(--accent); }
-    .case-hero-title { font-family: var(--serif); font-size: clamp(48px,10vw,96px); line-height: 1; letter-spacing: -.04em; margin-bottom: 32px; }
+    .case-hero-title { font-family: var(--serif); font-size: clamp(40px,8vw,88px); line-height: 1.02; letter-spacing: -.04em; margin-bottom: 28px; max-width: 920px; }
     .case-hero-title strong { font-weight: 400; color: var(--accent); }
-    .case-hero-intro { font-size: clamp(17px,1.8vw,20px); line-height: 1.6; color: var(--mid); max-width: 680px; }
+    .case-hero-intro { font-size: clamp(17px,1.8vw,21px); line-height: 1.65; color: var(--mid); max-width: 640px; }
 
-    /* ─── HERO IMAGE (full-bleed below intro) ─── */
-    .case-hero-image { margin: 80px -40px 0; width: calc(100% + 80px); max-width: none; }
-    .case-hero-image img { width: 100%; height: auto; max-height: 85vh; object-fit: cover; }
-    .case-hero-image .placeholder { width: 100%; height: 60vh; min-height: 400px; background: linear-gradient(160deg, #1a2a3a, #0d151e 50%, #1a0d1a); }
+    .case-hero-image { margin: 64px 0 0; width: 100vw; margin-left: calc(50% - 50vw); position: relative; }
+    .case-hero-image img { width: 100%; height: auto; max-height: 88vh; object-fit: cover; display: block; }
+    .case-hero-image .placeholder { width: 100%; height: min(72vh, 720px); min-height: 400px; background: linear-gradient(160deg, #1a2a3a, #0d151e 50%, #1a0d1a); }
 
-    /* ─── SECTIONS (Instrument-style) ─── */
-    .case-section { max-width: 720px; margin: 0 auto; padding: 100px 40px 0; }
-    .case-section:first-of-type { padding-top: 100px; }
-    .case-section-num { font-family: var(--serif); font-size: 48px; color: rgba(14,14,14,.08); line-height: 1; margin-bottom: 40px; }
-    .case-section h2 { font-family: var(--serif); font-size: clamp(28px,4vw,42px); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 28px; }
-    .case-section p { font-size: clamp(16px,1.5vw,18px); line-height: 1.8; color: var(--mid); }
-    .case-section p + p { margin-top: 24px; }
-
-    /* Our Roles */
-    .case-roles { display: grid; grid-template-columns: 1fr; gap: 48px; margin-top: 32px; }
-    .case-roles ul { list-style: none; }
-    .case-roles li { font-size: 15px; color: var(--mid); padding: 8px 0; border-bottom: 1px solid rgba(14,14,14,.08); }
+    .case-section { max-width: 720px; margin: 0 auto; padding: 88px 40px 0; }
+    .case-section-num { font-family: var(--serif); font-size: 40px; color: rgba(14,14,14,.06); line-height: 1; margin-bottom: 32px; }
+    .case-section h2 { font-family: var(--serif); font-size: clamp(26px,3.5vw,40px); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 24px; }
+    .case-section p { font-size: clamp(16px,1.5vw,18px); line-height: 1.85; color: var(--mid); }
+    .case-section p + p { margin-top: 22px; }
+    .case-roles ul { list-style: none; margin-top: 8px; }
+    .case-roles li { font-size: 15px; color: var(--mid); padding: 10px 0; border-bottom: 1px solid rgba(14,14,14,.08); }
     .case-roles li:last-child { border-bottom: none; }
+    .case-cta { max-width: 720px; margin: 0 auto; padding: 48px 40px 0; }
 
-    /* Related case studies */
-    .case-related { padding: 120px 40px 100px; border-top: 1px solid rgba(14,14,14,.08); }
-    .case-related h2 { font-family: var(--serif); font-size: clamp(32px,5vw,48px); margin-bottom: 56px; text-align: center; }
-    .case-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
+    .case-related { padding: 100px 40px 80px; border-top: 1px solid rgba(14,14,14,.08); margin-top: 80px; }
+    .case-related h2 { font-family: var(--serif); font-size: clamp(28px,4vw,44px); margin-bottom: 48px; text-align: center; }
+    .case-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
     .case-related-card { display: block; background: #fff; border: 1px solid rgba(14,14,14,.08); border-radius: 8px; overflow: hidden; transition: transform .3s var(--ease), box-shadow .3s; }
-    .case-related-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px rgba(0,0,0,.4); }
+    .case-related-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(14,14,14,.1); }
     .case-related-card img { aspect-ratio: 16/10; object-fit: cover; }
     .case-related-card .placeholder { aspect-ratio: 16/10; background: linear-gradient(135deg, #1a2a3a, #0d151e); }
-    .case-related-card .info { padding: 24px; }
+    .case-related-card .info { padding: 22px; }
     .case-related-card .cat { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .case-related-card .title { font-family: var(--serif); font-size: 20px; line-height: 1.25; }
+    .case-related-card .title { font-family: var(--serif); font-size: 19px; line-height: 1.25; color: var(--fg); }
 
-    /* Project CTA */
-    .case-cta { margin-top: 64px; }
-
-    /* FOOTER */
     footer { border-top: 1px solid rgba(14,14,14,.12); padding: 64px 40px 48px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
     .footer-logo { font-family: var(--serif); font-size: 22px; margin-bottom: 16px; }
@@ -103,19 +123,26 @@
     .footer-socials a { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--mid); transition: color .2s; }
     .footer-socials a:hover { color: var(--accent); }
 
-    /* ERROR STATE */
     .project-error { padding: 140px 40px; text-align: center; max-width: 480px; margin: 0 auto; }
     .project-error h1 { font-family: var(--serif); font-size: 32px; margin-bottom: 16px; }
     .project-error p { color: var(--mid); margin-bottom: 24px; }
+
+    .card-bg-1 { background: linear-gradient(135deg,#1e3a5f,#0d1f35); }
+    .card-bg-2 { background: linear-gradient(135deg,#2d1b4e,#160d25); }
+    .card-bg-3 { background: linear-gradient(135deg,#1a3a2a,#0d1f15); }
+    .card-bg-4 { background: linear-gradient(135deg,#3d2010,#1f0f05); }
+    .card-bg-5 { background: linear-gradient(135deg,#1a1a2e,#0d0d16); }
+    .card-bg-6 { background: linear-gradient(135deg,#2e2a1e,#18150e); }
 
     @media (max-width: 768px) {
       nav { padding: 18px 20px; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
-      .case-hero { padding: 100px 20px 56px; }
-      .case-hero-image { margin: 48px -20px 0; width: calc(100% + 40px); }
+      .work-list-header { padding: 32px 20px 40px; }
+      .work-list-item { min-height: 70vh; }
+      .case-hero { padding: 100px 20px 40px; }
       .case-section { padding: 64px 20px 0; }
-      .case-related { padding: 80px 20px 64px; }
+      .case-related { padding: 72px 20px 64px; }
       .case-related-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; }
     }
@@ -126,48 +153,67 @@
 <nav id="nav">
   <a href="/" class="nav-logo">Jordan Croome<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="/#work">Work</a></li>
-    <li><a href="/#services">Services</a></li>
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#latest">Writing</a></li>
+    <li><a href="/work" class="active">Work</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/writing">Writing</a></li>
   </ul>
-  <a href="/#contact" class="nav-cta">Start a project</a>
+  <a href="/contact" class="nav-cta" id="nav-cta-btn">Start a project</a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
 <div id="mobile-menu">
   <a href="/">Home</a>
-  <a href="/#work">Work</a>
-  <a href="/#services">Services</a>
-  <a href="/#about">About</a>
-  <a href="/#latest">Writing</a>
-  <a href="/#contact">Contact</a>
+  <a href="/work">Work</a>
+  <a href="/services">Services</a>
+  <a href="/about">About</a>
+  <a href="/writing">Writing</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<div id="work-list-page" class="work-list-page" hidden>
+  <header class="work-list-header">
+    <p class="work-list-label">Portfolio</p>
+    <h1 class="work-list-title">Selected <em>work</em></h1>
+    <p class="work-list-intro" id="work-list-intro">Product design, brand systems, and digital experiences for founders and growing teams.</p>
+    <div class="work-list-filters" id="work-list-filters">
+      <button type="button" class="filter-btn active" data-filter="all">All</button>
+      <button type="button" class="filter-btn" data-filter="product">Product</button>
+      <button type="button" class="filter-btn" data-filter="brand">Brand</button>
+      <button type="button" class="filter-btn" data-filter="ux">UX</button>
+    </div>
+  </header>
+  <div class="work-list-stack" id="work-list-stack"></div>
+  <div class="work-list-end-cta">
+    <p>Have a project in mind?</p>
+    <a href="/contact" class="btn-primary">Start a conversation</a>
+  </div>
 </div>
 
 <div id="project-root"></div>
 
-<footer id="footer" style="display: none;">
+<footer id="footer">
   <div class="footer-top">
     <div>
-      <div class="footer-logo">Jordan Croome<span>.</span></div>
+      <a href="/" class="footer-logo" style="display:inline-block;color:inherit;">Jordan Croome<span>.</span></a>
       <div class="footer-tagline" id="footer-tagline">Senior product design for founders and growing businesses.</div>
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul>
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/#about">About</a></li>
-        <li><a href="/#latest">Writing</a></li>
-        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/writing">Writing</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="/#services">Product Design</a></li>
-        <li><a href="/#services">UX Strategy</a></li>
-        <li><a href="/#services">Brand &amp; Systems</a></li>
+        <li><a href="/services">Product Design</a></li>
+        <li><a href="/services">UX Strategy</a></li>
+        <li><a href="/services">Brand &amp; Systems</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -191,34 +237,30 @@
 
 <script>
 (function() {
-  const root = document.getElementById('project-root');
-  const pathParts = location.pathname.split('/').filter(Boolean);
-  const slug = pathParts[1] || pathParts[0];
+  const FALLBACK = [
+    'content/projects/operata.json','content/projects/northbay-studio.json','content/projects/tropic-escapes.json',
+    'content/projects/metriq.json','content/projects/cairos.json','content/projects/holdfirst.json','content/projects/less-hassle-more-hustle.json',
+  ];
+  const GRADIENTS = ['card-bg-1','card-bg-2','card-bg-3','card-bg-4','card-bg-5','card-bg-6'];
+  const parts = location.pathname.replace(/\/$/, '').split('/').filter(Boolean);
+  const onWorkIndex = parts.length === 1 && parts[0] === 'work';
+  const slug = (parts.length === 2 && parts[0] === 'work') ? parts[1] : null;
 
-  if (!slug || slug === 'work') {
-    root.innerHTML = '<div class="project-error"><h1>Project not found</h1><p>This project may have been moved or doesn\'t exist.</p><a href="/#work" class="btn-primary">View all work</a></div>';
-    document.getElementById('footer').style.display = 'block';
-    return;
-  }
+  const listPage = document.getElementById('work-list-page');
+  const projectRoot = document.getElementById('project-root');
+  const footerEl = document.getElementById('footer');
 
   function loadJSON(path) {
     return fetch(path).then(r => r.ok ? r.json() : null).catch(() => null);
   }
-
   function escape(s) {
     if (!s) return '';
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
-
   function paragraphs(text) {
     if (!text) return '';
     return text.split(/\n\n|\n/).filter(Boolean).map(p => '<p>' + escape(p) + '</p>').join('');
   }
-
   function titleWithAccent(title) {
     if (!title) return 'Project';
     var parts = title.trim().split(/\s+/);
@@ -227,71 +269,138 @@
     return escape(parts.join(' ')) + ' <strong>' + escape(last) + '</strong>';
   }
 
+  function showFooter() {
+    loadJSON('/content/footer.json').then(function(footer) {
+      if (footer && footer.tagline) document.getElementById('footer-tagline').textContent = footer.tagline;
+      if (footer && footer.copyright) document.getElementById('footer-copyright').textContent = footer.copyright;
+      if (footer && footer.linkedin) document.querySelectorAll('a[href*="linkedin"]').forEach(function(a) { a.href = footer.linkedin; });
+      if (footer && footer.dribbble) document.querySelectorAll('a[href*="dribbble"]').forEach(function(a) { a.href = footer.dribbble; });
+    });
+    var heroCta = loadJSON('/content/hero.json');
+    heroCta.then(function(h) { if (h && h.cta_primary) document.getElementById('nav-cta-btn').textContent = h.cta_primary; });
+  }
+
+  if (onWorkIndex) {
+    document.body.classList.add('mode-list');
+    document.title = 'Work — Jordan Croome';
+    listPage.hidden = false;
+    projectRoot.style.display = 'none';
+    showFooter();
+
+    var paths = FALLBACK.slice();
+    fetch('/api/projects-list')
+      .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function(list) {
+        if (list.paths && list.paths.length) paths = list.paths;
+        return Promise.all(paths.map(loadJSON));
+      })
+      .catch(function() {
+        paths = FALLBACK.slice();
+        return Promise.all(FALLBACK.map(loadJSON));
+      })
+      .then(function(projectData) {
+      const projects = [];
+      projectData.forEach(function(p, i) {
+        if (!p) return;
+        var path = paths[i];
+        if (!path) return;
+        p.slug = path.replace('content/projects/', '').replace('.json', '');
+        projects.push(p);
+      });
+      projects.sort(function(a,b) { return (a.order||99)-(b.order||99); });
+      const stack = document.getElementById('work-list-stack');
+      stack.innerHTML = projects.map(function(p, i) {
+        const grad = GRADIENTS[i % GRADIENTS.length];
+        const media = p.image
+          ? '<img src="' + escape(p.image) + '" alt="" loading="lazy" />'
+          : '<div class="work-list-ph ' + grad + '"></div>';
+        return '<a href="/work/' + escape(p.slug) + '" class="work-list-item" data-category="' + escape(p.category || '') + '">' +
+          '<div class="work-list-media">' + media + '</div>' +
+          '<div class="work-list-shade"></div>' +
+          '<div class="work-list-arrow"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>' +
+          '<div class="work-list-meta">' +
+            '<div class="work-list-cat">' + escape(p.category_label || p.category || 'Project') + '</div>' +
+            '<h2 class="work-list-name">' + escape(p.client || '') + (p.client && p.title ? ' — ' : '') + escape(p.title || '') + '</h2>' +
+          '</div></a>';
+      }).join('');
+
+      document.querySelectorAll('#work-list-filters .filter-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('#work-list-filters .filter-btn').forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var f = btn.dataset.filter;
+          stack.querySelectorAll('.work-list-item').forEach(function(el) {
+            var show = f === 'all' || el.dataset.category === f;
+            el.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    });
+    return;
+  }
+
+  if (!slug) {
+    projectRoot.innerHTML = '<div class="project-error"><h1>Page not found</h1><p>Try the work index.</p><a href="/work" class="btn-primary">View work</a></div>';
+    showFooter();
+    return;
+  }
+
+  document.body.classList.add('mode-case');
+  listPage.hidden = true;
+
   fetch('/content/projects/' + slug + '.json')
     .then(r => r.ok ? r.json() : null)
     .then(function(project) {
       if (!project) {
-        root.innerHTML = '<div class="project-error"><h1>Project not found</h1><p>We couldn\'t find a project with that URL.</p><a href="/#work" class="btn-primary">View all work</a></div>';
-        document.getElementById('footer').style.display = 'block';
+        projectRoot.innerHTML = '<div class="project-error"><h1>Project not found</h1><p>We couldn\'t find that case study.</p><a href="/work" class="btn-primary">All work</a></div>';
+        showFooter();
         return;
       }
 
       document.title = (project.title || project.client || 'Project') + ' — Jordan Croome';
-
       var intro = project.intro || (project.description ? project.description.split(/\n/)[0] : '') || '';
       var tag = project.category ? '#' + project.category : (project.category_label || '');
-
-      var heroImage = '';
-      if (project.image) {
-        heroImage = '<div class="case-hero-image"><img src="' + escape(project.image) + '" alt="" loading="eager" /></div>';
-      } else {
-        heroImage = '<div class="case-hero-image"><div class="placeholder"></div></div>';
-      }
+      var heroImage = project.image
+        ? '<div class="case-hero-image"><img src="' + escape(project.image) + '" alt="" loading="eager" /></div>'
+        : '<div class="case-hero-image"><div class="placeholder"></div></div>';
 
       var sections = [];
-      if (project.challenge) {
-        sections.push('<div class="case-section"><div class="case-section-num">0</div><h2>The Challenge</h2>' + paragraphs(project.challenge) + '</div>');
-      }
-      if (project.approach) {
-        sections.push('<div class="case-section"><div class="case-section-num">0</div><h2>Our Approach</h2>' + paragraphs(project.approach) + '</div>');
-      }
-      if (project.impact) {
-        sections.push('<div class="case-section"><div class="case-section-num">0</div><h2>The Impact</h2>' + paragraphs(project.impact) + '</div>');
-      }
+      if (project.challenge) sections.push('<div class="case-section"><div class="case-section-num">01</div><h2>The challenge</h2>' + paragraphs(project.challenge) + '</div>');
+      if (project.approach) sections.push('<div class="case-section"><div class="case-section-num">02</div><h2>Our approach</h2>' + paragraphs(project.approach) + '</div>');
+      if (project.impact) sections.push('<div class="case-section"><div class="case-section-num">03</div><h2>The impact</h2>' + paragraphs(project.impact) + '</div>');
       if (project.roles && project.roles.length) {
         var rolesList = project.roles.map(function(r) { return '<li>' + escape(r.role || r) + '</li>'; }).join('');
-        sections.push('<div class="case-section"><h2>Our Roles</h2><div class="case-roles"><ul>' + rolesList + '</ul></div></div>');
+        sections.push('<div class="case-section"><h2>Roles</h2><div class="case-roles"><ul>' + rolesList + '</ul></div></div>');
       }
       if (!project.challenge && !project.approach && !project.impact && (!project.roles || !project.roles.length) && project.description) {
-        sections.push('<div class="case-section"><h2>Overview</h2><div class="project-description">' + paragraphs(project.description) + '</div></div>');
+        sections.push('<div class="case-section"><h2>Overview</h2>' + paragraphs(project.description) + '</div>');
       } else if (project.description && (project.challenge || project.approach || project.impact)) {
-        sections.push('<div class="case-section"><h2>Overview</h2><div class="project-description">' + paragraphs(project.description) + '</div></div>');
+        sections.push('<div class="case-section"><h2>Overview</h2>' + paragraphs(project.description) + '</div>');
       }
 
-      var ctaBlock = project.url ? '<div class="case-cta"><a href="' + escape(project.url) + '" target="_blank" rel="noopener" class="btn-primary">View project <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>' : '';
+      var ctaBlock = project.url ? '<div class="case-cta"><a href="' + escape(project.url) + '" target="_blank" rel="noopener" class="btn-primary">View live site</a></div>' : '';
 
-      root.innerHTML =
-        '<a href="/#work" class="case-hero-back"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M7 1L1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Work</a>' +
+      projectRoot.innerHTML =
+        '<div class="case-wrap">' +
+        '<a href="/work" class="case-hero-back"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M7 1L1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> All work</a>' +
         '<div class="case-hero">' +
-          (tag ? '<div class="case-hero-tag">This is tagged with: <span>' + escape(tag) + '</span></div>' : '') +
-          '<h1 class="case-hero-title">' + (project.client ? escape(project.client) + ' ' : '') + titleWithAccent(project.title) + '</h1>' +
+          (tag ? '<div class="case-hero-tag">' + escape(tag) + '</div>' : '') +
+          '<h1 class="case-hero-title">' + (project.client ? escape(project.client) + ' — ' : '') + titleWithAccent(project.title) + '</h1>' +
           (intro ? '<p class="case-hero-intro">' + escape(intro) + '</p>' : '') +
-        '</div>' +
+        '</div></div>' +
         heroImage +
-        sections.join('') +
-        ctaBlock +
-        '<div class="case-related" id="case-related"><h2>Related Case Studies</h2><div class="case-related-grid" id="case-related-grid">Loading…</div></div>';
+        '<div class="case-wrap">' + sections.join('') + ctaBlock + '</div>' +
+        '<div class="case-related" id="case-related"><h2>More work</h2><div class="case-related-grid" id="case-related-grid">Loading…</div></div>';
 
-      document.getElementById('footer').style.display = 'block';
+      showFooter();
 
-      // Related projects
       fetch('/api/projects-list').then(r => r.json()).then(function(list) {
         var paths = (list.paths || []).filter(function(p) {
           var s = p.replace('content/projects/', '').replace('.json', '');
           return s && s !== slug;
         });
-        if (paths.length === 0) {
-          document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);">No other projects yet.</p>';
+        if (!paths.length) {
+          document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);grid-column:1/-1;">No other projects yet.</p>';
           return;
         }
         var toLoad = paths.slice(0, 6);
@@ -305,17 +414,10 @@
           });
           document.getElementById('case-related-grid').innerHTML = cards.length ? cards.join('') : '<p style="text-align:center;color:var(--mid);">No other projects yet.</p>';
         }).catch(function() {
-          document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);">Could not load related projects.</p>';
+          document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);">Could not load projects.</p>';
         });
       }).catch(function() {
         document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);">No other projects yet.</p>';
-      });
-
-      loadJSON('/content/footer.json').then(function(footer) {
-        if (footer && footer.tagline) document.getElementById('footer-tagline').textContent = footer.tagline;
-        if (footer && footer.copyright) document.getElementById('footer-copyright').textContent = footer.copyright;
-        if (footer && footer.linkedin) document.querySelectorAll('a[href*="linkedin"]').forEach(function(a) { a.href = footer.linkedin; });
-        if (footer && footer.dribbble) document.querySelectorAll('a[href*="dribbble"]').forEach(function(a) { a.href = footer.dribbble; });
       });
     });
 })();
@@ -328,6 +430,9 @@ if (hamburger && mobileMenu) {
     a.addEventListener('click', function() { mobileMenu.classList.remove('open'); });
   });
 }
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
 </script>
 </body>
 </html>

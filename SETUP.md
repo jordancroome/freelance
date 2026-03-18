@@ -16,7 +16,12 @@ This file (SETUP.md) is the reference for file structure, config, and managing t
 
 ```
 jordancroome/
-├── index.html              ← Main website
+├── index.html              ← Home (hero, statement, featured work, clients, testimonials)
+├── work/index.html         ← /work (project index) + /work/:slug (case studies via rewrite)
+├── services/index.html     ← /services
+├── about/index.html        ← /about
+├── writing/index.html      ← /writing
+├── contact/index.html      ← /contact
 ├── vercel.json             ← Vercel configuration (headers, rewrites)
 ├── package.json            ← Dependencies for CMS OAuth (simple-oauth2)
 ├── admin/
