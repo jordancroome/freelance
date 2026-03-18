@@ -1,11 +1,16 @@
 {
-  "title": "Onboarding Experience Design",
-  "client": "Holdfirst",
-  "category": "ux",
-  "category_label": "UX · Web App",
-  "image": "/images/uploads/holdfirst.jpg",
-  "order": 6,
+  "client": "Benchmark",
+  "next_project": {
+    "slug": "benchmark",
+    "title": "Benchmark"
+  },
   "featured": true,
+  "order": 6,
+  "collage_image": "/images/uploads/benchmark-collage.png",
   "url": "",
-  "description": "Onboarding flow design for a property management web app."
+  "category_label": "Branding",
+  "title": "A brand built on precision",
+  "image": "/images/uploads/holdfirst.jpg",
+  "description": "Onboarding flow design for a property management web app.",
+  "category": "brand"
 }
