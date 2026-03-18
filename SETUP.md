@@ -48,6 +48,8 @@ jordancroome/
 │   ├── projects/           ← One .json file per project
 │   ├── services/           ← One .json file per service
 │   └── testimonials/       ← One .json file per testimonial
+├── css/
+│   └── site-interactions.css  ← Shared footer, nav, button & form micro-interactions
 └── images/
     └── uploads/            ← CMS uploads images here
 ```
