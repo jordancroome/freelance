@@ -1,4 +1,5 @@
 {
+  "challenge": "Benchmark needed an identity that signalled rigour and precision without feeling cold — a brand that could live comfortably across a complex SaaS product, print collateral, and outbound campaign work, without losing coherence.",
   "client": "Benchmark",
   "next_project": {
     "slug": "benchmark",
@@ -10,7 +11,8 @@
   "url": "",
   "category_label": "Branding",
   "title": "A brand built on precision",
-  "image": "/images/uploads/holdfirst.jpg",
-  "description": "Onboarding flow design for a property management web app.",
+  "solution": "The identity was built on a single structural idea: the mark as measurement. A wordmark system derived from grid logic, paired with a restrained colour palette and a typographic hierarchy that scales from billboard to UI label. The design system was codified in Figma with documented tokens, making it immediately usable by the engineering team.",
+  "image": "/images/uploads/tom-rumble-7lvzoptxjou-unsplash.jpg",
+  "description": "",
   "category": "brand"
 }
