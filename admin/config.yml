@@ -92,7 +92,7 @@ collections:
         label: "Footer"
         file: "content/footer.json"
         fields:
-          - { label: "Tagline", name: "tagline", widget: "text" }
+          - { label: "(Unused) Tagline under logo", name: "tagline", widget: "text", required: false, hint: "Removed from site." }
           - { label: "(Unused) Footer strip fields", name: "cta_line", widget: "string", required: false, hint: "Strip removed site-wide" }
           - { label: "(Unused)", name: "cta_action", widget: "string", required: false }
           - { label: "(Unused)", name: "cta_href", widget: "string", required: false }

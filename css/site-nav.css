@@ -1,0 +1,197 @@
+/**
+ * Shared site header — same horizontal envelope as main content (1280px).
+ * Use with: <nav class="site-header site-header--opaque|ghost"> + .site-header__inner
+ */
+:root {
+  --site-header-max: 1280px;
+  --site-gutter-x: clamp(20px, 4vw, 40px);
+  --site-header-pad-y: 24px;
+}
+
+nav.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+.site-header__inner {
+  max-width: var(--site-header-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--site-header-pad-y) var(--site-gutter-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(12px, 2.5vw, 28px);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+nav.site-header.site-header--opaque {
+  background: rgba(240, 237, 232, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(14, 14, 14, 0.08);
+}
+
+/* Work: transparent until scroll; work index always solid */
+nav.site-header.site-header--ghost:not(.scrolled) {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body.mode-list nav.site-header.site-header--ghost,
+nav.site-header.site-header--ghost.scrolled {
+  background: rgba(240, 237, 232, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(14, 14, 14, 0.08);
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.nav-logo img {
+  height: 34px;
+  width: auto;
+  max-width: min(200px, 42vw);
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 3vw, 36px);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent, #ff6b00);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-cta {
+  flex-shrink: 0;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(14, 14, 14, 0.25);
+  padding: 10px 22px;
+  border-radius: 100px;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+  white-space: nowrap;
+}
+
+.nav-cta:hover {
+  background: var(--accent, #ff6b00);
+  border-color: var(--accent, #ff6b00);
+  color: #000;
+}
+
+.nav-cta.active {
+  background: var(--accent, #ff6b00);
+  border-color: var(--accent, #ff6b00);
+  color: #000;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 10px;
+  margin: -10px -10px -10px 0;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--fg, #0e0e0e);
+}
+
+#mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--bg, #f0ede8);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+#mobile-menu.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#mobile-menu a {
+  font-family: var(--serif, 'Instrument Serif', serif);
+  font-size: clamp(32px, 8vw, 56px);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --site-header-pad-y: 18px;
+    --site-gutter-x: 20px;
+  }
+
+  .site-header__inner .nav-links,
+  .site-header__inner > .nav-cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}

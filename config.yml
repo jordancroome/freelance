@@ -90,7 +90,7 @@ collections:
         label: "Footer"
         file: "content/footer.json"
         fields:
-          - { label: "Tagline", name: "tagline", widget: "text" }
+          - { label: "(Unused) Tagline under logo", name: "tagline", widget: "text", required: false, hint: "Removed from site; field kept for backwards compatibility." }
           - { label: "(Unused) Footer strip headline", name: "cta_line", widget: "string", required: false, hint: "Orange footer bar removed site-wide; field kept for backwards compatibility." }
           - { label: "(Unused) Footer strip button", name: "cta_action", widget: "string", required: false }
           - { label: "(Unused) Footer strip link", name: "cta_href", widget: "string", required: false }

@@ -30,6 +30,7 @@ jordancroome/
 ├── services/index.html     ← /services
 ├── about/index.html        ← /about
 ├── contact/index.html      ← /contact
+├── css/site-nav.css        ← Shared header (1280px inner width + gutters)
 ├── vercel.json             ← Vercel configuration (headers, rewrites)
 ├── package.json            ← Dependencies for CMS OAuth (simple-oauth2)
 ├── admin/
@@ -47,7 +48,7 @@ jordancroome/
 │   ├── about.json          ← About section + stats + tags
 │   ├── cta.json            ← Home contact band (email, Calendly) + /contact headline, body, note
 │   ├── contact-form.json   ← /contact enquiry form (intro, labels, Formspree URL or mailto fallback)
-│   ├── footer.json         ← Footer tagline, CTA strip, Instagram, email, location, copyright
+│   ├── footer.json         ← Footer: Instagram, email, location, copyright (legacy tagline/CTA strip fields unused)
 │   ├── projects/           ← One .json file per project
 │   ├── services/           ← One .json file per service
 │   └── testimonials/       ← One .json file per testimonial
@@ -173,7 +174,7 @@ Single-file settings that affect the whole site:
 | **About Section** | `content/about.json` | Heading, photo, bio paragraphs, stats numbers/labels, skill tags |
 | **Contact / CTA** | `content/cta.json` | **Home:** email, Calendly, band copy. **`/contact`:** headline, body, note (left column). **`email`** still sets where form error messages point. |
 | **Contact form** | `content/contact-form.json` | **`/contact`** — form sits beside the headline; **`form_intro`** appears above the fields. Default **`form_action`** is **`/api/contact`**. Or Formspree URL / **`mailto`**. |
-| **Footer** | `content/footer.json` | Tagline, CTA headline/button/link, Instagram, email, location line, copyright |
+| **Footer** | `content/footer.json` | Instagram, email, location line, copyright |
 
 To edit: open **Site Settings** in the CMS, then the section you want. Change fields and click **Publish** (or **Save**). The change is committed to GitHub and the site redeploys.
 
