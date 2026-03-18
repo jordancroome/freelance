@@ -33,8 +33,10 @@
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; transition: background .4s; }
     nav.scrolled { background: rgba(240,237,232,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14,14,14,.08); }
-    .nav-logo { font-family: var(--serif); font-size: 18px; letter-spacing: -.02em; }
-    .nav-logo span { color: var(--accent); }
+    .nav-logo { display: inline-flex; align-items: center; line-height: 0; }
+    .site-logo { height: 34px; width: auto; max-width: min(200px, 48vw); object-fit: contain; object-position: left center; display: block; }
+    .site-logo--footer { height: 38px; max-width: min(240px, 75vw); margin-bottom: 0; }
+    .site-logo--loader { height: 48px; max-width: min(280px, 85vw); margin: 0 auto; }
     .nav-links { display: flex; gap: 36px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; list-style: none; }
     .nav-links a { position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width .3s var(--ease); }
@@ -53,8 +55,7 @@
     /* LOADER */
     #loader { position: fixed; inset: 0; background: var(--bg); z-index: 1000; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px; transition: opacity .7s var(--ease); }
     #loader.done { opacity: 0; pointer-events: none; }
-    .loader-logo { font-family: var(--serif); font-size: 32px; color: var(--fg); }
-    .loader-logo span { color: var(--accent); }
+    .loader-logo { line-height: 0; }
     .loader-bar { width: 200px; height: 1px; background: rgba(14,14,14,.12); overflow: hidden; }
     .loader-fill { height: 100%; background: var(--accent); width: 0%; transition: width .8s var(--ease); }
     .loader-count { font-size: 12px; color: var(--mid); letter-spacing: .1em; }
@@ -233,8 +234,7 @@
     /* FOOTER */
     footer { border-top: 1px solid rgba(14,14,14,.12); padding: 64px 40px 48px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
-    .footer-logo { font-family: var(--serif); font-size: 22px; margin-bottom: 16px; }
-    .footer-logo span { color: var(--accent); }
+    .footer-logo { display: inline-block; line-height: 0; margin-bottom: 16px; }
     .footer-tagline { font-size: 14px; color: var(--mid); line-height: 1.65; }
     .footer-col h4 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mid); margin-bottom: 20px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -285,7 +285,7 @@
 <body>
 
 <div id="loader">
-  <div class="loader-logo">Jordan Croome<span>.</span></div>
+  <div class="loader-logo"><img src="/images/logo.svg" alt="" class="site-logo site-logo--loader" width="501" height="280" /></div>
   <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
   <div class="loader-count" id="loader-count">0%</div>
 </div>
@@ -296,7 +296,7 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="/" class="nav-logo">Jordan Croome<span>.</span></a>
+  <a href="/" class="nav-logo" aria-label="Jordan Croome home"><img src="/images/logo.svg" alt="" class="site-logo" width="501" height="280" /></a>
   <ul class="nav-links">
     <li><a href="/work">Work</a></li>
     <li><a href="/services">Services</a></li>
@@ -427,7 +427,7 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo">Jordan Croome<span>.</span></div>
+      <a href="/" class="footer-logo" aria-label="Jordan Croome home"><img src="/images/logo.svg" alt="" class="site-logo site-logo--footer" width="501" height="280" /></a>
       <div class="footer-tagline" id="footer-tagline">Senior product design for founders and growing businesses. Based between Melbourne and Cairns.</div>
     </div>
     <div class="footer-col">
