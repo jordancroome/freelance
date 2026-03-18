@@ -157,6 +157,8 @@
   </style>
   <link rel="stylesheet" href="/css/site-interactions.css" />
   <link rel="stylesheet" href="/css/site-footer.css" />
+  <link rel="stylesheet" href="/css/site-page-reveal.css" />
+  <script src="/js/page-reveal.js" defer></script>
 </head>
 <body>
 
@@ -412,6 +414,10 @@
           '</div></a>';
       }).join('');
 
+      if (typeof window.revealWorkListAfterInject === 'function') {
+        window.revealWorkListAfterInject();
+      }
+
       document.querySelectorAll('#work-list-filters .filter-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
           document.querySelectorAll('#work-list-filters .filter-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -429,6 +435,7 @@
 
   if (!slug) {
     projectRoot.innerHTML = '<div class="project-error"><h1>Page not found</h1><p>Try the work index.</p><a href="/work" class="btn-primary">View work</a></div>';
+    if (typeof window.applyPageReveal === 'function') window.applyPageReveal(projectRoot);
     showFooter();
     return;
   }
@@ -450,6 +457,7 @@
     .then(function(project) {
       if (!project) {
         projectRoot.innerHTML = '<div class="project-error"><h1>Project not found</h1><p>We couldn\'t find that case study.</p><a href="/work" class="btn-primary">All work</a></div>';
+        if (typeof window.applyPageReveal === 'function') window.applyPageReveal(projectRoot);
         showFooter();
         return;
       }
@@ -543,6 +551,11 @@
         ctaHtml +
         '<section class="case-next-section"><p class="case-next-label">Next project</p><div id="case-next-mount">Loading…</div></section>' +
         '</main>';
+
+      if (typeof window.applyPageReveal === 'function') {
+        var cm = projectRoot.querySelector('.case-main');
+        if (cm) window.applyPageReveal(cm);
+      }
 
       showFooter();
 

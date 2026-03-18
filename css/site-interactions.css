@@ -97,32 +97,6 @@ nav .nav-cta:focus-visible {
   transform: scale(0.98);
 }
 
-/* Newsletter submit */
-.email-submit {
-  cursor: pointer;
-  touch-action: manipulation;
-  transition:
-    transform var(--ux-fast) var(--ux-ease),
-    filter var(--ux-fast) ease,
-    box-shadow 0.3s var(--ux-ease);
-}
-
-.email-submit:hover {
-  filter: brightness(1.08);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.25);
-}
-
-.email-submit:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.email-submit:focus-visible {
-  outline: 2px solid var(--fg, #0e0e0e);
-  outline-offset: 2px;
-}
-
-.email-input:focus-visible,
 .cf-input:focus-visible,
 .cf-textarea:focus-visible {
   outline: 2px solid var(--accent, #ff6b00);
@@ -166,7 +140,6 @@ nav .nav-cta:focus-visible {
   nav .nav-cta,
   .btn-primary,
   .btn-outline,
-  .email-submit,
   .filter-btn {
     transition-duration: 0.01ms !important;
     transition-delay: 0s !important;

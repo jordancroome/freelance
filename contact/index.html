@@ -48,16 +48,12 @@
     .form-status{font-size:13px;line-height:1.5;margin:0}
     .form-status.ok{color:#1b4332}
     .form-status.err{color:#9d0208}.form-status.err a{color:var(--accent);text-decoration:underline}
-    #newsletter{border-top:1px solid rgba(14,14,14,.08);text-align:center;padding:64px 40px 80px}
-    #newsletter h2{font-family:var(--serif);font-size:clamp(22px,3vw,32px);line-height:1.15;letter-spacing:-.02em;margin-bottom:10px}
-    #newsletter p{font-size:14px;color:var(--mid);line-height:1.7;margin-bottom:28px;max-width:420px;margin-left:auto;margin-right:auto}
-    .email-form{display:flex;max-width:480px;margin:0 auto}
-    .email-input{flex:1;background:rgba(14,14,14,.04);border:1px solid rgba(14,14,14,.2);border-right:none;border-radius:100px 0 0 100px;padding:14px 22px;font-family:var(--sans);font-size:14px;outline:none}
-    .email-submit{background:var(--accent);color:#000;border:none;padding:14px 28px;border-radius:0 100px 100px 0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-weight:500}
-    @media(max-width:768px){nav{padding:18px 20px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}#contact-hero{grid-template-columns:1fr;padding-left:20px;padding-right:20px;gap:36px;padding-top:32px;padding-bottom:56px}#newsletter{padding-left:20px;padding-right:20px}}
+    @media(max-width:768px){nav{padding:18px 20px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}#contact-hero{grid-template-columns:1fr;padding-left:20px;padding-right:20px;gap:36px;padding-top:32px;padding-bottom:56px}}
   </style>
   <link rel="stylesheet" href="/css/site-interactions.css" />
   <link rel="stylesheet" href="/css/site-footer.css" />
+  <link rel="stylesheet" href="/css/site-page-reveal.css" />
+  <script src="/js/page-reveal.js" defer></script>
 </head>
 <body>
 <nav>
@@ -108,14 +104,6 @@
   </div>
 </section>
 </main>
-<div id="newsletter">
-  <h2>Stay in the loop.</h2>
-  <p>Occasional updates on design and product. No noise.</p>
-  <form class="email-form" id="nf">
-    <input class="email-input" type="email" placeholder="Your email" required />
-    <button class="email-submit" type="submit" id="nb">Subscribe</button>
-  </form>
-</div>
 <footer class="site-footer">
   <div class="footer-main">
     <div class="footer-top">
@@ -278,14 +266,6 @@
     window.location.href = 'mailto:' + contactEmail + '?subject=' + subjF + '&body=' + bodyF;
   });
 
-  document.getElementById('nf').onsubmit = function(e){
-    e.preventDefault();
-    var b = document.getElementById('nb');
-    b.textContent = "You're in ✦";
-    b.style.background = '#e55a00';
-    e.target.querySelector('input').value = '';
-    setTimeout(function(){ b.textContent = 'Subscribe'; b.style.background = 'var(--accent)'; }, 3000);
-  };
   document.getElementById('hb').onclick = function(){ document.getElementById('mobile-menu').classList.toggle('open'); };
 })();
 </script>

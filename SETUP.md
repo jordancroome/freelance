@@ -22,7 +22,7 @@ The **ui-ux-pro-max** pack is installed under **`.cursor/skills/ui-ux-pro-max/`*
 
 ```
 jordancroome/
-├── index.html              ← Home (hero, statement, work, clients, testimonials, contact band, newsletter)
+├── index.html              ← Home (hero, statement, work, clients, testimonials, contact band)
 ├── work/index.html         ← /work (project index) + /work/:slug (case studies via rewrite)
 ├── services/index.html     ← /services
 ├── about/index.html        ← /about
@@ -50,7 +50,8 @@ jordancroome/
 │   └── testimonials/       ← One .json file per testimonial
 ├── css/
 │   ├── site-interactions.css  ← Shared nav, button & form micro-interactions
-│   └── site-footer.css        ← Global footer layout + interactions (all pages)
+│   ├── site-footer.css        ← Global footer layout + interactions (all pages)
+│   ├── site-page-reveal.css   ← Subtle page-load fades (with js/page-reveal.js)
 └── images/
     └── uploads/            ← CMS uploads images here
 ```

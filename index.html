@@ -245,15 +245,6 @@
 
     /* LATEST */
     /* NEWSLETTER */
-    #newsletter { border-top: 1px solid rgba(14,14,14,.08); text-align: center; padding: 80px 40px; }
-    #newsletter h2 { font-family: var(--serif); font-weight: var(--serif-weight); font-synthesis: weight; font-size: clamp(28px,4vw,48px); margin-bottom: 12px; }
-    #newsletter p { font-size: 15px; color: var(--mid); margin-bottom: 32px; }
-    .email-form { display: flex; max-width: 480px; margin: 0 auto; }
-    .email-input { flex: 1; background: rgba(14,14,14,.04); border: 1px solid rgba(14,14,14,.2); border-right: none; border-radius: 100px 0 0 100px; padding: 14px 22px; color: var(--fg); font-family: var(--sans); font-size: 14px; outline: none; }
-    .email-input::placeholder { color: var(--mid); }
-    .email-submit { background: var(--accent); color: #000; border: none; padding: 14px 28px; border-radius: 0 100px 100px 0; font-family: var(--sans); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; font-weight: 500; transition: filter .2s; }
-    .email-submit:hover { filter: brightness(1.1); }
-
     /* ANIMATIONS */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -290,6 +281,8 @@
   </style>
   <link rel="stylesheet" href="/css/site-interactions.css" />
   <link rel="stylesheet" href="/css/site-footer.css" />
+  <link rel="stylesheet" href="/css/site-page-reveal.css" />
+  <script src="/js/page-reveal.js" defer></script>
 </head>
 <body>
 
@@ -437,16 +430,6 @@
     <p class="cta-note" id="home-cta-note">Based between Melbourne &amp; Cairns · Usually responds within 24h</p>
   </div>
 </section>
-
-<!-- NEWSLETTER -->
-<div id="newsletter">
-  <h2>Stay in the loop.</h2>
-  <p>Occasional updates on design, product, and building better businesses. No noise.</p>
-  <form class="email-form" id="newsletter-form">
-    <input class="email-input" type="email" placeholder="Your email address" required />
-    <button class="email-submit" type="submit" id="newsletter-btn">Subscribe</button>
-  </form>
-</div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -757,14 +740,6 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 /* ═══════════════════════════════════════════════════
    NEWSLETTER
 ═══════════════════════════════════════════════════ */
-document.getElementById('newsletter-form').addEventListener('submit', e => {
-  e.preventDefault();
-  const btn = document.getElementById('newsletter-btn');
-  btn.textContent = "You're in ✦"; btn.style.background = '#e55a00';
-  e.target.querySelector('.email-input').value = '';
-  setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = 'var(--accent)'; }, 3000);
-});
-
 /* ═══════════════════════════════════════════════════
    KICK OFF CONTENT LOAD
 ═══════════════════════════════════════════════════ */
