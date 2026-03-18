@@ -250,6 +250,14 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
 
 ---
 
+## Work page: Contact link & footer
+
+- **Contact must use a root URL:** Links like `href="contact"` (no leading `/`) resolve from `/work` to **`/work/contact`**, which Vercel treats as a project route — so you’d see the Work app instead of the real contact page. Always use **`/contact`** in HTML and in CMS fields (e.g. footer CTA href).
+- **`vercel.json`** redirects `/work/contact` → `/contact` (and similar for `services` / `about`) so old or mistaken links still work.
+- **Work listing footer:** The wide “Ready to build…” CTA strip is **not** shown on `/work`, since that page already has “Start a conversation” above the footer.
+
+---
+
 ## Custom domain (optional)
 
 1. In Vercel: Project → **Settings** → **Domains** → **Add**.

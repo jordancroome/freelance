@@ -10,9 +10,39 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/work/contact",
+      "destination": "/contact",
+      "permanent": false
+    },
+    {
+      "source": "/work/contact/",
+      "destination": "/contact",
+      "permanent": false
+    },
+    {
+      "source": "/work/services",
+      "destination": "/services",
+      "permanent": false
+    },
+    {
+      "source": "/work/about",
+      "destination": "/about",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/", "destination": "/admin/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/contact/", "destination": "/contact/index.html" },
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/services/", "destination": "/services/index.html" },
+    { "source": "/about", "destination": "/about/index.html" },
+    { "source": "/about/", "destination": "/about/index.html" },
+    { "source": "/work", "destination": "/work/index.html" },
+    { "source": "/work/", "destination": "/work/index.html" },
     { "source": "/work/:slug", "destination": "/work/index.html" }
   ]
 }
