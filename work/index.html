@@ -283,10 +283,46 @@
     livebetter: 'livebetter-collage.png',
     origin: 'origin-collage.png'
   };
-  function projectCollageSrc(slug) {
-    if (!slug) return '';
-    var file = COLLAGE_FILENAME_BY_SLUG[slug] || 'collage.png';
-    return '/images/projects/' + slug + '/' + file;
+  /** Ordered collage URLs; first loadable wins (avoids brittle img onerror). */
+  function collageUrlCandidates(slug, project) {
+    var root = '/images/projects/' + slug + '/';
+    var urls = [];
+    function add(u) { if (u && urls.indexOf(u) === -1) urls.push(u); }
+    add(project.collage_image);
+    if (COLLAGE_FILENAME_BY_SLUG[slug]) add(root + COLLAGE_FILENAME_BY_SLUG[slug]);
+    add(root + 'collage.png');
+    add(root + 'collage.webp');
+    add(root + 'collage.jpg');
+    add(root + slug + '-collage.png');
+    add(project.showcase_image);
+    add(project.image);
+    return urls;
+  }
+  function mountCaseCollage(mountEl, slug, project) {
+    var urls = collageUrlCandidates(slug, project);
+    var altEsc = escape((project.client || project.title || 'Project') + ' — project collage');
+    if (!urls.length) {
+      mountEl.innerHTML = '<div class="case-showcase-placeholder" aria-hidden="true"></div>';
+      return;
+    }
+    var i = 0;
+    function tryNext() {
+      if (i >= urls.length) {
+        mountEl.innerHTML = '<div class="case-showcase-placeholder" aria-hidden="true"></div>';
+        return;
+      }
+      var url = urls[i];
+      var probe = new Image();
+      probe.onload = function() {
+        mountEl.innerHTML = '<img src="' + escape(url) + '" alt="' + altEsc + '" loading="lazy" />';
+      };
+      probe.onerror = function() {
+        i++;
+        tryNext();
+      };
+      probe.src = url;
+    }
+    tryNext();
   }
   function paragraphs(text) {
     if (!text) return '';
@@ -460,22 +496,7 @@
           '<div class="case-col"><div class="case-col-body">' + colParas(project.description) + '</div></div>' +
           '</div></section>';
       }
-      var collageSrc = project.collage_image || projectCollageSrc(slug);
-      var showcaseFallback = project.showcase_image || project.image || '';
-      var showcaseAlt = escape(client ? client + ' — project collage' : 'Project collage');
-      var showcaseHtml = '<div class="case-showcase-wrap"><div class="case-showcase-inner">';
-      if (collageSrc) {
-        if (showcaseFallback) {
-          showcaseHtml += '<img src="' + escape(collageSrc) + '" alt="' + showcaseAlt + '" loading="lazy" data-collage-fallback="' + escape(showcaseFallback) + '" onerror="this.onerror=null;if(this.dataset.collageFallback)this.src=this.dataset.collageFallback;" />';
-        } else {
-          showcaseHtml += '<img src="' + escape(collageSrc) + '" alt="' + showcaseAlt + '" loading="lazy" />';
-        }
-      } else if (showcaseFallback) {
-        showcaseHtml += '<img src="' + escape(showcaseFallback) + '" alt="' + showcaseAlt + '" loading="lazy" />';
-      } else {
-        showcaseHtml += '<div class="case-showcase-placeholder" aria-hidden="true"></div>';
-      }
-      showcaseHtml += '</div></div>';
+      var showcaseHtml = '<div class="case-showcase-wrap"><div class="case-showcase-inner" id="case-showcase-mount"><div class="case-showcase-placeholder" aria-hidden="true"></div></div></div>';
       var impactHtml = project.impact
         ? '<section class="case-impact-wrap"><h2 class="case-col-label">The impact</h2><div class="case-col-body">' + colParas(project.impact) + '</div></section>'
         : '';
@@ -500,6 +521,9 @@
         '</main>';
 
       showFooter();
+
+      var collageMount = document.getElementById('case-showcase-mount');
+      if (collageMount) mountCaseCollage(collageMount, slug, project);
 
       function mountNext(np) {
         var el = document.getElementById('case-next-mount');

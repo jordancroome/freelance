@@ -186,6 +186,8 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
 - **Link URL** — Optional link when the project is clicked.
 - **Short description** — Optional text.
 
+**Case study bottom image (collage):** The page tries, in order: optional **Collage image** in CMS, then `images/projects/{slug}/collage.png`, `collage.webp`, `collage.jpg`, mapped `*-collage.png` filenames, then showcase / cover image. Add your collage under `images/projects/<same-slug-as-the-json-file>/` (e.g. `operata/collage.png` for `operata.json`).
+
 **Quick add:** New project → fill fields → set **Sort order** and **Featured: ON** → **Publish**. The new file appears in `content/projects/` and the site updates after the next Vercel deploy.
 
 ### Services
