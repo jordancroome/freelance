@@ -1,11 +1,16 @@
 {
-  "title": "Data Dashboard & Reporting Suite",
-  "client": "Metriq",
-  "category": "product",
-  "category_label": "Product · Analytics",
-  "image": "/images/uploads/metriq.jpg",
-  "order": 4,
+  "client": "Medibank",
+  "next_project": {
+    "slug": "medibank-recover",
+    "title": "Medibank - Re:Cover"
+  },
   "featured": true,
+  "order": 4,
+  "collage_image": "/images/uploads/recover-collage.png",
   "url": "",
-  "description": "Analytics dashboard design for a SaaS reporting platform."
+  "category_label": "Product · OOH · Print",
+  "title": "Re:Cover - Health that moves with you",
+  "image": "/images/uploads/chanan-greenblatt-7fahq93_ir8-unsplash.jpg",
+  "description": "",
+  "category": "product"
 }
