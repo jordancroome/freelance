@@ -109,6 +109,43 @@ collections:
         widget: "list"
         required: false
         field: { label: "Role", name: "role", widget: "string" }
+      - { label: "Case study index (e.g. 05)", name: "case_index", widget: "string", required: false, hint: "Shown as 05 / Client in hero" }
+      - { label: "Year", name: "year", widget: "string", required: false }
+      - { label: "Tagline (italic gradient under title)", name: "tagline", widget: "string", required: false }
+      - { label: "Role line (meta row)", name: "role_line", widget: "string", required: false, hint: "e.g. Brand Identity · Digital · Print" }
+      - label: "Service tags (pills)"
+        name: "display_tags"
+        widget: "list"
+        required: false
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - { label: "SEO description", name: "meta_description", widget: "text", required: false }
+      - { label: "Parallax scroll height (vh)", name: "parallax_height_vh", widget: "number", default: 260, required: false }
+      - { label: "Parallax corner label (bottom right)", name: "parallax_br_label", widget: "string", required: false, default: "Design system" }
+      - label: "Parallax gallery images"
+        name: "parallax_assets"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Alt / caption", name: "alt", widget: "string" }
+          - { label: "Start X %", name: "initialX", widget: "number", value_type: "float" }
+          - { label: "Start Y %", name: "initialY", widget: "number", value_type: "float" }
+          - { label: "End X %", name: "finalX", widget: "number", value_type: "float" }
+          - { label: "End Y %", name: "finalY", widget: "number", value_type: "float" }
+          - { label: "Width %", name: "width", widget: "number", value_type: "float" }
+          - { label: "Start rotation (deg)", name: "initialRotation", widget: "number", value_type: "float", required: false }
+          - { label: "Z-index", name: "zIndex", widget: "number", required: false }
+      - label: "Next project card (optional)"
+        name: "next_project"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Slug", name: "slug", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Client", name: "client", widget: "string", required: false }
+          - { label: "Tagline", name: "tagline", widget: "string", required: false }
+          - { label: "Year", name: "year", widget: "string", required: false }
+          - { label: "Meta line", name: "meta", widget: "string", required: false }
 
   # ─── SERVICES ─────────────────────────────────────────────
   - name: "services"

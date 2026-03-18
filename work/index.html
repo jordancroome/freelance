@@ -7,7 +7,7 @@
   <meta name="description" content="Selected product and brand design work by Jordan Croome." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -25,7 +25,16 @@
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; transition: background .4s, border-color .4s; }
     nav.scrolled, body.mode-list nav { background: rgba(240,237,232,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14,14,14,.08); }
-    body.mode-case nav { background: rgba(240,237,232,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14,14,14,.08); }
+    body.mode-case { background: #fafbfd; }
+    body.mode-case nav { background: rgba(250,251,253,.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226,232,240,.6); }
+    body.mode-case .nav-logo.nav-logo-case { font-family: 'Space Grotesk', var(--sans); display: flex; flex-direction: column; gap: 2px; letter-spacing: normal; text-transform: none; font-size: inherit; }
+    body.mode-case .case-nav-name { font-size: 13px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #18181b; }
+    body.mode-case .case-nav-sub { font-size: 11px; letter-spacing: .04em; color: #94a3b8; font-weight: 400; }
+    body.mode-case .nav-links a { font-size: 14px; font-weight: 500; letter-spacing: .01em; text-transform: none; color: #64748b; }
+    body.mode-case .nav-links a:hover, body.mode-case .nav-links a.active { color: #18181b; }
+    body.mode-case .nav-links a::after { background: #2d6a4f; height: 1px; bottom: -2px; }
+    body.mode-case .nav-cta { background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%); color: #fafbfd; border: none; border-radius: 9999px; }
+    body.mode-case .hamburger span { background: #18181b; }
     .nav-logo { font-family: var(--serif); font-size: 18px; letter-spacing: -.02em; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 36px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; list-style: none; }
@@ -71,43 +80,62 @@
     .work-list-end-cta { text-align: center; padding: 100px 40px; border-top: 1px solid rgba(14,14,14,.08); }
     .work-list-end-cta p { color: var(--mid); margin-bottom: 24px; font-size: 15px; }
 
-    /* ─── CASE STUDY ─── */
+    /* ─── CASE STUDY (Marsh / localhost:3001 layout) ─── */
     body.mode-case .work-list-page { display: none !important; }
     #project-root:not(:empty) { display: block; }
-    .case-wrap { max-width: 1200px; margin: 0 auto; }
-    .case-hero { padding: 120px 40px 48px; }
-    .case-hero-back { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); margin-bottom: 40px; transition: color .2s, gap .25s var(--ease); }
-    .case-hero-back:hover { color: var(--accent); gap: 12px; }
-    .case-hero-tag { font-size: 13px; color: var(--mid); margin-bottom: 20px; }
-    .case-hero-tag span { color: var(--accent); }
-    .case-hero-title { font-family: var(--serif); font-size: clamp(40px,8vw,88px); line-height: 1.02; letter-spacing: -.04em; margin-bottom: 28px; max-width: 920px; }
-    .case-hero-title strong { font-weight: 400; color: var(--accent); }
-    .case-hero-intro { font-size: clamp(17px,1.8vw,21px); line-height: 1.65; color: var(--mid); max-width: 640px; }
-
-    .case-hero-image { margin: 64px 0 0; width: 100vw; margin-left: calc(50% - 50vw); position: relative; }
-    .case-hero-image img { width: 100%; height: auto; max-height: 88vh; object-fit: cover; display: block; }
-    .case-hero-image .placeholder { width: 100%; height: min(72vh, 720px); min-height: 400px; background: linear-gradient(160deg, #1a2a3a, #0d151e 50%, #1a0d1a); }
-
-    .case-section { max-width: 720px; margin: 0 auto; padding: 88px 40px 0; }
-    .case-section-num { font-family: var(--serif); font-size: 40px; color: rgba(14,14,14,.06); line-height: 1; margin-bottom: 32px; }
-    .case-section h2 { font-family: var(--serif); font-size: clamp(26px,3.5vw,40px); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 24px; }
-    .case-section p { font-size: clamp(16px,1.5vw,18px); line-height: 1.85; color: var(--mid); }
-    .case-section p + p { margin-top: 22px; }
-    .case-roles ul { list-style: none; margin-top: 8px; }
-    .case-roles li { font-size: 15px; color: var(--mid); padding: 10px 0; border-bottom: 1px solid rgba(14,14,14,.08); }
-    .case-roles li:last-child { border-bottom: none; }
-    .case-cta { max-width: 720px; margin: 0 auto; padding: 48px 40px 0; }
-
-    .case-related { padding: 100px 40px 80px; border-top: 1px solid rgba(14,14,14,.08); margin-top: 80px; }
-    .case-related h2 { font-family: var(--serif); font-size: clamp(28px,4vw,44px); margin-bottom: 48px; text-align: center; }
-    .case-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-    .case-related-card { display: block; background: #fff; border: 1px solid rgba(14,14,14,.08); border-radius: 8px; overflow: hidden; transition: transform .3s var(--ease), box-shadow .3s; }
-    .case-related-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(14,14,14,.1); }
-    .case-related-card img { aspect-ratio: 16/10; object-fit: cover; }
-    .case-related-card .placeholder { aspect-ratio: 16/10; background: linear-gradient(135deg, #1a2a3a, #0d151e); }
-    .case-related-card .info { padding: 22px; }
-    .case-related-card .cat { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .case-related-card .title { font-family: var(--serif); font-size: 19px; line-height: 1.25; color: var(--fg); }
+    .case-main { font-family: 'Space Grotesk', var(--sans); background: #fafbfd; color: #18181b; min-height: 100vh; padding-top: 80px; }
+    .case-plabel { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #94a3b8; }
+    .case-plabel-ink { color: #18181b; letter-spacing: .12em; }
+    .case-plabel-faint { color: rgba(24,24,27,.28); }
+    .case-hero-block { max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem 0; padding-top: clamp(2rem, 5vw, 3.5rem); }
+    @media (min-width: 768px) { .case-hero-block { padding-top: 3.5rem; } }
+    .case-back-link { display: inline-block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #94a3b8; margin-bottom: 2rem; transition: color .2s; }
+    .case-back-link:hover { color: #2d6a4f; }
+    .case-meta-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .case-h1 { font-family: 'Space Grotesk', var(--sans); font-weight: 500; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.05; letter-spacing: -.03em; color: #18181b; }
+    .case-h1-word { display: inline-block; margin-right: .28em; }
+    .case-h1-word > span { display: inline-block; }
+    .case-tagline-row { margin-top: .75rem; font-size: clamp(18px, 2.5vw, 26px); line-height: 1.35; font-weight: 500; font-style: italic; font-family: 'Space Grotesk', var(--sans); }
+    .case-tagline-word { display: inline-block; margin-right: .28em; }
+    .case-tagline-gradient { background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 45%, #40916c 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    .case-hr { height: 1px; background: rgba(148,163,184,.4); margin: 2.5rem 0; }
+    .case-meta-flex { display: flex; flex-direction: column; gap: 2rem; }
+    @media (min-width: 768px) { .case-meta-flex { flex-direction: row; justify-content: space-between; align-items: flex-start; } }
+    .case-dl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 2.5rem; }
+    @media (min-width: 640px) { .case-dl { grid-template-columns: repeat(3, 1fr); } }
+    .case-dl-label { font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: #94a3b8; margin-bottom: .25rem; }
+    .case-dl dd { font-size: 14px; color: #18181b; }
+    .case-pills { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .case-pill { display: inline-flex; align-items: center; border-radius: 6px; padding: .35rem .65rem; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; background: rgba(45,106,79,.08); color: #2d6a4f; border: 1px solid rgba(45,106,79,.2); }
+    .case-parallax-outer { position: relative; margin-top: 4rem; }
+    .case-parallax-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+    .case-parallax-noise { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .06; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 128px 128px; }
+    .case-parallax-corner { position: absolute; z-index: 20; pointer-events: none; }
+    .case-parallax-tl { left: clamp(1rem, 3vw, 2rem); top: clamp(1rem, 3vw, 2rem); }
+    .case-parallax-br { right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); }
+    .case-parallax-layer { position: absolute; transform: translate(-50%, -50%); will-change: left, top, transform; }
+    .case-parallax-card { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.1); transition: transform .7s cubic-bezier(0.16,1,0.3,1); }
+    .case-parallax-card:hover { transform: scale(1.03); }
+    .case-parallax-card img { display: block; width: 100%; height: auto; vertical-align: middle; }
+    .case-parallax-cap { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 1rem; opacity: 0; transition: opacity .4s; background: linear-gradient(to top, rgba(27,67,50,.65) 0%, transparent 60%); font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(250,251,253,.9); }
+    .case-parallax-card:hover .case-parallax-cap { opacity: 1; }
+    .case-fallback-hero { margin-top: 4rem; max-width: 72rem; margin-left: auto; margin-right: auto; padding: 0 1.5rem; }
+    .case-fallback-hero img { width: 100%; border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,.08); }
+    .case-fallback-hero .placeholder { height: 60vh; min-height: 400px; border-radius: 12px; background: linear-gradient(160deg, #e8f5ef, #d8ede4); }
+    .case-prose { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 8vw, 6rem) 1.5rem; }
+    .case-prose-text { font-size: clamp(16px, 1.4vw, 18px); line-height: 1.75; color: #64748b; max-width: 42rem; }
+    .case-prose-text + .case-prose-text { margin-top: 1.25rem; }
+    .case-next-section { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
+    .case-next-label { font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: #94a3b8; margin-bottom: 2rem; }
+    .case-next-card { display: block; border-radius: 0; overflow: hidden; background: #0f172a; color: #fff; transition: transform .4s cubic-bezier(0.16,1,0.3,1), box-shadow .4s; }
+    .case-next-card:hover { transform: translateY(-2px); box-shadow: 0 24px 48px rgba(15,23,42,.35); }
+    .case-next-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: clamp(2rem, 5vw, 3.5rem); }
+    .case-next-title { font-family: 'Space Grotesk', var(--sans); font-size: clamp(26px, 4vw, 44px); font-weight: 500; line-height: 1.05; letter-spacing: -.02em; color: #fff; }
+    .case-next-tag { max-width: 28rem; font-size: 14px; line-height: 1.65; color: rgba(255,255,255,.55); margin-top: .75rem; }
+    .case-next-arrow { flex-shrink: 0; width: 3.5rem; height: 3.5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.6); font-size: 1.25rem; transition: border-color .3s, color .3s, transform .3s; }
+    .case-next-card:hover .case-next-arrow { border-color: rgba(255,255,255,.5); color: #fff; transform: translateX(4px); }
+    .case-next-bar { border-top: 1px solid rgba(255,255,255,.08); padding: 1rem clamp(2rem, 4vw, 3rem); font-size: 12px; color: rgba(255,255,255,.35); }
+    body.mode-case footer { background: #fafbfd; border-top-color: rgba(148,163,184,.35); }
 
     footer { border-top: 1px solid rgba(14,14,14,.12); padding: 64px 40px 48px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
@@ -347,6 +375,24 @@
 
   document.body.classList.add('mode-case');
   listPage.hidden = true;
+  var navLogo = document.querySelector('.nav-logo');
+  if (navLogo) {
+    navLogo.classList.add('nav-logo-case');
+    navLogo.innerHTML = '<span class="case-nav-name">Jordan Croome</span><span class="case-nav-sub">Product &amp; Visual Designer</span>';
+  }
+  var nc = document.querySelector('.nav-cta');
+  if (nc) nc.textContent = 'Let\u2019s talk';
+  var wl = document.querySelector('.nav-links a[href="/work"]');
+  if (wl) wl.classList.add('active');
+
+  function smoothstep(t) { return t * t * (3 - 2 * t); }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function proseParas(text) {
+    if (!text) return '';
+    return text.split(/\n\n|\n/).filter(Boolean).map(function(p) {
+      return '<p class="case-prose-text">' + escape(p) + '</p>';
+    }).join('');
+  }
 
   fetch('/content/projects/' + slug + '.json')
     .then(r => r.ok ? r.json() : null)
@@ -357,68 +403,160 @@
         return;
       }
 
-      document.title = (project.title || project.client || 'Project') + ' — Jordan Croome';
-      var intro = project.intro || (project.description ? project.description.split(/\n/)[0] : '') || '';
-      var tag = project.category ? '#' + project.category : (project.category_label || '');
-      var heroImage = project.image
-        ? '<div class="case-hero-image"><img src="' + escape(project.image) + '" alt="" loading="eager" /></div>'
-        : '<div class="case-hero-image"><div class="placeholder"></div></div>';
-
-      var sections = [];
-      if (project.challenge) sections.push('<div class="case-section"><div class="case-section-num">01</div><h2>The challenge</h2>' + paragraphs(project.challenge) + '</div>');
-      if (project.approach) sections.push('<div class="case-section"><div class="case-section-num">02</div><h2>Our approach</h2>' + paragraphs(project.approach) + '</div>');
-      if (project.impact) sections.push('<div class="case-section"><div class="case-section-num">03</div><h2>The impact</h2>' + paragraphs(project.impact) + '</div>');
-      if (project.roles && project.roles.length) {
-        var rolesList = project.roles.map(function(r) { return '<li>' + escape(r.role || r) + '</li>'; }).join('');
-        sections.push('<div class="case-section"><h2>Roles</h2><div class="case-roles"><ul>' + rolesList + '</ul></div></div>');
-      }
-      if (!project.challenge && !project.approach && !project.impact && (!project.roles || !project.roles.length) && project.description) {
-        sections.push('<div class="case-section"><h2>Overview</h2>' + paragraphs(project.description) + '</div>');
-      } else if (project.description && (project.challenge || project.approach || project.impact)) {
-        sections.push('<div class="case-section"><h2>Overview</h2>' + paragraphs(project.description) + '</div>');
+      document.title = (project.client || project.title || 'Project') + ' — Jordan Croome';
+      if (project.meta_description) {
+        var m = document.querySelector('meta[name="description"]');
+        if (m) m.setAttribute('content', project.meta_description);
       }
 
-      var ctaBlock = project.url ? '<div class="case-cta"><a href="' + escape(project.url) + '" target="_blank" rel="noopener" class="btn-primary">View live site</a></div>' : '';
+      var idx = project.case_index != null ? String(project.case_index) : String(project.order != null ? project.order : '').padStart(2, '0');
+      var client = project.client || '';
+      var h1Source = project.case_h1 || client || project.title || 'Project';
+      var h1Words = h1Source.split(/\s+/).filter(Boolean);
+      var tagline = project.tagline || '';
+      var year = project.year || '';
+      var roleLine = project.role_line || '';
+      if (!roleLine && project.roles && project.roles.length) {
+        roleLine = project.roles.map(function(r) { return r.role || r; }).join(' · ');
+      }
+      if (!roleLine) roleLine = project.category_label || '';
+
+      var tags = project.display_tags;
+      if (tags && tags.length) {
+        tags = tags.map(function(t) { return typeof t === 'string' ? t : (t && t.tag) || ''; }).filter(Boolean);
+      } else {
+        tags = (project.category_label || '').split(/·|,/).map(function(s) { return s.trim(); }).filter(Boolean);
+        if (!tags.length && project.category) tags = [project.category];
+      }
+
+      var h1html = h1Words.map(function(w) {
+        return '<span class="case-h1-word"><span>' + escape(w) + '</span></span>';
+      }).join('');
+      var taglineWords = tagline.split(/\s+/).filter(Boolean);
+      var taglineHtml = taglineWords.map(function(w) {
+        return '<span class="case-tagline-word"><span class="case-tagline-gradient">' + escape(w) + '</span></span>';
+      }).join('');
+
+      var dl = '<div><dt class="case-dl-label">Client</dt><dd>' + escape(client) + '</dd></div>';
+      dl += '<div><dt class="case-dl-label">Year</dt><dd>' + escape(year || '—') + '</dd></div>';
+      dl += '<div><dt class="case-dl-label">Role</dt><dd>' + escape(roleLine || '—') + '</dd></div>';
+      var pills = (tags || []).map(function(t) { return '<span class="case-pill">' + escape(t) + '</span>'; }).join('');
+
+      var defaultStops = [
+        { color: 'rgba(26,140,90,0.14)', x: 12, y: 78, spread: 70 },
+        { color: 'rgba(20,92,66,0.11)', x: 78, y: 18, spread: 62 },
+        { color: 'rgba(46,160,100,0.08)', x: 48, y: 50, spread: 54 },
+        { color: 'rgba(183,228,199,0.17)', x: 82, y: 80, spread: 48 }
+      ];
+      var g = project.parallax_gradient || {};
+      var base = g.base || '#F0F8F4';
+      var stops = g.stops && g.stops.length ? g.stops : defaultStops;
+      var bgLayers = stops.map(function(s) {
+        return 'radial-gradient(ellipse ' + (s.spread || 70) + '% ' + (s.spread || 70) + '% at ' + s.x + '% ' + s.y + '%, ' + s.color + ' 0%, transparent 100%)';
+      }).join(', ');
+      var stickyBg = bgLayers + ', ' + base;
+
+      var assets = project.parallax_assets;
+      if (!assets || !assets.length) {
+        if (project.image) {
+          assets = [{ src: project.image, alt: client + ' project', initialX: 50, initialY: 120, finalX: 50, finalY: 50, width: 55, initialRotation: 0, zIndex: 4 }];
+        }
+      }
+
+      var parallaxHtml = '';
+      var tall = project.parallax_height_vh || 260;
+      if (assets && assets.length) {
+        parallaxHtml = '<div class="case-parallax-outer" id="case-parallax-outer" style="height:' + tall + 'vh">' +
+          '<div class="case-parallax-sticky" id="case-parallax-sticky" style="background:' + stickyBg + '">' +
+          '<div class="case-parallax-noise" aria-hidden="true"></div>' +
+          '<div class="case-parallax-corner case-parallax-tl"><p class="case-plabel case-plabel-ink" style="opacity:.45">' + escape(client) + '</p><p class="case-plabel case-plabel-faint">— Scroll to explore</p></div>' +
+          '<div class="case-parallax-corner case-parallax-br"><p class="case-plabel case-plabel-faint">' + escape(project.parallax_br_label || 'Design system') + '</p></div>';
+        assets.forEach(function(a) {
+          var src = escape(a.src || a.image || '');
+          var alt = escape(a.alt || '');
+          var ix = a.initialX != null ? a.initialX : 0, iy = a.initialY != null ? a.initialY : 0;
+          var fx = a.finalX != null ? a.finalX : ix, fy = a.finalY != null ? a.finalY : iy;
+          var w = a.width != null ? a.width : 28, rot = a.initialRotation != null ? a.initialRotation : 0, z = a.zIndex != null ? a.zIndex : 2;
+          parallaxHtml += '<div class="case-parallax-layer" data-ix="' + ix + '" data-iy="' + iy + '" data-fx="' + fx + '" data-fy="' + fy + '" data-rot="' + rot + '" data-w="' + w + '" style="width:' + w + '%;z-index:' + z + '">' +
+            '<div class="case-parallax-card"><img src="' + src + '" alt="' + alt + '" loading="lazy" onerror="this.style.display=\'none\'" /><div class="case-parallax-cap">' + alt + '</div></div></div>';
+        });
+        parallaxHtml += '</div></div>';
+      } else if (project.image) {
+        parallaxHtml = '<div class="case-fallback-hero"><img src="' + escape(project.image) + '" alt="" /></div>';
+      } else {
+        parallaxHtml = '<div class="case-fallback-hero"><div class="placeholder"></div></div>';
+      }
+
+      var prose = '';
+      if (project.challenge) prose += '<section class="case-prose">' + proseParas(project.challenge) + '</section>';
+      if (project.approach) prose += '<section class="case-prose">' + proseParas(project.approach) + '</section>';
+      if (project.impact) prose += '<section class="case-prose">' + proseParas(project.impact) + '</section>';
+      if (!prose && project.description) prose = '<section class="case-prose">' + proseParas(project.description) + '</section>';
+      if (project.url) {
+        prose += '<section class="case-prose" style="padding-top:0"><a href="' + escape(project.url) + '" target="_blank" rel="noopener" class="btn-primary">View live site</a></section>';
+      }
 
       projectRoot.innerHTML =
-        '<div class="case-wrap">' +
-        '<a href="/work" class="case-hero-back"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M7 1L1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> All work</a>' +
-        '<div class="case-hero">' +
-          (tag ? '<div class="case-hero-tag">' + escape(tag) + '</div>' : '') +
-          '<h1 class="case-hero-title">' + (project.client ? escape(project.client) + ' — ' : '') + titleWithAccent(project.title) + '</h1>' +
-          (intro ? '<p class="case-hero-intro">' + escape(intro) + '</p>' : '') +
-        '</div></div>' +
-        heroImage +
-        '<div class="case-wrap">' + sections.join('') + ctaBlock + '</div>' +
-        '<div class="case-related" id="case-related"><h2>More work</h2><div class="case-related-grid" id="case-related-grid">Loading…</div></div>';
+        '<main class="case-main">' +
+        '<section class="case-hero-block">' +
+        '<a href="/work" class="case-back-link">← All work</a>' +
+        '<div class="case-meta-row"><p class="case-plabel case-plabel-ink">' + escape(idx + ' / ' + client) + '</p><p class="case-plabel case-plabel-ink">' + escape(year) + '</p></div>' +
+        '<div class="case-h1-wrap"><h1 class="case-h1">' + h1html + '</h1></div>' +
+        (tagline ? '<p class="case-tagline-row">' + taglineHtml + '</p>' : '') +
+        '<div class="case-hr"></div>' +
+        '<div class="case-meta-flex"><dl class="case-dl">' + dl + '</dl><div class="case-pills">' + pills + '</div></div>' +
+        '</section>' +
+        parallaxHtml +
+        prose +
+        '<section class="case-next-section"><p class="case-next-label">Next project</p><div id="case-next-mount">Loading…</div></section>' +
+        '</main>';
 
       showFooter();
 
-      fetch('/api/projects-list').then(r => r.json()).then(function(list) {
-        var paths = (list.paths || []).filter(function(p) {
-          var s = p.replace('content/projects/', '').replace('.json', '');
-          return s && s !== slug;
-        });
-        if (!paths.length) {
-          document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);grid-column:1/-1;">No other projects yet.</p>';
-          return;
-        }
-        var toLoad = paths.slice(0, 6);
-        Promise.all(toLoad.map(function(p) { return loadJSON('/' + p); })).then(function(projects) {
-          var cards = [];
-          projects.forEach(function(p, i) {
-            if (!p) return;
-            var s = toLoad[i].replace('content/projects/', '').replace('.json', '');
-            var img = p.image ? '<img src="' + escape(p.image) + '" alt="" loading="lazy" />' : '<div class="placeholder"></div>';
-            cards.push('<a href="/work/' + escape(s) + '" class="case-related-card"><div>' + img + '</div><div class="info"><div class="cat">' + escape(p.category_label || p.category || '') + '</div><div class="title">' + escape(p.client) + ' — ' + escape(p.title) + '</div></div></a>');
+      function mountNext(np) {
+        var el = document.getElementById('case-next-mount');
+        if (!el || !np) { if (el) el.innerHTML = '<p class="case-plabel">More work on the <a href="/work" style="color:#2d6a4f">work index</a>.</p>'; return; }
+        var bar = escape(np.year || '') + ' — ' + escape(np.client || '') + ' — ' + escape(np.meta || np.category_label || '');
+        el.innerHTML = '<a href="/work/' + escape(np.slug) + '" class="case-next-card">' +
+          '<div class="case-next-inner"><div><h2 class="case-next-title">' + escape(np.title || np.client) + '</h2>' +
+          (np.tagline ? '<p class="case-next-tag">' + escape(np.tagline) + '</p>' : '') +
+          '</div><div class="case-next-arrow">→</div></div>' +
+          '<div class="case-next-bar">' + bar + '</div></a>';
+      }
+
+      if (project.next_project && project.next_project.slug) {
+        mountNext(project.next_project);
+      } else {
+        fetch('/api/projects-list').then(r => r.json()).then(function(list) {
+          var paths = (list.paths || []).map(function(p) { return p.replace('content/projects/', '').replace('.json', ''); }).filter(function(s) { return s && s !== slug; });
+          if (!paths.length) { mountNext(null); return; }
+          var nextSlug = paths[0];
+          loadJSON('/content/projects/' + nextSlug + '.json').then(function(np) {
+            if (!np) { mountNext(null); return; }
+            var meta = np.category_label || (np.category || '');
+            mountNext({ slug: nextSlug, title: np.client || np.title, client: np.client, tagline: np.tagline || (np.description || '').split('\n')[0].slice(0, 120), year: np.year, meta: meta });
           });
-          document.getElementById('case-related-grid').innerHTML = cards.length ? cards.join('') : '<p style="text-align:center;color:var(--mid);">No other projects yet.</p>';
-        }).catch(function() {
-          document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);">Could not load projects.</p>';
+        }).catch(function() { mountNext(null); });
+      }
+
+      function tickParallax() {
+        var outer = document.getElementById('case-parallax-outer');
+        if (!outer) return;
+        var layers = outer.querySelectorAll('.case-parallax-layer');
+        var travel = outer.offsetHeight - window.innerHeight;
+        var t = travel > 0 ? Math.max(0, Math.min(1, -outer.getBoundingClientRect().top / travel)) : 0;
+        var e = smoothstep(t);
+        layers.forEach(function(el) {
+          var x = lerp(parseFloat(el.dataset.ix), parseFloat(el.dataset.fx), e);
+          var y = lerp(parseFloat(el.dataset.iy), parseFloat(el.dataset.fy), e);
+          var rot = parseFloat(el.dataset.rot) * (1 - e);
+          el.style.left = x + '%';
+          el.style.top = y + '%';
+          el.style.transform = 'translate(-50%, -50%) rotate(' + rot + 'deg)';
         });
-      }).catch(function() {
-        document.getElementById('case-related-grid').innerHTML = '<p style="text-align:center;color:var(--mid);">No other projects yet.</p>';
-      });
+      }
+      window.addEventListener('scroll', tickParallax, { passive: true });
+      tickParallax();
     });
 })();
 

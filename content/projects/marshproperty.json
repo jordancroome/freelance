@@ -1,0 +1,75 @@
+{
+  "title": "Marsh Property",
+  "client": "Marsh Property",
+  "category": "brand",
+  "category_label": "Branding · UI/UX · Print",
+  "image": "/images/projects/marshproperty/marsh-homepage.png",
+  "order": 5,
+  "featured": true,
+  "year": "2024",
+  "case_index": "05",
+  "tagline": "Confidence in every suburb.",
+  "role_line": "Brand Identity · Digital · Print",
+  "display_tags": ["Branding", "UI/UX", "Print"],
+  "meta_description": "Complete brand identity and digital presence for Marsh Property — a boutique real estate agency operating across Melbourne's inner suburbs.",
+  "intro": "Complete brand identity and digital presence for a boutique real estate agency.",
+  "challenge": "Stand apart from the generic aesthetics of Australian real estate without losing the trust signals that category buyers expect.",
+  "approach": "The M-arch motif — structural, architectural, immediately ownable — formed the foundation of the identity. A teal-green palette and restrained typography signal premium without pretension.",
+  "impact": "A cohesive system across signage, digital, print, and social — built to scale as the agency grows across Melbourne's inner suburbs.",
+  "parallax_height_vh": 260,
+  "parallax_br_label": "Design system",
+  "parallax_assets": [
+    {
+      "src": "/images/projects/marshproperty/marsh-sign.png",
+      "alt": "Marsh Property for sale sign",
+      "initialX": -50,
+      "initialY": -20,
+      "finalX": 2,
+      "finalY": 14,
+      "width": 24,
+      "initialRotation": -8,
+      "zIndex": 6
+    },
+    {
+      "src": "/images/projects/marshproperty/marsh-homepage.png",
+      "alt": "Marsh Property website",
+      "initialX": 55,
+      "initialY": -38,
+      "finalX": 30,
+      "finalY": 8,
+      "width": 36,
+      "initialRotation": 3,
+      "zIndex": 4
+    },
+    {
+      "src": "/images/projects/marshproperty/marsh-postcard.png",
+      "alt": "Marsh Property postcard",
+      "initialX": 108,
+      "initialY": 15,
+      "finalX": 70,
+      "finalY": 16,
+      "width": 22,
+      "initialRotation": 6,
+      "zIndex": 3
+    },
+    {
+      "src": "/images/projects/marshproperty/marsh-instagram.png",
+      "alt": "Marsh Property social media",
+      "initialX": 92,
+      "initialY": 65,
+      "finalX": 73,
+      "finalY": 50,
+      "width": 18,
+      "initialRotation": -5,
+      "zIndex": 3
+    }
+  ],
+  "next_project": {
+    "slug": "operata",
+    "title": "Operata",
+    "client": "Operata",
+    "tagline": "Workforce management for contact centres.",
+    "year": "2024",
+    "meta": "Product · SaaS"
+  }
+}
