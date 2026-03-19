@@ -1,0 +1,16 @@
+{
+  "challenge": "Translate Medibank's institutional brand into a digital experience that felt genuinely warm and human — something people would return to daily, not just in a health crisis. The existing digital presence felt clinical and transactional.",
+  "client": "Medibank",
+  "next_project": {
+    "slug": "livebetter",
+    "title": "Live Better"
+  },
+  "featured": true,
+  "order": 99,
+  "collage_image": "/images/uploads/livebetter-collage.png",
+  "category_label": "Product Design",
+  "title": "Live Better - Where health gets personal",
+  "solution": "Led with content — a magazine-style layout that celebrated food, movement, and mindfulness over clinical language. The teal brand palette was pushed to feel vibrant and optimistic, while the UI hierarchy put editorial photography front and centre. Navigation was restructured around health moments, not insurance categories.",
+  "image": "/images/uploads/elena-leya-o39vx5ypad4-unsplash.jpg",
+  "category": "product"
+}
