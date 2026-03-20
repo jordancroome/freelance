@@ -1,0 +1,16 @@
+{
+  "challenge": "Origin's digital and campaign touchpoints had grown fragmented over years of isolated briefs. The challenge was to design under a unifying creative directive that felt bold and contemporary without abandoning the recognisable Origin orange.",
+  "client": "Origin Energy",
+  "next_project": {
+    "slug": "origin",
+    "title": "Origin Energy"
+  },
+  "featured": true,
+  "order": 99,
+  "collage_image": "/images/uploads/origin-collage.png",
+  "category_label": "Product Design",
+  "title": "Energy that changes everything",
+  "solution": "The campaign visual language was built around aerial photography — a bird's-eye view of Australian homes and suburbs that made the personal stakes of energy feel real and immediate. The sales platform UI was redesigned with field teams in mind: fast, scannable, optimised for mobile use on-site.",
+  "image": "/images/uploads/image-6.png",
+  "category": "product"
+}
