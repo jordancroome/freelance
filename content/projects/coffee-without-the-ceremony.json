@@ -2,8 +2,10 @@
   "challenge": "Give a single-location café a brand with the swagger of a streetwear label — something that could scale to merch, social, and eventually a second location without losing its edge.\n\n",
   "client": "Sothe",
   "next_project": {
-    "slug": "sothe",
-    "title": "Sothe"
+    "slug": "benchmark",
+    "title": "A brand built on precision",
+    "client": "Benchmark",
+    "year": "2024"
   },
   "featured": true,
   "order": 99,
@@ -12,5 +14,6 @@
   "title": "Coffee, without the ceremony",
   "solution": "The S-mark became the anchor: monogram and mascot in one, cropped and rotated to create tension. Yellow and navy did the heavy lifting across every surface — cups, cards, Instagram, digital menus. The brand worked hardest at its smallest size, which is where most café brands fall apart.",
   "image": "/images/uploads/jo-lanta-654165-unsplash.png",
+  "year": "2025",
   "category": "brand"
 }
