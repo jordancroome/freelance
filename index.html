@@ -154,6 +154,7 @@
       position: relative;
       aspect-ratio: 16/10;
       background: rgba(14, 14, 14, 0.06);
+      overflow: hidden;
     }
     .work-card-img { 
       position: absolute; 
@@ -565,6 +566,17 @@ const TESTIMONIALS = [
 // Card placeholder gradients
 const GRADIENTS = ['card-bg-1','card-bg-2','card-bg-3','card-bg-4','card-bg-5','card-bg-6'];
 
+// Route slug generation for projects.
+// URLs will be based on the project "title" (case-study name), not the JSON filename.
+function titleToSlug(title) {
+  return String(title || '')
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 async function populateContent() {
   // ── HERO ──────────────────────────────────────
   const hero = await loadJSON('content/hero.json');
@@ -628,19 +640,23 @@ async function populateContent() {
     if (list.paths && list.paths.length) projectPaths = list.paths;
   } catch (_) {}
   const projectData = await Promise.all(projectPaths.map(loadJSON));
-  const projects = projectData.filter(Boolean).map((p, i) => {
-    const path = projectPaths[i];
-    p.slug = path.replace('content/projects/', '').replace('.json', '');
-    return p;
-  }).sort((a,b) => (a.order||99)-(b.order||99));
+  const projects = projectData
+    .filter(Boolean)
+    .map((p, i) => {
+      const path = projectPaths[i];
+      p.fileSlug = path.replace('content/projects/', '').replace('.json', '');
+      p.routeSlug = titleToSlug(p.title || p.client || p.fileSlug);
+      return p;
+    })
+    .sort((a,b) => (a.order||99)-(b.order||99));
   const workGrid = document.getElementById('work-grid');
   workGrid.innerHTML = '';
   let homeProjects = projects.filter(p => p.featured).slice(0, 3);
   if (homeProjects.length < 3) {
-    const have = new Set(homeProjects.map(p => p.slug));
+    const have = new Set(homeProjects.map(p => p.fileSlug));
     for (const p of projects) {
       if (homeProjects.length >= 3) break;
-      if (!have.has(p.slug)) { homeProjects.push(p); have.add(p.slug); }
+      if (!have.has(p.fileSlug)) { homeProjects.push(p); have.add(p.fileSlug); }
     }
   }
   homeProjects.forEach((p, i) => {
@@ -656,7 +672,7 @@ async function populateContent() {
       ? `${p.client} — ${titlePrefix ? titlePrefix + ' ' : ''}<em>${lastWord}</em>`
       : `${p.client} — ${p.title}`;
     workGrid.innerHTML += `
-      <a href="/work/${p.slug}" class="work-card reveal" data-category="${p.category}">
+      <a href="/work/${p.routeSlug}" class="work-card reveal" data-category="${p.category}">
         <div class="work-card-inner">
           <div class="work-card-media">
             ${imgHtml}
