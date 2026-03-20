@@ -271,7 +271,7 @@ The **standalone contact page** lives at **`/contact`** (`contact/index.html`). 
 2. In Resend: **API Keys** → create a key.
 3. In Vercel: your project → **Settings** → **Environment Variables** → add:
    - **`RESEND_API_KEY`** — the Resend API key  
-   - **`CONTACT_EMAIL`** — the address where you want enquiries (e.g. `hello@jordancroome.com.au`)
+   - **`CONTACT_EMAIL`** — the address where you want enquiries (e.g. `hello@jordancroome.com`)
 4. Redeploy. Submissions will email you with **Reply-To** set to the visitor’s address.
 
 **Using Resend’s test sender:** Until you verify your own domain in Resend, you can send **from** `onboarding@resend.dev` (default). Restrictions apply on the free tier — verify a domain and set optional env **`RESEND_FROM`** (e.g. `Notifications <noreply@yourdomain.com>`) for production.

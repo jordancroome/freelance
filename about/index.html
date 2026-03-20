@@ -31,9 +31,13 @@
     ::selection{background:var(--accent);color:#000}
     #about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:120px var(--site-gutter-x) 100px;max-width:1280px;margin:0 auto;border-top:1px solid rgba(14,14,14,.08);box-sizing:border-box}
     .about-image{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px}
-    .about-image-bg{width:100%;height:100%;background:linear-gradient(160deg,#1a2a3a,#0d151e 50%,#1a0d1a);display:flex;align-items:center;justify-content:center}
+    .about-image-bg{position:relative;width:100%;height:100%;background:linear-gradient(160deg,#1a2a3a,#0d151e 50%,#1a0d1a);display:flex;align-items:center;justify-content:center}
+    #about-unicorn-wrap{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none}
+    #about-unicorn{width:100%;height:100%;min-height:100%}
+    #about-unicorn canvas{display:block;width:100% !important;height:100% !important;object-fit:cover;object-position:50% 50%}
+    #about-unicorn-wrap a[href*="unicorn.studio"]{display:none !important;pointer-events:none !important}
     .about-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .about-avatar{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,#ff6b00,#e55a00);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:56px;color:#000}
+    .about-avatar{position:relative;z-index:0;width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,#ff6b00,#e55a00);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:56px;color:#000}
     .about-badge{position:absolute;bottom:24px;left:24px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border:1px solid rgba(14,14,14,.12);padding:14px 18px;border-radius:12px;z-index:2}
     .about-badge-title{font-size:13px;font-weight:500}.about-badge-sub{font-size:11px;color:var(--mid);margin-top:3px}
     .section-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:48px;display:flex;align-items:center;gap:12px}
@@ -72,7 +76,7 @@
 </div>
 <section id="about">
   <div class="about-image">
-    <div class="about-image-bg" id="about-img-wrap"><div class="about-avatar" id="about-avatar">J</div></div>
+    <div class="about-image-bg" id="about-img-wrap"><div id="about-unicorn-wrap" aria-hidden="true"><div id="about-unicorn" data-us-project="s8uCF02zyTraTc1KF8aK"></div></div><div class="about-avatar" id="about-avatar">J</div></div>
     <div class="about-badge"><div class="about-badge-title">Jordan Croome</div><div class="about-badge-sub">Product Designer</div></div>
   </div>
   <div>
@@ -90,13 +94,13 @@
       <div class="footer-brand-block">
         <a href="/" class="footer-logo" aria-label="Jordan Croome home"><img src="/images/logo.svg" alt="" class="site-logo site-logo--footer" width="501" height="280" /></a>
         <div class="footer-social-row">
-          <a href="https://www.instagram.com/jordancroome/" class="footer-ig" id="footer-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
-          <a href="mailto:hello@jordancroome.com.au" class="footer-email-pill" id="footer-email-link">hello@jordancroome.com.au</a>
+          <a href="https://www.instagram.com/jordan.croome/" class="footer-ig" id="footer-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
+          <a href="mailto:hello@jordancroome.com" class="footer-email-pill" id="footer-email-link">hello@jordancroome.com</a>
         </div>
       </div>
       <div class="footer-col"><h4>Navigate</h4><ul><li><a href="/">Home</a></li><li><a href="/work">Work</a></li><li><a href="/services">Services</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a href="/services">Product Design</a></li><li><a href="/services">UX Strategy</a></li><li><a href="/services">Brand &amp; Systems</a></li></ul></div>
-      <div class="footer-col"><h4>Say hello</h4><ul><li><a href="/contact">Start a project</a></li><li><a href="mailto:hello@jordancroome.com.au" class="footer-mailto">Email</a></li><li><a href="https://www.instagram.com/jordancroome/" id="footer-ig-text" target="_blank" rel="noopener noreferrer">Instagram</a></li></ul></div>
+      <div class="footer-col"><h4>Say hello</h4><ul><li><a href="/contact">Start a project</a></li><li><a href="mailto:hello@jordancroome.com" class="footer-mailto">Email</a></li><li><a href="https://www.instagram.com/jordan.croome/" id="footer-ig-text" target="_blank" rel="noopener noreferrer">Instagram</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span class="footer-copyright" id="footer-copyright">© 2025 Jordan Croome.</span><span class="footer-location" id="footer-location">Melbourne · Cairns · Australia</span></div>
   </div>
@@ -107,13 +111,16 @@ load('content/about.json').then(a=>{
   if(!a)return;
   document.getElementById('about-heading').innerHTML=a.heading.replace(/behind/,'<em>behind</em>');
   document.getElementById('about-text').innerHTML=`<p>${a.para1}</p><p>${a.para2}</p><p>${a.para3}</p>`;
-  if(a.photo){document.getElementById('about-img-wrap').innerHTML=`<img src="${a.photo}" alt="Jordan Croome"/>`;}
+  // About photo is rendered by the Unicorn element in this layout.
   (a.tags||[]).forEach(t=>{const s=document.createElement('span');s.className='tag';s.textContent=t;document.getElementById('about-tags').appendChild(s);});
   const st=document.getElementById('about-stats');(a.stats||[]).forEach(s=>{st.innerHTML+=`<div><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`;});
 });
 load('content/footer.json').then(f=>{if(!f)return;if(f.copyright)document.getElementById('footer-copyright').textContent=f.copyright;if(f.instagram){document.getElementById('footer-instagram').href=f.instagram;var ig=document.getElementById('footer-ig-text');if(ig)ig.href=f.instagram}if(f.email){var m='mailto:'+f.email;document.getElementById('footer-email-link').href=m;document.getElementById('footer-email-link').textContent=f.email;document.querySelectorAll('.footer-mailto').forEach(a=>a.href=m)}if(f.location_line)document.getElementById('footer-location').textContent=f.location_line});
 load('content/hero.json').then(h=>{if(h&&h.cta_primary)document.getElementById('nav-cta').textContent=h.cta_primary});
 document.getElementById('hb').onclick=()=>document.getElementById('mobile-menu').classList.toggle('open');
+</script>
+<script>
+!function(){var u=window.UnicornStudio;if(u&&u.init){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){u.init()})}else{u.init()}}else{window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.4/dist/unicornStudio.umd.js",i.onload=function(){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){UnicornStudio.init()})}else{UnicornStudio.init()}},(document.head||document.body).appendChild(i)}}();
 </script>
 </body>
 </html>

@@ -111,7 +111,9 @@ nav.site-header.site-header--ghost.scrolled {
   font-size: 13px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  border: 1px solid rgba(14, 14, 14, 0.25);
+  background: var(--accent, #ff6b00);
+  color: #000;
+  border: 1px solid var(--accent, #ff6b00);
   padding: 10px 22px;
   border-radius: 100px;
   transition:
