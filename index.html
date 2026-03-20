@@ -125,22 +125,63 @@
     .filter-btn { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 8px 18px; border-radius: 100px; border: 1px solid rgba(14,14,14,.2); background: transparent; color: var(--mid); cursor: pointer; transition: all .2s; }
     .filter-btn.active, .filter-btn:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
     .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; }
-    .work-card { position: relative; overflow: hidden; background: rgba(14,14,14,.06); cursor: pointer; transition: opacity .3s; }
-    .work-card:nth-child(odd) { grid-column: span 7; }
-    .work-card:nth-child(even) { grid-column: span 5; }
-    .work-card-inner { position: relative; width: 100%; min-height: 320px; overflow: hidden; }
-    .work-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+    .work-card { 
+      display: block;
+      position: relative;
+      overflow: hidden;
+      background: rgba(14, 14, 14, 0.03);
+      border: 1px solid rgba(14, 14, 14, 0.12);
+      border-radius: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
+      height: 100%;
+      box-sizing: border-box;
+    }
+    .work-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .work-card:hover { 
+      transform: translateY(-3px);
+      border-color: rgba(255, 107, 0, 0.45);
+      box-shadow: 0 18px 48px rgba(14, 14, 14, 0.08);
+    }
+    .work-card-inner { 
+      display: flex; 
+      flex-direction: column; 
+      height: 100%;
+    }
+    .work-card-media { 
+      position: relative;
+      aspect-ratio: 16/10;
+      background: rgba(14, 14, 14, 0.06);
+    }
+    .work-card-img { 
+      position: absolute; 
+      inset: 0; 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      transition: transform .9s var(--ease);
+    }
     .work-card-placeholder { position: absolute; inset: 0; }
-    .work-card:hover .work-card-img,
-    .work-card:hover .work-card-placeholder { transform: scale(1.05); }
-    .work-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 55%); opacity: 0; transition: opacity .35s; }
-    .work-card:hover .work-card-overlay { opacity: 1; }
-    .work-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; transform: translateY(8px); opacity: 0; transition: all .35s var(--ease); }
-    .work-card:hover .work-card-info { opacity: 1; transform: translateY(0); }
-    .work-card-cat { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-    .work-card-title { font-family: var(--serif); font-weight: var(--serif-weight); font-synthesis: weight; font-size: clamp(18px,2vw,26px); line-height: 1.15; color: #fff; }
-    .work-card-arrow { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .3s, border-color .2s; }
-    .work-card:hover .work-card-arrow { opacity: 1; border-color: var(--accent); }
+    .work-card-placeholder { transition: transform .9s var(--ease); transform: scale(1); }
+    .work-card:hover .work-card-img { transform: scale(1.07); }
+    .work-card:hover .work-card-placeholder { transform: scale(1.07); }
+    .work-card-body { padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .work-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .work-card-cat { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0; }
+    .work-card-title { font-family: var(--serif); font-weight: var(--serif-weight); font-synthesis: weight; font-size: clamp(20px,2.2vw,28px); line-height: 1.12; color: var(--fg); }
+    .work-card-title em { font-style: italic; color: var(--accent); font-weight: inherit; }
+    .work-card-arrow { 
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(14, 14, 14, 0.18);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(240, 237, 232, 0.75);
+      transition: transform .25s var(--ease), border-color .25s var(--ease);
+    }
+    .work-card-arrow svg { opacity: .75; transition: opacity .2s var(--ease); }
+    .work-card:hover .work-card-arrow { transform: translateX(2px); border-color: var(--accent); }
 
     /* Placeholder card gradients */
     .card-bg-1 { background: linear-gradient(135deg,#1e3a5f,#0d1f35); }
@@ -597,19 +638,29 @@ async function populateContent() {
     const span = layouts[i % layouts.length];
     const grad = GRADIENTS[i % GRADIENTS.length];
     const imgHtml = p.image
-      ? `<img class="work-card-img" src="${p.image}" alt="${p.client}" loading="lazy" />`
-      : `<div class="work-card-placeholder ${grad}" style="position:absolute;inset:0;transition:transform .8s var(--ease)"></div>`;
+      ? `<img class="work-card-img" src="${p.image}" alt="${p.client} — ${p.title}" loading="lazy" />`
+      : `<div class="work-card-placeholder ${grad}"></div>`;
+
+    var titleWords = (p.title || '').trim().split(/\s+/).filter(Boolean);
+    var lastWord = titleWords.length ? titleWords.pop() : '';
+    var titlePrefix = titleWords.join(' ');
+    var titleHtml = lastWord
+      ? `${p.client} — ${titlePrefix ? titlePrefix + ' ' : ''}<em>${lastWord}</em>`
+      : `${p.client} — ${p.title}`;
     workGrid.innerHTML += `
       <a href="/work/${p.slug}" class="work-card reveal" data-category="${p.category}" style="grid-column:span ${span}">
         <div class="work-card-inner">
-          ${imgHtml}
-          <div class="work-card-overlay"></div>
-          <div class="work-card-arrow">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="work-card-media">
+            ${imgHtml}
           </div>
-          <div class="work-card-info">
-            <div class="work-card-cat">${p.category_label}</div>
-            <div class="work-card-title">${p.client} — ${p.title}</div>
+          <div class="work-card-body">
+            <div class="work-card-top">
+              <div class="work-card-cat">${p.category_label}</div>
+              <div class="work-card-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="work-card-title">${titleHtml}</div>
           </div>
         </div>
       </a>`;

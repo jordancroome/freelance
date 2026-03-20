@@ -63,18 +63,22 @@
     .filter-btn { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 10px 20px; border-radius: 100px; border: 1px solid rgba(14,14,14,.2); background: transparent; color: var(--mid); cursor: pointer; transition: all .2s; }
     .filter-btn.active, .filter-btn:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
-    .work-list-stack { display: flex; flex-direction: column; gap: 0; }
-    .work-list-item { position: relative; display: block; min-height: 78vh; max-height: 92vh; overflow: hidden; color: #fff; }
-    .work-list-item .work-list-media { position: absolute; inset: 0; transition: transform 1s var(--ease); }
-    .work-list-item:hover .work-list-media { transform: scale(1.04); }
-    .work-list-item img { width: 100%; height: 100%; object-fit: cover; }
-    .work-list-item .work-list-ph { width: 100%; height: 100%; min-height: 78vh; }
-    .work-list-item .work-list-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 45%, transparent 70%); pointer-events: none; }
-    .work-list-item .work-list-meta { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(32px,6vw,72px) clamp(24px,5vw,56px); z-index: 2; }
-    .work-list-item .work-list-cat { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-    .work-list-item .work-list-name { font-family: var(--serif); font-weight: var(--serif-weight-project); font-synthesis: none; font-size: clamp(28px,5vw,52px); line-height: 1.1; letter-spacing: -.02em; max-width: 900px; }
-    .work-list-item .work-list-arrow { position: absolute; top: clamp(24px,4vw,40px); right: clamp(24px,4vw,40px); width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; transition: border-color .25s, background .25s; }
-    .work-list-item:hover .work-list-arrow { border-color: var(--accent); background: rgba(255,255,255,.08); }
+    .work-list-stack { display: flex; flex-direction: column; gap: 2px; max-width: 1280px; margin: 0 auto; padding: 0 var(--site-gutter-x) 80px; }
+    .work-list-item { position: relative; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(14,14,14,.12); background: rgba(14,14,14,.03); color: var(--fg); border-radius: 16px; cursor: pointer; transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease); }
+    .work-list-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .work-list-item:hover { transform: translateY(-3px); border-color: rgba(255,107,0,.45); box-shadow: 0 18px 48px rgba(14,14,14,.08); }
+    .work-list-media { position: relative; width: 100%; aspect-ratio: 16/10; background: rgba(14,14,14,.05); }
+    .work-list-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+    .work-list-media .work-list-ph { position: absolute; inset: 0; }
+    .work-list-item:hover .work-list-media img { transform: scale(1.07); }
+    .work-list-item .work-list-shade { display: none; }
+    .work-list-meta { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+    .work-list-cat { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0; }
+    .work-list-name { font-family: var(--serif); font-weight: var(--serif-weight-project); font-synthesis: none; font-size: clamp(24px,4vw,40px); line-height: 1.1; letter-spacing: -.02em; }
+    .work-list-name em { font-style: italic; color: var(--accent); font-weight: inherit; }
+    .work-list-arrow { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(14,14,14,.18); background: rgba(240,237,232,.75); display: flex; align-items: center; justify-content: center; transition: transform .25s var(--ease), border-color .25s var(--ease); pointer-events: none; }
+    .work-list-arrow svg { opacity: .75; }
+    .work-list-item:hover .work-list-arrow { transform: translateX(2px); border-color: var(--accent); }
     /* ─── CASE STUDY (same layout; homepage visual language) ─── */
     body.mode-case .work-list-page { display: none !important; }
     #project-root:not(:empty) { display: block; }
@@ -143,7 +147,6 @@
 
     @media (max-width: 768px) {
       .work-list-header { padding-top: 32px; padding-bottom: 40px; }
-      .work-list-item { min-height: 70vh; }
       .case-hero { padding: 100px 20px 40px; }
       .case-section { padding: 64px 20px 0; }
       .case-related { padding: 72px 20px 64px; }
@@ -450,13 +453,26 @@
         const media = p.image
           ? '<img src="' + escape(p.image) + '" alt="' + escape(imgAlt) + '" loading="lazy" />'
           : '<div class="work-list-ph ' + grad + '"></div>';
+        var titleWords = (p.title || '').trim().split(/\s+/).filter(Boolean);
+        var lastTitle = titleWords.length ? titleWords.pop() : '';
+        var titlePrefix = titleWords.join(' ');
+        var nameHtml = '';
+        if (p.client) {
+          nameHtml = escape(p.client);
+          if (p.title) nameHtml += ' — ';
+        }
+        if (lastTitle) {
+          nameHtml += (titlePrefix ? escape(titlePrefix) + ' ' : '') + '<em>' + escape(lastTitle) + '</em>';
+        } else {
+          nameHtml += escape(p.title || '');
+        }
+
         return '<a href="/work/' + escape(p.slug) + '" class="work-list-item" data-category="' + escape(p.category || '') + '">' +
           '<div class="work-list-media">' + media + '</div>' +
-          '<div class="work-list-shade"></div>' +
-          '<div class="work-list-arrow"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>' +
+          '<div class="work-list-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>' +
           '<div class="work-list-meta">' +
             '<div class="work-list-cat">' + escape(p.category_label || p.category || 'Project') + '</div>' +
-            '<h2 class="work-list-name">' + escape(p.client || '') + (p.client && p.title ? ' — ' : '') + escape(p.title || '') + '</h2>' +
+            '<h2 class="work-list-name">' + nameHtml + '</h2>' +
           '</div></a>';
       }).join('');
 
@@ -513,7 +529,9 @@
       applyCaseStudySeo(project, slug);
 
       var client = project.client || '';
-      var h1Source = project.case_h1 || client || project.title || 'Project';
+      // H1 should be the project "name" (title), not the client.
+      // Keep `case_h1` as an explicit override if a case needs a custom heading.
+      var h1Source = project.case_h1 || project.title || client || 'Project';
       var h1Words = h1Source.split(/\s+/).filter(Boolean);
       var tagline = project.tagline || '';
       var year = project.year || '';
@@ -645,11 +663,14 @@
           return String(a.slug || '').localeCompare(String(b.slug || ''));
         });
         var idx = projects.findIndex(function(p) { return p.slug === slug; });
-        if (idx < 0 || idx >= projects.length - 1) {
+        if (idx < 0 || projects.length <= 1) {
+          // If only one project exists (or current slug wasn't found), don't render a "next" card.
           mountNext(null);
           return;
         }
-        mountNext(buildNextCardPayload(projects[idx + 1], projects[idx + 1].slug));
+        // Loop: last project should show the first project as "next".
+        var nextIdx = (idx + 1) % projects.length;
+        mountNext(buildNextCardPayload(projects[nextIdx], projects[nextIdx].slug));
       }
 
       function resolveAutoNextProject() {
