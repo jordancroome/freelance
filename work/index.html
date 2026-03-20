@@ -141,6 +141,18 @@
     .case-showcase-inner { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; box-sizing: border-box; width: 100%; }
     .case-showcase-inner img { width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 16px 48px rgba(15, 60, 45, .08); }
     .case-showcase-placeholder { min-height: 280px; width: 100%; border-radius: 8px; background: linear-gradient(145deg, #d4ebe0, #c5e4d6); border: 1px dashed rgba(45,106,79,.25); }
+    .case-showcase-skeleton {
+      min-height: 280px;
+      width: 100%;
+      border-radius: 8px;
+      background: linear-gradient(90deg, rgba(240,237,232,.25) 0%, rgba(240,237,232,.7) 35%, rgba(240,237,232,.25) 70%);
+      background-size: 300% 100%;
+      animation: caseShowcaseShimmer 1.2s ease-in-out infinite;
+    }
+    @keyframes caseShowcaseShimmer {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
     .case-cta-row { max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem 0; }
     .case-next-section { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem 3.25rem; }
     .case-next-label { font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 1.25rem; padding-top: 14px; }
@@ -160,7 +172,7 @@
       box-shadow: 0 18px 48px rgba(14,14,14,.08); 
     }
     .case-next-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-    .case-next-media { position: relative; width: 100%; aspect-ratio: 16/7; background: rgba(14,14,14,.05); overflow: hidden; }
+    .case-next-media { position: relative; width: 100%; aspect-ratio: 16/3.5; background: rgba(14,14,14,.05); overflow: hidden; }
     .case-next-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
     .case-next-card:hover .case-next-media img { transform: scale(1.05); }
     .case-next-ph { position: absolute; inset: 0; }
@@ -421,19 +433,43 @@
     livebetter: 'livebetter-collage.png',
     origin: 'origin-collage.png'
   };
-  /** Ordered collage URLs; first loadable wins (avoids brittle img onerror). */
+  /** Collage URL candidates (webp-first where possible) to reduce load time. */
   function collageUrlCandidates(slug, project) {
     var root = '/images/projects/' + slug + '/';
     var urls = [];
-    function add(u) { if (u && urls.indexOf(u) === -1) urls.push(u); }
-    add(project.collage_image);
-    if (COLLAGE_FILENAME_BY_SLUG[slug]) add(root + COLLAGE_FILENAME_BY_SLUG[slug]);
-    add(root + 'collage.png');
-    add(root + 'collage.webp');
-    add(root + 'collage.jpg');
-    add(root + slug + '-collage.png');
-    add(project.showcase_image);
-    add(project.image);
+    function add(u) {
+      if (!u) return;
+      var s = String(u);
+      if (!s) return;
+      if (urls.indexOf(s) === -1) urls.push(s);
+    }
+    // If we have a raster image, also try a derived .webp/.jpg variant.
+    function addImageVariants(u) {
+      if (!u) return;
+      var s = String(u);
+      var m = s.match(/^(.*)\.(png|jpe?g|webp)$/i);
+      if (m) {
+        var base = m[1];
+        add(base + '.webp');
+        add(base + '.jpg');
+        add(s);
+      } else {
+        add(s);
+      }
+    }
+
+    // Prefer explicitly configured collage image, but try derived webp first.
+    addImageVariants(project.collage_image);
+    if (COLLAGE_FILENAME_BY_SLUG[slug]) addImageVariants(root + COLLAGE_FILENAME_BY_SLUG[slug]);
+
+    // Standard file naming (try webp/jpg before png).
+    addImageVariants(root + 'collage.png');
+    addImageVariants(root + slug + '-collage.png');
+
+    // Fallbacks.
+    addImageVariants(project.showcase_image);
+    addImageVariants(project.image);
+
     return urls;
   }
   function mountCaseCollage(mountEl, slug, project) {
@@ -443,24 +479,29 @@
       mountEl.innerHTML = '<div class="case-showcase-placeholder" aria-hidden="true"></div>';
       return;
     }
-    var i = 0;
-    function tryNext() {
-      if (i >= urls.length) {
-        mountEl.innerHTML = '<div class="case-showcase-placeholder" aria-hidden="true"></div>';
-        return;
-      }
-      var url = urls[i];
+    // Immediate feedback while we try to load the collage.
+    mountEl.innerHTML = '<div class="case-showcase-skeleton" aria-hidden="true"></div>';
+
+    var chosen = urls.slice(0, 6);
+    var done = false;
+    var remaining = chosen.length;
+
+    chosen.forEach(function(url) {
       var probe = new Image();
+      probe.decoding = 'async';
       probe.onload = function() {
-        mountEl.innerHTML = '<img src="' + escape(url) + '" alt="' + altEsc + '" loading="lazy" />';
+        if (done) return;
+        done = true;
+        mountEl.innerHTML = '<img src="' + escape(url) + '" alt="' + altEsc + '" loading="eager" decoding="async" />';
       };
       probe.onerror = function() {
-        i++;
-        tryNext();
+        remaining--;
+        if (remaining <= 0 && !done) {
+          mountEl.innerHTML = '<div class="case-showcase-placeholder" aria-hidden="true"></div>';
+        }
       };
       probe.src = url;
-    }
-    tryNext();
+    });
   }
   function paragraphs(text) {
     if (!text) return '';
