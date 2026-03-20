@@ -124,7 +124,8 @@
     .work-filters { display: flex; gap: 4px; margin-bottom: 56px; flex-wrap: wrap; }
     .filter-btn { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 8px 18px; border-radius: 100px; border: 1px solid rgba(14,14,14,.2); background: transparent; color: var(--mid); cursor: pointer; transition: all .2s; }
     .filter-btn.active, .filter-btn:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-    .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; }
+    /* Uniform project card grid */
+    .work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
     .work-card { 
       display: block;
       position: relative;
@@ -169,7 +170,18 @@
     .work-card-body { padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
     .work-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
     .work-card-cat { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0; }
-    .work-card-title { font-family: var(--serif); font-weight: var(--serif-weight); font-synthesis: weight; font-size: clamp(20px,2.2vw,28px); line-height: 1.12; color: var(--fg); }
+    .work-card-title { 
+      font-family: var(--serif); 
+      font-weight: var(--serif-weight); 
+      font-synthesis: weight; 
+      font-size: clamp(20px,2.2vw,28px); 
+      line-height: 1.12; 
+      color: var(--fg); 
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
     .work-card-title em { font-style: italic; color: var(--accent); font-weight: inherit; }
     .work-card-arrow { 
       flex-shrink: 0;
@@ -303,7 +315,6 @@
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       .work-grid { grid-template-columns: 1fr 1fr; }
-      .work-card:nth-child(n) { grid-column: span 1 !important; }
       .services-grid { grid-template-columns: 1fr; }
       .testimonial-grid { grid-template-columns: 1fr; }
     }
@@ -312,7 +323,6 @@
       #hero { padding: 76px var(--site-gutter-x) 48px; }
       #statement, #about, #contact.contact-band { grid-template-columns: 1fr; }
       .work-grid { grid-template-columns: 1fr; }
-      .work-card:nth-child(n) { grid-column: span 1 !important; }
       .about-image { aspect-ratio: 1/1; }
       .process-step { grid-template-columns: 48px 1fr; }
       .process-step-body { grid-column: 2; }
@@ -633,9 +643,7 @@ async function populateContent() {
       if (!have.has(p.slug)) { homeProjects.push(p); have.add(p.slug); }
     }
   }
-  const layouts = [7, 5, 12];
   homeProjects.forEach((p, i) => {
-    const span = layouts[i % layouts.length];
     const grad = GRADIENTS[i % GRADIENTS.length];
     const imgHtml = p.image
       ? `<img class="work-card-img" src="${p.image}" alt="${p.client} — ${p.title}" loading="lazy" />`
@@ -648,7 +656,7 @@ async function populateContent() {
       ? `${p.client} — ${titlePrefix ? titlePrefix + ' ' : ''}<em>${lastWord}</em>`
       : `${p.client} — ${p.title}`;
     workGrid.innerHTML += `
-      <a href="/work/${p.slug}" class="work-card reveal" data-category="${p.category}" style="grid-column:span ${span}">
+      <a href="/work/${p.slug}" class="work-card reveal" data-category="${p.category}">
         <div class="work-card-inner">
           <div class="work-card-media">
             ${imgHtml}
