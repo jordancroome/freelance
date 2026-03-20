@@ -140,13 +140,15 @@ collections:
         required: false
         field: { label: "Tag", name: "tag", widget: "string" }
       - { label: "SEO description", name: "meta_description", widget: "text", required: false }
-      - label: "Next project card (optional)"
+      - label: "Next project card (manual override)"
         name: "next_project"
         widget: "object"
         required: false
+        collapsed: true
+        hint: "Leave this section empty. The case study footer automatically shows the next project using Sort order. Fill only if you want a specific next link."
         fields:
-          - { label: "Slug", name: "slug", widget: "string" }
-          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Slug", name: "slug", widget: "string", required: false, hint: "e.g. my-project (optional)" }
+          - { label: "Title", name: "title", widget: "string", required: false, hint: "Card headline (optional if slug is set — pulled from that project)" }
           - { label: "Client", name: "client", widget: "string", required: false }
           - { label: "Tagline", name: "tagline", widget: "string", required: false }
           - { label: "Year", name: "year", widget: "string", required: false }

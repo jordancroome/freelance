@@ -142,13 +142,15 @@ collections:
         required: false
         field: { label: "Tag", name: "tag", widget: "string" }
       - { label: "SEO description", name: "meta_description", widget: "text", required: false }
-      - label: "Next project card (optional)"
+      - label: "Next project card (manual override)"
         name: "next_project"
         widget: "object"
         required: false
+        collapsed: true
+        hint: "Leave empty — next project is chosen automatically by Sort order."
         fields:
-          - { label: "Slug", name: "slug", widget: "string" }
-          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Slug", name: "slug", widget: "string", required: false }
+          - { label: "Title", name: "title", widget: "string", required: false }
           - { label: "Client", name: "client", widget: "string", required: false }
           - { label: "Tagline", name: "tagline", widget: "string", required: false }
           - { label: "Year", name: "year", widget: "string", required: false }

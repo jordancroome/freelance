@@ -202,6 +202,8 @@ To edit: open **Site Settings** in the CMS, then the section you want. Change fi
 
 **Case study bottom image (collage):** The page tries, in order: optional **Collage image** in CMS, then `images/projects/{slug}/collage.png`, `collage.webp`, `collage.jpg`, mapped `*-collage.png` filenames, then showcase / cover image. Add your collage under `images/projects/<same-slug-as-the-json-file>/` (e.g. `operata/collage.png` for `operata.json`).
 
+**Next project (case study footer):** You can leave **Next project card (manual override)** collapsed/empty. The site picks the **next item by Sort order** automatically. Use the override only to link a specific case study out of sequence.
+
 **Quick add:** New project → fill fields → set **Sort order** and **Featured: ON** → **Publish**. The new file appears in `content/projects/` and the site updates after the next Vercel deploy.
 
 ### Services

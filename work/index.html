@@ -617,19 +617,85 @@
           '<div class="case-next-bar">' + bar + '</div></a>';
       }
 
-      if (project.next_project && project.next_project.slug) {
-        mountNext(project.next_project);
-      } else {
-        fetch('/api/projects-list').then(r => r.json()).then(function(list) {
-          var paths = (list.paths || []).map(function(p) { return p.replace('content/projects/', '').replace('.json', ''); }).filter(function(s) { return s && s !== slug; });
-          if (!paths.length) { mountNext(null); return; }
-          var nextSlug = paths[0];
-          loadJSON('/content/projects/' + nextSlug + '.json').then(function(np) {
-            if (!np) { mountNext(null); return; }
-            var meta = np.category_label || (np.category || '');
-            mountNext({ slug: nextSlug, title: np.client || np.title, client: np.client, tagline: np.tagline || (np.description || '').split('\n')[0].slice(0, 120), year: np.year, meta: meta });
+      function buildNextCardPayload(np, nextSlug) {
+        if (!np || !nextSlug) return null;
+        var meta = np.category_label || (np.category || '');
+        return {
+          slug: nextSlug,
+          title: np.client || np.title,
+          client: np.client,
+          tagline: np.tagline || (np.description || '').split('\n')[0].slice(0, 120),
+          year: np.year,
+          meta: meta
+        };
+      }
+
+      function mountNextFromSortedProjects(paths, projectData) {
+        var projects = [];
+        projectData.forEach(function(p, i) {
+          if (!p) return;
+          var path = paths[i];
+          if (!path) return;
+          p.slug = path.replace(/^content\/projects\//, '').replace(/\.json$/, '');
+          projects.push(p);
+        });
+        projects.sort(function(a, b) {
+          var o = (a.order || 99) - (b.order || 99);
+          if (o !== 0) return o;
+          return String(a.slug || '').localeCompare(String(b.slug || ''));
+        });
+        var idx = projects.findIndex(function(p) { return p.slug === slug; });
+        if (idx < 0 || idx >= projects.length - 1) {
+          mountNext(null);
+          return;
+        }
+        mountNext(buildNextCardPayload(projects[idx + 1], projects[idx + 1].slug));
+      }
+
+      function resolveAutoNextProject() {
+        var paths = FALLBACK.slice();
+        fetch('/api/projects-list')
+          .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+          .then(function(list) {
+            if (list.paths && list.paths.length) paths = list.paths.slice();
+            return Promise.all(paths.map(function(path) {
+              var rel = String(path || '').replace(/^\//, '');
+              return loadJSON('/' + rel);
+            }));
+          })
+          .catch(function() {
+            paths = FALLBACK.slice();
+            return Promise.all(paths.map(function(path) {
+              var rel = String(path || '').replace(/^\//, '');
+              return loadJSON('/' + rel);
+            }));
+          })
+          .then(function(projectData) {
+            mountNextFromSortedProjects(paths, projectData);
+          })
+          .catch(function() { mountNext(null); });
+      }
+
+      var npManual = project.next_project;
+      var manualSlug = npManual && String(npManual.slug || '').trim();
+      if (manualSlug) {
+        if (npManual.title || npManual.client) {
+          mountNext({
+            slug: manualSlug,
+            title: npManual.title || npManual.client,
+            client: npManual.client || '',
+            tagline: npManual.tagline || '',
+            year: npManual.year || '',
+            meta: npManual.meta || npManual.category_label || ''
           });
-        }).catch(function() { mountNext(null); });
+        } else {
+          loadJSON('/content/projects/' + manualSlug + '.json').then(function(full) {
+            if (!full) resolveAutoNextProject();
+            else mountNext(buildNextCardPayload(full, manualSlug));
+          });
+        }
+      } else {
+        resolveAutoNextProject();
       }
 
     });
