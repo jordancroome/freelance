@@ -71,7 +71,7 @@ collections:
           - { label: "Heading line 2 (italic/accent)", name: "heading2", widget: "string" }
           - { label: "Body text", name: "body", widget: "text" }
           - { label: "Email address", name: "email", widget: "string" }
-          - { label: "Calendly / booking URL", name: "booking_url", widget: "string" }
+          - { label: "Book / call CTA URL (contact page)", name: "booking_url", widget: "string", default: "/contact", hint: "Usually /contact — opens from “Book a 30-min call” and similar CTAs." }
           - { label: "Footer note", name: "footer_note", widget: "string" }
 
       - name: "contact_form"
@@ -81,7 +81,7 @@ collections:
           - { label: "Form heading line 1", name: "form_heading1", widget: "string" }
           - { label: "Form heading line 2 (italic)", name: "form_heading2", widget: "string" }
           - { label: "Intro under heading", name: "form_intro", widget: "text" }
-          - { label: "Form endpoint URL", name: "form_action", widget: "string", required: false, default: "/api/contact", hint: "/api/contact + Resend env vars, or Formspree URL, or mailto" }
+          - { label: "Form endpoint URL", name: "form_action", widget: "string", required: false, default: "/api/contact", hint: "/api/contact + Resend env vars, or Formspree URL" }
           - { label: "Email subject", name: "form_subject", widget: "string", default: "Website enquiry" }
           - { label: "Name label", name: "name_label", widget: "string", default: "Name" }
           - { label: "Email label", name: "email_label", widget: "string", default: "Email" }
