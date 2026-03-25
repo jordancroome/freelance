@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Jordan Croome</title>
-  <meta name="description" content="Start a project or book a call. Product design for founders and growing businesses." />
+  <title>Contact | Start a project — branding &amp; design, Cairns — Jordan Croome</title>
+  <meta name="description" content="Book a call or send a brief: branding, graphic design, or product work for Cairns and Australian SMBs. Usually replies within 24 hours." />
   <link rel="canonical" href="https://jordancroome.com.au/contact" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#f0ede8" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Jordan Croome" />
-  <meta property="og:title" content="Contact — Jordan Croome" />
-  <meta property="og:description" content="Start a project or book a call. Product design for founders and growing businesses." />
+  <meta property="og:title" content="Contact | Jordan Croome, Cairns" />
+  <meta property="og:description" content="Branding, graphic design &amp; product — book a call or message." />
   <meta property="og:url" content="https://jordancroome.com.au/contact" />
   <meta property="og:image" content="https://jordancroome.com.au/images/uploads/hero-1.webp" />
   <meta property="og:locale" content="en_AU" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact — Jordan Croome" />
-  <meta name="twitter:description" content="Start a project or book a call. Product design for founders and growing businesses." />
+  <meta name="twitter:title" content="Contact | Jordan Croome" />
+  <meta name="twitter:description" content="Start a branding, graphic design, or product project — Cairns &amp; Australia." />
   <meta name="twitter:image" content="https://jordancroome.com.au/images/uploads/hero-1.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,6 +50,7 @@
     .cf-input,.cf-textarea{width:100%;background:rgba(14,14,14,.04);border:1px solid rgba(14,14,14,.2);border-radius:10px;padding:12px 16px;font-family:var(--sans);font-size:14px;color:var(--fg);outline:none;transition:border-color .2s}
     .cf-input:focus,.cf-textarea:focus{border-color:var(--accent)}
     .cf-textarea{min-height:140px;resize:vertical;line-height:1.65}
+    select.cf-input{cursor:pointer;appearance:auto}
     .contact-form .btn-primary{align-self:flex-start;border:none;cursor:pointer;font-family:var(--sans)}
     .contact-form .btn-primary:disabled{opacity:.6;cursor:not-allowed}
     .form-status{font-size:13px;line-height:1.5;margin:0}
@@ -65,7 +66,7 @@
 <body>
 <nav class="site-header site-header--opaque" aria-label="Primary">
   <div class="site-header__inner">
-    <a href="/" class="nav-logo" aria-label="Jordan Croome home"><img src="/images/logo.svg" alt="" width="501" height="280" /></a>
+    <a href="/" class="nav-logo" aria-label="Jordan Croome home"><img src="/images/logo.svg" alt="Jordan Croome — contact, Cairns" width="501" height="280" /></a>
     <ul class="nav-links">
       <li><a href="/work">Work</a></li>
       <li><a href="/services">Services</a></li>
@@ -85,7 +86,8 @@
     <div class="section-label">Contact</div>
     <h1 class="page-title" id="cta-h">Ready to build something <em>worth showing?</em></h1>
     <p class="contact-intro" id="cta-body">I take on a limited number of projects at a time so every client gets proper focus.</p>
-    <p class="contact-note" id="cta-note">Based between Melbourne &amp; Cairns · Usually responds within 24h</p>
+    <p class="contact-note" id="cta-note">Based in Cairns · Serving Queensland &amp; Australia · Usually responds within 24h</p>
+    <p class="contact-note" style="margin-top:16px"><a href="https://calendly.com/jordancroome" id="cta-cal-inline" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">Book a 30-min call →</a></p>
   </div>
   <div class="contact-hero-right">
     <p class="form-band-intro" id="form-intro" hidden></p>
@@ -104,6 +106,21 @@
       <input class="cf-input" id="cf-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
     </div>
     <div class="form-field">
+      <label for="cf-company" id="lbl-company">Business name <span style="opacity:.65;font-weight:300">(optional)</span></label>
+      <input class="cf-input" id="cf-company" name="company" type="text" autocomplete="organization" placeholder="Your business or project" />
+    </div>
+    <div class="form-field">
+      <label for="cf-service" id="lbl-service">What do you need?</label>
+      <select class="cf-input" id="cf-service" name="service_interest" aria-describedby="cf-service-hint">
+        <option value="">Select…</option>
+        <option value="Branding / identity">Branding / identity</option>
+        <option value="Graphic design / collateral">Graphic design / collateral</option>
+        <option value="Product / app / UX">Product / app / UX</option>
+        <option value="Not sure yet">Not sure yet</option>
+      </select>
+      <span id="cf-service-hint" class="contact-note" style="margin-top:4px;display:block">Unsure? Read <a href="/insights/logo-vs-brand-identity" style="color:var(--accent)">logo vs full brand</a> or <a href="/branding-cairns" style="color:var(--accent)">branding · Cairns</a>.</span>
+    </div>
+    <div class="form-field">
       <label for="cf-message" id="lbl-message">Message</label>
       <textarea class="cf-textarea" id="cf-message" name="message" required placeholder="Project details, timeline, links…"></textarea>
     </div>
@@ -117,17 +134,17 @@
   <div class="footer-main">
     <div class="footer-top">
       <div class="footer-brand-block">
-        <a href="/" class="footer-logo" aria-label="Jordan Croome home"><img src="/images/logo.svg" alt="" class="site-logo site-logo--footer" width="501" height="280" /></a>
+        <a href="/" class="footer-logo" aria-label="Jordan Croome home"><img src="/images/logo.svg" alt="Jordan Croome — design studio" class="site-logo site-logo--footer" width="501" height="280" /></a>
         <div class="footer-social-row">
           <a href="https://www.instagram.com/jordan.croome/" class="footer-ig" id="footer-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
           <a href="mailto:hello@jordancroome.com" class="footer-email-pill" id="footer-email-link">hello@jordancroome.com</a>
         </div>
       </div>
       <div class="footer-col"><h4>Navigate</h4><ul><li><a href="/">Home</a></li><li><a href="/work">Work</a></li><li><a href="/services">Services</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services">Product Design</a></li><li><a href="/services">UX Strategy</a></li><li><a href="/services">Brand &amp; Systems</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/branding-cairns">Branding · Cairns</a></li><li><a href="/graphic-design-cairns">Graphic design · Cairns</a></li><li><a href="/services">Product &amp; UX</a></li></ul></div>
       <div class="footer-col"><h4>Say hello</h4><ul><li><a href="/contact">Start a project</a></li><li><a href="mailto:hello@jordancroome.com" class="footer-mailto">Email</a></li><li><a href="https://www.instagram.com/jordan.croome/" id="footer-ig-text" target="_blank" rel="noopener noreferrer">Instagram</a></li></ul></div>
     </div>
-    <div class="footer-bottom"><span class="footer-copyright" id="footer-copyright">© 2025 Jordan Croome.</span><span class="footer-location" id="footer-location">Melbourne · Cairns · Australia</span></div>
+    <div class="footer-bottom"><span class="footer-copyright" id="footer-copyright">© 2026 Jordan Croome.</span><span class="footer-location" id="footer-location">Cairns · Queensland · Australia</span></div>
   </div>
 </footer>
 <script>
@@ -145,6 +162,10 @@
       if(c.body) document.getElementById('cta-body').textContent = c.body;
       if(c.email) contactEmail = c.email;
       if(c.footer_note) document.getElementById('cta-note').textContent = c.footer_note;
+      if(c.booking_url){
+        var cal=document.getElementById('cta-cal-inline');
+        if(cal) cal.href=c.booking_url;
+      }
     }
     if(f){
       var intro = document.getElementById('form-intro');
@@ -184,6 +205,10 @@
     var status = document.getElementById('cf-status');
     var name = document.getElementById('cf-name').value.trim();
     var email = document.getElementById('cf-email').value.trim();
+    var companyEl = document.getElementById('cf-company');
+    var serviceEl = document.getElementById('cf-service');
+    var company = companyEl ? companyEl.value.trim().slice(0, 200) : '';
+    var serviceInterest = serviceEl ? String(serviceEl.value || '').trim().slice(0, 120) : '';
     var message = document.getElementById('cf-message').value.trim();
     status.hidden = true;
     if(!name || !email || !message){
@@ -203,6 +228,8 @@
         body: JSON.stringify({
           name: name,
           email: email,
+          company: company,
+          service_interest: serviceInterest,
           message: message,
           subject: document.getElementById('cf-subject').value,
           website: (document.getElementById('cf-honey') || {}).value || ''
@@ -242,7 +269,10 @@
 
     if (formEndpoint === '') {
       var subj0 = encodeURIComponent(document.getElementById('cf-subject').value + ' from ' + name);
-      var body0 = encodeURIComponent(message + '\n\n— ' + name + '\n' + email);
+      var mailExtras = '';
+      if (company) mailExtras += '\nBusiness: ' + company;
+      if (serviceInterest) mailExtras += '\nService: ' + serviceInterest;
+      var body0 = encodeURIComponent(message + mailExtras + '\n\n— ' + name + '\n' + email);
       window.location.href = 'mailto:' + contactEmail + '?subject=' + subj0 + '&body=' + body0;
       return;
     }
@@ -268,7 +298,10 @@
       return;
     }
     var subjF = encodeURIComponent(document.getElementById('cf-subject').value + ' from ' + name);
-    var bodyF = encodeURIComponent(message + '\n\n— ' + name + '\n' + email);
+    var mailExtraF = '';
+    if (company) mailExtraF += '\nBusiness: ' + company;
+    if (serviceInterest) mailExtraF += '\nService: ' + serviceInterest;
+    var bodyF = encodeURIComponent(message + mailExtraF + '\n\n— ' + name + '\n' + email);
     window.location.href = 'mailto:' + contactEmail + '?subject=' + subjF + '&body=' + bodyF;
   });
 

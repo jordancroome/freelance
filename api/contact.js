@@ -1,6 +1,6 @@
 /**
  * POST /api/contact
- * Body JSON: { name, email, message, subject? }
+ * Body JSON: { name, email, message, subject?, company?, service_interest? }
  * Env: RESEND_API_KEY, CONTACT_EMAIL (your inbox)
  * Optional: RESEND_FROM (e.g. "Jordan <notifications@yourdomain.com>") after domain verify at Resend
  */
@@ -40,6 +40,8 @@ module.exports = async (req, res) => {
 
   const name = String(parsed.name || '').trim().slice(0, 200);
   const email = String(parsed.email || '').trim().slice(0, 320);
+  const company = String(parsed.company || '').trim().slice(0, 200);
+  const serviceInterest = String(parsed.service_interest || '').trim().slice(0, 120);
   const message = String(parsed.message || '').trim().slice(0, 50000);
   const subject = String(parsed.subject || 'Website enquiry').trim().slice(0, 200);
 
@@ -74,7 +76,16 @@ module.exports = async (req, res) => {
         to: [toEmail],
         reply_to: email,
         subject: `${subject} — ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+        text: [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          company ? `Business: ${company}` : null,
+          serviceInterest ? `Service interest: ${serviceInterest}` : null,
+          '',
+          message,
+        ]
+          .filter(Boolean)
+          .join('\n'),
       }),
     });
 
