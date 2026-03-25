@@ -28,7 +28,8 @@ collections:
           - { label: "Headline line 1", name: "headline1", widget: "string", default: "Design that" }
           - { label: "Headline line 2 (accent/italic)", name: "headline2", widget: "string", default: "converts" }
           - { label: "Headline line 3", name: "headline3", widget: "string", default: "and competes." }
-          - { label: "Subheading", name: "sub", widget: "text", default: "Expert-level branding, graphic design, and web design for founders, sole traders, and SMBs who want clarity, craft, and results. Based between Cairns and Melbourne, working across Australia. Branding · Graphic design · Web design" }
+          - { label: "Subheading (before service links)", name: "sub", widget: "text", default: "Expert-level branding, graphic design, and web design for founders, sole traders, and SMBs who want clarity, craft, and results. Based between Cairns and Melbourne, working across Australia." }
+          - { label: "Service links (HTML fragment)", name: "sub_service_links_html", widget: "string", default: "<a href=\"/branding-cairns\">Branding</a> · <a href=\"/graphic-design-cairns\">Graphic design</a> · <a href=\"/services\">Web design</a>" }
           - { label: "Primary CTA label", name: "cta_primary", widget: "string", default: "Start a project" }
           - { label: "Secondary CTA label", name: "cta_secondary", widget: "string", default: "View work" }
 
