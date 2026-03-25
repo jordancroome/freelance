@@ -88,12 +88,8 @@
     /* Homepage: Instrument Serif at heaviest practical weight (600 + synthesis) */
     .hero-headline { font-family: var(--serif); font-weight: var(--serif-weight); font-style: normal; font-synthesis: weight; font-size: clamp(48px,8vw,96px); line-height: 1; letter-spacing: -.03em; color: #060606; text-shadow: 0 0 40px rgba(240,237,232,.85), 0 2px 12px rgba(240,237,232,.5); opacity: 0; transform: translateY(30px); animation: fadeUp .9s .55s var(--ease) forwards; }
     .hero-headline em { font-style: italic; font-weight: var(--serif-weight); font-synthesis: weight; color: #b84f00; text-shadow: 0 0 28px rgba(240,237,232,.9), 0 1px 8px rgba(240,237,232,.6); }
-    .hero-sub { margin-top: 24px; max-width: 440px; font-size: 16px; color: rgba(6,6,6,.88); line-height: 1.65; text-shadow: 0 0 20px rgba(240,237,232,.75); opacity: 0; transform: translateY(20px); animation: fadeUp .8s .75s var(--ease) forwards; }
-    /* Matches .hero-sub: same type scale and contrast on the hero gradient */
-    .hero-local { margin-top: 16px; max-width: 480px; font-size: 16px; color: rgba(6,6,6,.88); line-height: 1.65; text-shadow: 0 0 20px rgba(240,237,232,.75); opacity: 0; transform: translateY(16px); animation: fadeUp .75s .88s var(--ease) forwards; }
-    .hero-local a { color: #b84f00; text-decoration: underline; text-underline-offset: 3px; }
-    .hero-local a:hover { color: #060606; }
-    .hero-actions { margin-top: 36px; display: flex; align-items: center; gap: 28px; opacity: 0; transform: translateY(20px); animation: fadeUp .8s .9s var(--ease) forwards; }
+    .hero-sub { margin-top: 24px; max-width: min(560px, 100%); font-size: 16px; color: rgba(6,6,6,.88); line-height: 1.65; text-shadow: 0 0 20px rgba(240,237,232,.75); opacity: 0; transform: translateY(20px); animation: fadeUp .8s .75s var(--ease) forwards; }
+    .hero-actions { margin-top: 36px; display: flex; align-items: center; gap: 28px; opacity: 0; transform: translateY(20px); animation: fadeUp .8s .88s var(--ease) forwards; }
     #hero .btn-ghost { color: rgba(6,6,6,.82); text-shadow: 0 0 16px rgba(240,237,232,.8); }
     #hero .btn-ghost:hover { color: #060606; }
     .hero-scroll-hint { position: absolute; bottom: 56px; right: var(--site-gutter-x); z-index: 2; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(6,6,6,.55); text-shadow: 0 0 12px rgba(240,237,232,.9); writing-mode: vertical-rl; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
@@ -394,8 +390,7 @@
     <h1 class="hero-headline" id="hero-headline">
       Design that<br/><em id="hero-h2">converts</em><br/><span id="hero-h3">and&nbsp;competes.</span>
     </h1>
-    <p class="hero-sub" id="hero-sub">Senior-level product design for founders, sole traders, and small-to-medium businesses who want clarity, craft, and results.</p>
-    <p class="hero-local" id="hero-local">Branding, graphic design, and digital products for SMBs — based between Cairns and Melbourne, working across Australia. <a href="/branding-cairns">Branding</a> · <a href="/graphic-design-cairns">Graphic design</a></p>
+    <p class="hero-sub" id="hero-sub">Expert-level branding, graphic design, and web design for founders, sole traders, and SMBs who want clarity, craft, and results. Based between Cairns and Melbourne, working across Australia. Branding · Graphic design · Web design</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary" id="hero-cta-primary">
         Start a project
@@ -443,9 +438,9 @@
     <h2 class="section-title" id="stmt-heading">Design that <em>earns</em> its place.</h2>
   </div>
   <div class="statement-body reveal reveal-delay-2" id="stmt-body">
-    <p id="stmt-p1">I work with <strong>founders, sole traders, and growing businesses</strong> who need design that does more than look good.</p>
-    <p id="stmt-p2">Based between Cairns and Melbourne and working with SMBs across Australia, I bring <strong>senior agency experience</strong> without agency overhead.</p>
-    <p id="stmt-p3">My approach is rooted in <strong>restraint and clarity</strong>. Good design disappears into the experience.</p>
+    <p id="stmt-p1">I work with <strong>sole traders, and small to medium-sized businesses</strong> who need design that does more than look good. It needs to build trust, reduce friction and convert attention into action.</p>
+    <p id="stmt-p2">Based between Cairns and Melbourne and working with SMBs across Australia, I bring <strong>senior agency experience</strong> without agency overhead. No account managers, no handoffs, just considered, strategic design delivered directly.</p>
+    <p id="stmt-p3">My approach is rooted in <strong>restraint and clarity</strong>. Good design disappears into the experience. The user never sees it working, they just feel it.</p>
     <p class="statement-local" id="stmt-local">Serving SMBs from Far North Queensland to Victoria — <a href="/branding-cairns">branding</a> · <a href="/graphic-design-cairns">graphic design</a> · <a href="/services">product &amp; UX</a></p>
     <a href="/about" class="statement-link">
       More about Jordan
@@ -604,11 +599,6 @@ async function populateContent() {
     document.getElementById('hero-h2').textContent = hero.headline2;
     document.getElementById('hero-h3').textContent = hero.headline3;
     document.getElementById('hero-sub').textContent = hero.sub;
-    if (hero.local_line_html) {
-      document.getElementById('hero-local').innerHTML = hero.local_line_html;
-    } else if (hero.local_line) {
-      document.getElementById('hero-local').textContent = hero.local_line;
-    }
     document.getElementById('hero-cta-primary').childNodes[0].textContent = hero.cta_primary + ' ';
     document.getElementById('hero-cta-secondary').childNodes[0].textContent = hero.cta_secondary + ' ';
     document.getElementById('nav-cta-btn').textContent = hero.cta_primary;
@@ -633,7 +623,7 @@ async function populateContent() {
   if (stmt) {
     document.getElementById('stmt-label').textContent = stmt.label;
     document.getElementById('stmt-heading').innerHTML = stmt.heading.replace(/earns/, '<em>earns</em>');
-    document.getElementById('stmt-p1').innerHTML = stmt.para1.replace(/founders, sole traders, and growing businesses/, '<strong>founders, sole traders, and growing businesses</strong>');
+    document.getElementById('stmt-p1').innerHTML = stmt.para1.replace(/sole traders, and small to medium-sized businesses/, '<strong>sole traders, and small to medium-sized businesses</strong>');
     document.getElementById('stmt-p2').innerHTML = stmt.para2.replace(/senior agency experience/, '<strong>senior agency experience</strong>');
     document.getElementById('stmt-p3').innerHTML = stmt.para3.replace(/restraint and clarity/, '<strong>restraint and clarity</strong>');
   }
