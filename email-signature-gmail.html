@@ -27,7 +27,8 @@
       <li>Scroll down and click <strong>Save Changes</strong>.</li>
     </ol>
     <p>If formatting strips on paste, try pasting into a new Gmail compose window first, then copy again from there into the signature field.</p>
-    <p><strong>Logo:</strong> The signature uses a PNG sized for email (<code>https://jordancroome.com.au/images/logo-email.png</code>) so Gmail and other clients display it reliably. Regenerate with <code>npm run export:logo-email</code> after changing <code>images/logo.svg</code>.</p>
+    <p><strong>Logo:</strong> The signature loads <code>https://jordancroome.com.au/images/logo-email.png</code> (PNG, Gmail-safe). Regenerate with <code>npm run export:logo-email</code> after editing <code>images/logo.svg</code>.</p>
+    <p><strong>If that URL won’t open:</strong> The file is in GitHub on <code>main</code> (<code>images/logo-email.png</code>). In <strong>Vercel</strong> → your project → <strong>Deployments</strong>, check whether a production deploy ran <em>after</em> that commit. If the push didn’t start a deploy, use <strong>Redeploy</strong> on the latest production deployment, or confirm the Git integration is pointed at this repo and branch. Until the deploy succeeds, use the <strong>text-only</strong> variant below in Gmail.</p>
   </div>
 
   <h2>Preview (select this block to copy)</h2>
