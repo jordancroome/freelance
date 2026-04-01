@@ -1,7 +1,13 @@
 {
   "name": "jordancroome",
   "private": true,
+  "scripts": {
+    "export:logo-email": "node scripts/export-logo-email.cjs"
+  },
   "dependencies": {
     "simple-oauth2": "^5.0.0"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2"
   }
 }
