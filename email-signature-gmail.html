@@ -17,6 +17,7 @@
   <h1>Gmail HTML email signature</h1>
   <p>Matches your site: cream palette, orange accent (<code>#ff6b00</code>), dark text (<code>#0e0e0e</code>), system sans throughout.</p>
   <p style="font-size:14px;color:#555;"><strong>This file is not auto-generated.</strong> Only the raster logo asset is built: run <code>npm run export:logo-email</code> after editing <code>images/logo.svg</code>. The preview below uses a <strong>local</strong> logo path so the picture shows when you open this HTML from the project folder (same level as the <code>images/</code> directory).</p>
+  <p style="font-size:14px;color:#555;">Links and the Gmail <strong>Insert image</strong> URL use <code>https://www.jordancroome.com</code> because the bare domain (<code>jordancroome.com</code>) can resolve differently from <code>www</code> in DNS. After you fix apex DNS to match your site, you can switch these to the host you prefer.</p>
 
   <div class="note">
     <strong>How to add in Gmail</strong>
@@ -26,27 +27,27 @@
       <li>Gmail → <strong>Settings</strong> (gear) → <strong>See all settings</strong> → <strong>General</strong> → <strong>Signature</strong> → create/edit → <strong>paste</strong>. Use the <strong>rich text</strong> signature editor (not plain text).</li>
       <li>Scroll down and click <strong>Save Changes</strong>.</li>
     </ol>
-    <p><strong>If the logo is missing or broken after paste:</strong> Gmail often <em>drops remote images</em> when HTML is pasted from outside Gmail, even when the URL is valid. Fix it in the signature editor: put the cursor where the logo should go (left of the orange bar), click the toolbar <strong>Insert image</strong> icon → <strong>Web address (URL)</strong> → paste <code>https://jordancroome.com/images/logo-email.png</code> → Insert. Resize in the editor if needed (~36px tall). Then <strong>Save Changes</strong>.</p>
+    <p><strong>If the logo is missing or broken after paste:</strong> Gmail often <em>drops remote images</em> when HTML is pasted from outside Gmail, even when the URL is valid. Fix it in the signature editor: put the cursor where the logo should go (left of the orange bar), click the toolbar <strong>Insert image</strong> icon → <strong>Web address (URL)</strong> → paste <code>https://www.jordancroome.com/images/logo-email.png</code> → Insert. Resize in the editor if needed (~36px tall). Then <strong>Save Changes</strong>.</p>
     <p>If other formatting strips on paste, paste into a <strong>new message</strong> compose window first, fix the image there with <strong>Insert image</strong> if needed, select all, copy, then paste into the signature field.</p>
-    <p><strong>Logo:</strong> In this file the <code>&lt;img&gt;</code> uses <code>images/logo-email.png</code> so preview works offline. <strong>In Gmail</strong> use <strong>Insert image → Web address</strong> with <code>https://jordancroome.com/images/logo-email.png</code> (pasting from this file often won’t keep a working remote image URL).</p>
+    <p><strong>Logo:</strong> In this file the <code>&lt;img&gt;</code> uses <code>images/logo-email.png</code> so preview works offline. <strong>In Gmail</strong> use <strong>Insert image → Web address</strong> with <code>https://www.jordancroome.com/images/logo-email.png</code> (pasting from this file often won’t keep a working remote image URL).</p>
     <p><strong>If that URL won’t open:</strong> The file is in GitHub on <code>main</code> (<code>images/logo-email.png</code>). In <strong>Vercel</strong> → your project → <strong>Deployments</strong>, check whether a production deploy ran <em>after</em> that commit. If the push didn’t start a deploy, use <strong>Redeploy</strong> on the latest production deployment, or confirm the Git integration is pointed at this repo and branch. Until the deploy succeeds, use the <strong>text-only</strong> variant below in Gmail.</p>
   </div>
 
   <h2>Preview (select this block to copy)</h2>
   <div class="preview-wrap">
     <!-- ========== SIGNATURE START — copy from here ========== -->
-    <!-- img: relative path = preview works when this file lives next to images/. In Gmail add logo via Insert image → https://jordancroome.com/images/logo-email.png -->
+    <!-- img: relative path = preview works when this file lives next to images/. In Gmail add logo via Insert image → https://www.jordancroome.com/images/logo-email.png -->
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;color:#555555;line-height:1.55;max-width:520px;">
       <tr>
         <td width="72" style="width:72px;vertical-align:top;padding:0 16px 0 0;line-height:0;">
-          <a href="https://jordancroome.com/" style="text-decoration:none;border:0;"><img src="images/logo-email.png" alt="Jordan Croome" width="64" height="36" border="0" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" /></a>
+          <a href="https://www.jordancroome.com/" style="text-decoration:none;border:0;"><img src="images/logo-email.png" alt="Jordan Croome" width="64" height="36" border="0" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" /></a>
         </td>
         <td style="vertical-align:top;border-left:3px solid #ff6b00;padding-left:16px;">
           <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:20px;color:#0e0e0e;letter-spacing:-0.02em;line-height:1.15;margin:0 0 6px 0;font-weight:500;">Jordan Croome</div>
           <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#555555;margin:0 0 10px 0;line-height:1.4;">Brand · Graphic · Product design</div>
           <div style="font-size:12px;color:#555555;margin:0 0 12px 0;">Melbourne · Cairns · Australia</div>
           <div style="font-size:12px;line-height:1.6;margin:0;">
-            <a href="https://jordancroome.com/" style="color:#ff6b00;text-decoration:none;">jordancroome.com</a>
+            <a href="https://www.jordancroome.com/" style="color:#ff6b00;text-decoration:none;">jordancroome.com</a>
             <span style="color:rgba(14,14,14,0.22);padding:0 6px;">·</span>
             <a href="mailto:hello@jordancroome.com" style="color:#ff6b00;text-decoration:none;">hello@jordancroome.com</a>
             <span style="color:rgba(14,14,14,0.22);padding:0 6px;">·</span>
@@ -68,7 +69,7 @@
           <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#555555;margin:0 0 10px 0;line-height:1.4;">Brand · Graphic · Product design</div>
           <div style="font-size:12px;color:#555555;margin:0 0 12px 0;">Melbourne · Cairns · Australia</div>
           <div style="font-size:12px;line-height:1.6;margin:0;">
-            <a href="https://jordancroome.com/" style="color:#ff6b00;text-decoration:none;">jordancroome.com</a>
+            <a href="https://www.jordancroome.com/" style="color:#ff6b00;text-decoration:none;">jordancroome.com</a>
             <span style="color:rgba(14,14,14,0.22);padding:0 6px;">·</span>
             <a href="mailto:hello@jordancroome.com" style="color:#ff6b00;text-decoration:none;">hello@jordancroome.com</a>
             <span style="color:rgba(14,14,14,0.22);padding:0 6px;">·</span>
