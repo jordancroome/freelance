@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Update loc host if your live domain is not jordancroome.com.au. Add URLs when you add projects. -->
+<!-- Canonical host: https://www.jordancroome.com — add URLs when you add pages. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://jordancroome.com.au/</loc><changefreq>weekly</changefreq><priority>1</priority></url>
-  <url><loc>https://jordancroome.com.au/work</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://jordancroome.com.au/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://jordancroome.com.au/about</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://jordancroome.com.au/contact</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://jordancroome.com.au/graphic-design-cairns</loc><changefreq>monthly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://jordancroome.com.au/branding-cairns</loc><changefreq>monthly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://jordancroome.com.au/insights/branding-cost-australia</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://jordancroome.com.au/insights/logo-vs-brand-identity</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://jordancroome.com.au/work/confidence-in-every-suburb</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jordancroome.com.au/work/coffee-without-the-ceremony</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jordancroome.com.au/work/energy-that-changes-everything</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jordancroome.com.au/work/a-brand-built-on-precision</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jordancroome.com.au/work/identity-as-a-statement</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jordancroome.com.au/work/live-better-where-health-gets-personal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jordancroome.com.au/work/re-cover-health-that-moves-with-you</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jordancroome.com/</loc><changefreq>weekly</changefreq><priority>1</priority></url>
+  <url><loc>https://www.jordancroome.com/work</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.jordancroome.com/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.jordancroome.com/about</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.jordancroome.com/contact</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.jordancroome.com/graphic-design-cairns</loc><changefreq>monthly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.jordancroome.com/branding-cairns</loc><changefreq>monthly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.jordancroome.com/insights/branding-cost-australia</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.jordancroome.com/insights/logo-vs-brand-identity</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.jordancroome.com/work/confidence-in-every-suburb</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jordancroome.com/work/coffee-without-the-ceremony</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jordancroome.com/work/energy-that-changes-everything</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jordancroome.com/work/a-brand-built-on-precision</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jordancroome.com/work/identity-as-a-statement</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jordancroome.com/work/live-better-where-health-gets-personal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jordancroome.com/work/re-cover-health-that-moves-with-you</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
